@@ -13,6 +13,7 @@ alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 # Vagrant
 alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vprowa="(cdwa && vagrant provision)"
 alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 # Git
 alias gitbwa="(cdwa && gitb)"
