@@ -1,6 +1,6 @@
 # Dot file management
 alias dfpull="(builtin cd ${HOME}/dotfiles && git pull)"
-alias dfpush="(builtin cd ${HOME}/dotfiles && git add -A && git commit -m \"Autocommit on $(hostname)\")"
+alias dfpush="(builtin cd ${HOME}/dotfiles && git add -A && git commit -m \"Autocommit on $(hostname)\" && git push)"
 # Dot file editing
 alias sourcep="source ~/.bash_profile"
 alias vie="vi ~/.bash_envvars && sourcep"
