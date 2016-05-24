@@ -1,6 +1,6 @@
 # Dot file management
 alias dfpull="(builtin cd ${HOME}/dotfiles && git pull)"
-alias dfpush="(builtin cd ${HOME}/dotfiles && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push ; } )"
+alias dfpush="(builtin cd ${HOME}/dotfiles && git pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push ; } )"
 # Dot file editing
 alias sourcep="source ~/.bash_profile"
 alias vie="vi ~/.bash_envvars && sourcep"
@@ -22,9 +22,17 @@ chx="chmod +x"
 # Vagrant
 alias vssh="func_vagrant_ssh"
 # Git
-alias git="hub"
-alias gitb="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && git rev-parse --abbrev-ref HEAD); fi; done"
-alias gitp="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
+alias gitb="git rev-parse --abbrev-ref HEAD"
+alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
+alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
 alias gitll="git log -1 --pretty=%B | head -n 1"
+# Hub
+if type hub > /dev/null 2>&1
+then
+	alias git="hub"
+	alias gitpr="git pull-request -m \"\$(gitb) \$(gitll)\" -b"
+else
+	alias gitpr="echo "Hub is not installed"; false"
+fi
 # SSH
 #alias ssh="ssh -t 'tmux list-sessions; bash -l'"
