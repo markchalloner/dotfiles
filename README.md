@@ -20,7 +20,7 @@ Install dotfiles:
 git clone git@github.com:markchalloner/dotfiles.git "${HOME}/dotfiles"
 ln -s "${HOME}/dotfiles" "${HOME}/.link-files"
 link-files -i
-. ~/bash_profile
+. ~/.bash_profile
 ```
 
 [link-files]: https://github.com/markchalloner/link-files
