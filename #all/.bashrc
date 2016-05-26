@@ -10,3 +10,5 @@ type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ] && . $
 [ -f ~/.bash_envvars ]   && . ~/.bash_envvars
 [ -f ~/.bash_aliases ]   && . ~/.bash_aliases
 
+# Import other local bash startup files
+[ -f ~/.bashrc_local ]       && . ~/.bashrc_local

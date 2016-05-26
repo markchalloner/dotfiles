@@ -1,2 +1,1 @@
-# Import other local bash startup files
-[ -f ~/.bashrc_local ]       && . ~/.bashrc_local
+# We do not import the local bashrc here as we want it to run when .bashrc is run directly
