@@ -29,11 +29,14 @@ alias git="func_hub"
 alias gitpr="func_gitpr """
 
 # Navigation
-alias ls="func_ls"
 alias cd="func_cd"
 alias cd_="builtin cd"
 alias cd~="builtin cd ~/"
 alias cd..="builtin cd ../"
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls="func_ls"
 
 # Permissions
 chx="chmod +x"
