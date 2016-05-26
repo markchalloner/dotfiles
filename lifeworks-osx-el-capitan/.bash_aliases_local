@@ -1,3 +1,10 @@
+# Git
+alias gitbwa="(cdwa && gitb)"
+alias gitpwa="(cdwa && gitp)"
+
+# Hub
+alias gitpr="func_gitpr RA-\?\?\?\?"
+
 # Navigation
 alias pushdev="func_pushd ~/Development"
 alias pushwa="func_pushd ${WA_ROOT}"
@@ -11,21 +18,14 @@ alias cdhermes="builtin cd ${WA_ROOT}/wa-hermes"
 alias cdinfra="builtin cd ${WA_ROOT}/wa-infrastructure"
 alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
-# Vagrant
-alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
-alias vprowa="(cdwa && vagrant provision)"
-alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
-# Git
-alias gitbwa="(cdwa && gitb)"
-alias gitpwa="(cdwa && gitp)"
-#Hub
-if type hub > /dev/null 2>&1
-then
-        alias gitpr="git push -u origin \$(gitb) && git pull-request -m \"\$(gitb) \$(gitll)\" -b"
-else
-        alias gitpr="echo "Hub is not installed"; false"
-fi
+
 # SSH
 alias sshlocal="vsshwa"
 alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"
 alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
+
+# Vagrant
+alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vprowa="(cdwa && vagrant provision)"
+alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
+

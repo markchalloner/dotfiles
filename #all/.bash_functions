@@ -10,13 +10,13 @@ func_cd() {
   dirs
 }
 
-# If hub is installed open a pull-request
+# If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
 func_gitpr() {
         local match="${1}"
         local base="${2}"
         local branch=$(git rev-parse --abbrev-ref HEAD)
         local prefix=""
-        if [ "${branch#${match}}" == "" ]
+        if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
         then
                 prefix="${branch} "
         fi
@@ -25,6 +25,15 @@ func_gitpr() {
                 git push -u origin "${branch}" && git pull-request -m "${prefix}$(gitll)" -b "${base}"
         else
                 echo "Hub is not installed"
+        fi
+}
+
+func_hub() { 
+	if type hub > /dev/null 2>&1
+        then
+                hub "${@}"
+        else
+                git "${@}"
         fi
 }
 

@@ -25,10 +25,8 @@ alias gitcl="git branch --merged | grep -v \"develop\|master\|qa\|release\|stagi
 alias gitcr="git remote prune origin"
 
 # Hub
-if type hub > /dev/null 2>&1
-then
-	alias git="hub"
-fi
+alias git="func_hub"
+alias gitpr="func_gitpr """
 
 # Navigation
 alias ls="func_ls"
