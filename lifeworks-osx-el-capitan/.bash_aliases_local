@@ -18,6 +18,13 @@ alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 # Git
 alias gitbwa="(cdwa && gitb)"
 alias gitpwa="(cdwa && gitp)"
+#Hub
+if type hub > /dev/null 2>&1
+then
+        alias gitpr="git push -u origin \$(gitb) && git pull-request -m \"\$(gitb) \$(gitll)\" -b"
+else
+        alias gitpr="echo "Hub is not installed"; false"
+fi
 # SSH
 alias sshlocal="vsshwa"
 alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"

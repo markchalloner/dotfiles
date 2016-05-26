@@ -1,1 +1,2 @@
 export PATH=~/bin:~/Software/Bin:${PATH}
+export PS1='[\u@\h \w$(__git_ps1)]\$ '
