@@ -10,7 +10,7 @@ INSTALLER_DIR="${HOME}/Software/Scripts/link-files"
 mkdir -p "${INSTALLER_DIR}"
 cd "${INSTALLER_DIR}"
 git clone https://github.com/markchalloner/link-files.git .
-make install
+sudo make install
 )
 ```
 
