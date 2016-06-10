@@ -22,7 +22,7 @@ func_gitpr() {
         fi
         if type hub > /dev/null 2>&1
         then
-                git push -u origin "${branch}" && git pull-request -m "${prefix}$(gitll)" -b "${base}"
+                git push -u origin "${branch}" && hub pull-request -m "${prefix}$(gitll)" -b "${base}"
         else
                 echo "Hub is not installed"
         fi
