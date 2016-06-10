@@ -1,6 +1,6 @@
 # Git
-alias gitbwa="(cdwa && gitb)"
-alias gitpwa="(cdwa && gitp)"
+alias gitbswa="(cdwa && gitbs)"
+alias gitpswa="(cdwa && gitps)"
 
 # Hub
 alias gitpr="func_gitpr RA-\?\?\?\?"
