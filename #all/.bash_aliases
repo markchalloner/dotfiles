@@ -24,6 +24,9 @@ alias gitc="gitcr && gitcl"
 alias gitcl="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|^\*\" | xargs -n 1 git branch -d"
 alias gitcr="git remote prune origin"
 
+# GPG
+alias gpg-reset="PID=\$(ps -A | grep \"gpg-agent\" | grep -v \"grep\" | cut -f 1 -d \" \"); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\" ; eval \$(gpg-agent --daemon)"
+
 # Hub
 alias git="func_hub"
 alias gitpr="func_gitpr """
