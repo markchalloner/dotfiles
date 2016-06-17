@@ -20,3 +20,4 @@
     untracked = cyan
 [core]
 	excludesfile = ~/.gitexcludes
+[alias]

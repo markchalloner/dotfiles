@@ -23,6 +23,7 @@ alias gitll="git log -1 --pretty=%B | head -n 1"
 alias gitc="gitcr && gitcl"
 alias gitcl="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|^\*\" | xargs -n 1 git branch -d"
 alias gitcr="git remote prune origin"
+alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 # GPG
 alias gpg-reset="PID=\$(ps -A | grep \"gpg-agent\" | grep -v \"grep\" | cut -f 1 -d \" \"); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\" ; eval \$(gpg-agent --daemon)"
