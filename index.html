@@ -8,14 +8,14 @@ curl -LsS https://markchalloner.github.io/link-files | bash
 # Create dir
 mkdir -p "${DIR}"
 (
-  cd ${dir}
+  cd "${DIR}"
 
   # Download
   if [ -d ".git" ]
   then
     git pull
   else
-    git clone git@github.com:markchalloner/dotfiles.git "${HOME}/dotfiles"
+    git clone git@github.com:markchalloner/dotfiles.git .
   fi
 
   # Set user
@@ -24,7 +24,7 @@ mkdir -p "${DIR}"
 )
 
 # Link
-ln -s "${HOME}/dotfiles" "${HOME}/.link-files"
+ln -s "${DIR}" "${HOME}/.link-files"
 
 # Install
 link-files -i -o
