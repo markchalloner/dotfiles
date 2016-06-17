@@ -19,7 +19,7 @@ alias .push="(builtin cd ${HOME}/dotfiles && git pull && { git add -A && git com
 alias gitb="git rev-parse --abbrev-ref HEAD"
 alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
 alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
-alias gitll="git log -1 --pretty=%B | head -n 1"
+alias gitll="git log -1 --oneline | cut -f 2- -d ' '"
 alias gitc="gitcr && gitcl"
 alias gitcl="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|^\*\" | xargs -n 1 git branch -d"
 alias gitcr="git remote prune origin"
