@@ -4,6 +4,6 @@ curl -LsS https://markchalloner.github.io/link-files | bash
 # Install dotfiles
 git clone git@github.com:markchalloner/dotfiles.git "${HOME}/dotfiles"
 ln -s "${HOME}/dotfiles" "${HOME}/.link-files"
-link-files -i
+link-files -i -o
 . ~/.bash_profile
 
