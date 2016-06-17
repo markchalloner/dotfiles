@@ -1,9 +1,34 @@
 #!/bin/bash
+# Vars
+DIR="${HOME}/dotfiles"
+
 # Install link-files
 curl -LsS https://markchalloner.github.io/link-files | bash
-# Install dotfiles
-git clone git@github.com:markchalloner/dotfiles.git "${HOME}/dotfiles"
+
+# Create dir
+mkdir -p "${DIR}"
+(
+  cd ${dir}
+
+  # Download
+  if [ -d ".git" ]
+  then
+    git pull
+  else
+    git clone git@github.com:markchalloner/dotfiles.git "${HOME}/dotfiles"
+  fi
+
+  # Set user
+  git config user.name "Mark Challoner"
+  git config user.email "mark.a.r.challoner@gmail.com"
+)
+
+# Link
 ln -s "${HOME}/dotfiles" "${HOME}/.link-files"
+
+# Install
 link-files -i -o
-. ~/.bash_profile
+
+# Run
+. "${HOME}/.bash_profile"
 
