@@ -1,0 +1,12 @@
+# Navigation
+alias pushwa="func_pushd ${WA_ROOT}"
+alias cdwa="builtin cd ${WA_ROOT}"
+alias cdapi="builtin cd ${WA_ROOT}/wa-api"
+alias cdarch="builtin cd ${WA_ROOT}/wa-arch"
+alias cddoc="builtin cd ${WA_ROOT}/wa-api-documentation"
+alias cdbackend="builtin cd ${WA_ROOT}/wa-backend"
+alias cdhermes="builtin cd ${WA_ROOT}/wa-hermes"
+alias cdinfra="builtin cd ${WA_ROOT}/wa-infrastructure"
+alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
+alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
+

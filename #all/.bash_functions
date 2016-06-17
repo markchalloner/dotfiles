@@ -53,9 +53,9 @@ func_gitpr() {
 func_hub() { 
   if type hub > /dev/null 2>&1
   then
-    hub "${@}"
+    func_native hub "${@}"
   else
-    git "${@}"
+    func_native git "${@}"
   fi
 }
 
@@ -76,6 +76,16 @@ func_ls() {
     /bin/ls -l "${@}"
   else
     /bin/ls "${@}"
+  fi
+}
+
+# Execute native version of command
+func_native() {
+  local cmd=$(type -P "${1}")
+  if [ $? -eq 0 ]
+  then
+    shift
+    ${cmd} "$@"
   fi
 }
 
