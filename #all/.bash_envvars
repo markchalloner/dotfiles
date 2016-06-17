@@ -1,2 +1,0 @@
-func_envvar_append "PATH" "${HOME}/bin:${HOME}/Software/Bin"
-export PS1='[\u@\h \w$(__git_ps1)]\$ '

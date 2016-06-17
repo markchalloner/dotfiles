@@ -1,6 +1,0 @@
-# OS specific
-#export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:/usr/local/lib/
-export CLICOLOR=1
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-# LifeWorks specific
-export WA_ROOT="~/Vagrant/wa"
