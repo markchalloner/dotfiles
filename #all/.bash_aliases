@@ -15,6 +15,9 @@ alias .reload=". ~/.bash_profile"
 alias .pull="(builtin cd ${HOME}/dotfiles && git pull)"
 alias .push="(builtin cd ${HOME}/dotfiles && git pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push ; } )"
 
+# Execution
+alias _="func_exec"
+
 # Git
 alias gitb="git rev-parse --abbrev-ref HEAD"
 alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"

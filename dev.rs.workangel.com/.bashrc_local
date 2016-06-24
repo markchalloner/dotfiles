@@ -3,3 +3,8 @@
 [ -f ~/.bash_envvars_local ]   && . ~/.bash_envvars_local
 [ -f ~/.bash_aliases_local ]   && . ~/.bash_aliases_local
 
+# User specific aliases and functions
+LANG=en_GB.utf8
+PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$PATH:/opt/scalefactory/embedded/bin
+source /srv/environment

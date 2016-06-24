@@ -21,6 +21,15 @@ func_envvar_append() {
   fi
 }
 
+# Echo and exec (unless $PROFILE_DEBUG is set) command
+func_exec() {
+  echo "$@"
+  if [ -z "${PROFILE_DEBUG}" ]
+  then
+    eval "${@}"
+  fi
+}
+
 # Prepend to env variable, takes a variable name, string and optional separator (defaults to :)
 func_envvar_prepend() {
   local envvar="${1}"

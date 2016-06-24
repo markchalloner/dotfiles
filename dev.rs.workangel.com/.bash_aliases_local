@@ -12,5 +12,5 @@ alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
 # Rake
-alias rakeall="(builtin cd ${HOME} && rake api:vagrant && rake arch:vagrant && rake backend:vagrant && rake bouncer:vagrant && rake hermes:vagrant && rake sso:vagrant && rake shim:vagrant && rake zeus:vagrant && rake automationbackend:vagrant && rake db:new)"
+alias rakeall="(builtin cd ${HOME} && _ rake api:vagrant && _ rake arch:vagrant && _ rake backend:vagrant && _ rake bouncer:vagrant && _ rake hermes:vagrant && _ rake sso:vagrant && _ rake shim:vagrant && _ rake zeus:vagrant && _ rake automationbackend:vagrant && _ rake db:new)"
 
