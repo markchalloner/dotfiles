@@ -12,6 +12,7 @@ alias virl="vi ~/.bashrc_local && .reload"
 
 # Dotfile management
 alias .reload=". ~/.bash_profile"
+alias .diff="(builtin cd ${HOME}/dotfiles && git diff)"
 alias .pull="(builtin cd ${HOME}/dotfiles && git pull)"
 alias .push="(builtin cd ${HOME}/dotfiles && git pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push ; } )"
 
