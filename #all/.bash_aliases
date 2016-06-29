@@ -30,7 +30,7 @@ alias gitcr="git remote prune origin"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 # GPG
-alias gpg-reset="PID=\$(ps -A | grep \"gpg-agent\" | grep -v \"grep\" | awk '{print \$1}'); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\" && eval \$(gpg-agent --daemon)"
+alias gpg-reset="PID=\$(ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\" | awk '{print \$1}'); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\" && eval \$(gpg-agent --daemon)"
 
 # Hub
 alias git="func_hub"
