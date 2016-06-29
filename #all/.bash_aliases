@@ -14,7 +14,7 @@ alias virl="vi ~/.bashrc_local && .reload"
 alias .reload=". ~/.bash_profile"
 alias .diff="(builtin cd ${HOME}/dotfiles && git diff)"
 alias .pull="(builtin cd ${HOME}/dotfiles && git stash && git pull && git stash pop)"
-alias .push="(builtin cd ${HOME}/dotfiles && .pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push ; } )"
+alias .push="(builtin cd ${HOME}/dotfiles && .pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push origin master; } )"
 
 # Execution
 alias _="func_exec"
