@@ -56,4 +56,4 @@ alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > 
 alias vssh="func_vagrant_ssh"
 
 # Xdebug
-alias xdebug="XDEBUG_CONFIG=\"idekey=PHPSTORM\""
+alias xdb="XDEBUG_CONFIG=\"idekey=PHPSTORM\""
