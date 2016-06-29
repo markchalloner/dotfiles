@@ -21,3 +21,5 @@
 [core]
     excludesfile = ~/.gitexcludes
 [alias]
+[push]
+	default = nothing
