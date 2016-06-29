@@ -14,3 +14,5 @@ alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 # Rake
 alias rakeall="(builtin cd ${HOME} && _ rake api:vagrant && _ rake arch:vagrant && _ rake backend:vagrant && _ rake bouncer:vagrant && _ rake hermes:vagrant && _ rake sso:vagrant && _ rake shim:vagrant && _ rake zeus:vagrant && _ rake automationbackend:vagrant && _ rake db:new)"
 
+# Xdebug
+alias xdebugapi="xdebug PHP_IDE_CONFIG=\"serverName=wa-api\""
