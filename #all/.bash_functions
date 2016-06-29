@@ -6,7 +6,7 @@ func_cd() {
   #then
   #  pushd ${pwd} > /dev/null
   #fi
-  builtin cd "${1}"
+  #builtin cd "${1}"
   dirs
 }
 
@@ -82,7 +82,7 @@ func_ls() {
   if [ -z "${ok}" ]
   then
     func_remind "ls -l"
-    /bin/ls -l "${@}"
+    #/bin/ls -l "${@}"
   else
     /bin/ls "${@}"
   fi
