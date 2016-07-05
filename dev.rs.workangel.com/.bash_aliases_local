@@ -16,6 +16,12 @@ alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
 # Rake
 alias rakeall="(builtin cd ${HOME} && _ rake api:vagrant && _ rake arch:vagrant && _ rake backend:vagrant && _ rake bouncer:vagrant && _ rake hermes:vagrant && _ rake sso:vagrant && _ rake shim:vagrant && _ rake zeus:vagrant && _ rake automationbackend:vagrant && _ rake db:new)"
+alias rakedb="(cdapi && _ rake api:db && _ deployment/generate-doctrine.sh && cdarch && rake arch:db)"
 
 # Xdebug
-alias xdbapi="xdb PHP_IDE_CONFIG=\"serverName=wa-api\""
+alias xdbapi="xdb wa-api"
+alias xdbbackend="xdb wa-backend"
+
+# WA
+alias wabackendls="sudo bash -c 'source /srv/environment && php /srv/wa-backend/public/index.php' | less -R"
+

@@ -136,3 +136,13 @@ func_vagrant_ssh() {
   vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux attach; else tmux new; fi'
 }
 
+# Xdebug
+func_xdb() {
+  local idekey="${1:-1}"
+  local server_name="${2}"
+  shift
+  shift
+  local command=${@}
+  local envs='XDEBUG_CONFIG="idekey='${idekey}'" PHP_IDE_CONFIG="serverName='${server_name}'"'
+  eval ${envs} ${@}
+}
