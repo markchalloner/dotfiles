@@ -53,11 +53,15 @@ alias ls="func_ls"
 # Permissions
 chx="chmod +x"
 
+# Sudo
+alias sudom="sudo bash -c"
+
 # Tmux
 alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
 
 # Vagrant
 alias vssh="func_vagrant_ssh"
+alias vpro="vagrant provision"
 
 # Xdebug
 alias xdb="func_xdb PHPSTORM"
