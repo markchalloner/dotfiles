@@ -20,6 +20,9 @@ alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
 alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
+# PHPStorm
+alias phpstorm="/Applications/PhpStorm.app/Contents/MacOS/phpstorm $(pwd)/"
+
 # SSH
 alias sshlocal="vsshwa"
 alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"
