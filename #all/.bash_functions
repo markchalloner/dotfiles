@@ -134,7 +134,7 @@ func_vagrant_ssh() {
   then
     vagrant up
   fi
-  vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux attach; else tmux new; fi'
+  vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux send-keys " source \${HOME}/.bash_profile"; tmux send-keys C-m; tmux attach; else tmux new; fi'
 }
 
 # Xdebug

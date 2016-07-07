@@ -37,6 +37,6 @@ alias vupwa="(cdwa && vup)"
 alias vdotwa="(cdwa && vdot)"
 alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
-alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vsshwa="vupwa && vdotwa && func_vagrant_ssh "${HOME}/Vagrant/wa""
 alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 
