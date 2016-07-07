@@ -31,6 +31,7 @@ alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 # GPG
+alias gpg-auth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
 alias gpg-restart="gpg-stop; gpg-start"
 alias gpg-start="eval \$(gpg-agent --daemon)"
 alias gpg-status="ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\""
