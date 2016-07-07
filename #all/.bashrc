@@ -40,5 +40,3 @@ fi
 # Import other local bash startup files
 [ -f ~/.bashrc_local ]       && . ~/.bashrc_local
 
-# Start tmux
-tmuxs

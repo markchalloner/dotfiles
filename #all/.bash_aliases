@@ -60,8 +60,11 @@ alias sudom="sudo bash -c"
 alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
 
 # Vagrant
-alias vssh="func_vagrant_ssh"
+alias vup="vagrant up"
+alias vdot="vagrant ssh -- -A 'curl -LsS dotfiles.markc.net | /bin/bash'"
+alias vhalt="vagrant halt"
 alias vpro="vagrant provision"
+alias vssh="func_vagrant_ssh"
 
 # Xdebug
 alias xdb="func_xdb PHPSTORM"

@@ -1,3 +1,7 @@
+# Browser
+alias gh="func_gh"
+alias jr="func_jr"
+
 # Git
 alias gitbswa="(cdwa && gitbs)"
 alias gitpswa="(cdwa && gitps)"
@@ -21,7 +25,7 @@ alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
 # PHPStorm
-alias phpstorm="/Applications/PhpStorm.app/Contents/MacOS/phpstorm $(pwd)/"
+alias phpstorm="func_phpstorm"
 
 # SSH
 alias sshlocal="vsshwa"
@@ -29,7 +33,10 @@ alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"
 alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
 
 # Vagrant
-alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vupwa="(cdwa && vup)"
+alias vdotwa="(cdwa && vdot)"
+alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
+alias vsshwa="func_vagrant_ssh "${HOME}/Vagrant/wa""
 alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 

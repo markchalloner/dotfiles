@@ -1,0 +1,67 @@
+func_gh() {
+  local path="${1}"
+  local url_base="https://github.com/workivate"
+  local url=
+  if $(git status > /dev/null 2>&1)
+  then
+    if [ -n "${path}" ]
+    then
+      hub browse -- "${path}"
+    else
+      hub browse
+    fi
+    return
+  fi
+  if [ -n "${path}" ]
+  then
+    url="${url_base}/wa-${path}"
+  else
+    url="${url_base}"
+  fi
+  open "${url}"
+}
+
+func_jr() {
+  local ticket="${1}"
+  local branch=
+  local board=218
+  local url_base="https://workivate.atlassian.net"
+  local url=
+  if [ -z "${ticket}" ] && $(git status > /dev/null 2>&1)
+  then
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    if $(echo "${branch}" | grep -q '^\w\+-\d\+$')
+    then
+      ticket="${branch}"
+    fi
+  fi
+  case "${ticket}" in
+    "b"|"backlog")
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail"
+      ;;
+    "a"|"agile")
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}"
+      ;;
+    "h"|"home"|"dashboard"|"")
+      url="${url_base}/secure/Dashboard.jspa"
+      ;;
+    *)
+      ticket="$(echo "${ticket}" | tr '[:lower:]' '[:upper:]' | sed 's/^\([A-Z][A-Z]*\)\([0-9][0-9]*\)/\1-\2/g')"
+      if $(echo "${ticket}" | grep -q '^\d\+$')
+      then
+        ticket="RA-"${ticket}
+      fi
+      url="${url_base}/browse/${ticket}"
+      ;;
+  esac
+  if [ -n "${url}" ]
+  then
+    open "${url}"
+  fi
+}
+
+
+func_phpstorm() {
+  local file="${1}"
+  /Applications/PhpStorm.app/Contents/MacOS/phpstorm "$(pwd)/${file}"
+}

@@ -14,4 +14,4 @@ elif [ -e "${FILE_TO}" ]
 then
     mv "${FILE_TO}" "${FILE_TO}.bak.$(date "+%Y%m%d%H%M%S")"
 fi
-ln -s "${FILE_FROM}" "${FILE_TO}"
+cp "${FILE_FROM}" "${FILE_TO}"

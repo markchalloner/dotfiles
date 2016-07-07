@@ -119,14 +119,15 @@ func_remind() {
 
 # Start vagrant box if not running and attempt to run tmux when connecting
 func_vagrant_ssh() {
+  local dir="${1}"
   if [ -n "${TMUX}" ]
   then
     echo "Running in a tmux session; run \"tmux detach\" first."
     return 1
   fi
-  if [ -n "$1" ]
+  if [ -n "${dir}" ]
   then
-    builtin cd "$1"
+    builtin cd "${dir}"
   fi
   vagrant status | grep -q "running (virtualbox)"
   if [ $? -ne 0 ]
