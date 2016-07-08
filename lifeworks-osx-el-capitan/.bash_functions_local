@@ -63,5 +63,12 @@ func_jr() {
 
 func_phpstorm() {
   local file="${1}"
-  /Applications/PhpStorm.app/Contents/MacOS/phpstorm "$(pwd)/${file}"
+  if [ "${file:0:1}" == "/" ]
+  then
+    file="${file/\/srv/${HOME}/Vagrant/wa}"
+  else
+    file="$(pwd)/${file}"
+  fi
+
+  echo /Applications/PhpStorm.app/Contents/MacOS/phpstorm "${file}"
 }
