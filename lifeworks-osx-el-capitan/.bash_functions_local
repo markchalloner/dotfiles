@@ -3,6 +3,7 @@ func_gh() {
   local url_base="https://github.com"
   local url_company="${url_base}/workivate"
   local url=
+  local sub=
   if $(git status > /dev/null 2>&1)
   then
     if [ -n "${path}" ]
@@ -21,11 +22,33 @@ func_gh() {
       author="${2:-markchalloner}"
       url="${url_base}/pulls?q=is%3Apr+author%3A${author}"
       ;;
+    [0-9]*)
+      url="${url_company}/wa-api/pull/${path}"
+      ;;
     "")
       url="${url_company}"
       ;;
     *)
-      sub="${2}"
+      case "${path}" in
+        "android"|"api"|"arch"|"backend"|"hermes"|"ios"|"sso"|"zeus")
+          path="wa-${path}"
+          ;;
+        "be")
+          path="wa-backend"
+          ;;
+        "content")
+          path="wa-api-content"
+          ;;
+        "doc")
+          path="wa-api-documentation"
+          ;;
+        "infra")
+          path="wa-infrastructure"
+          ;;
+      esac
+      shift 
+      sub="${@}"
+      sub="${sub// //}"
       url="${url_company}/${path}/${sub}"
       ;;
   esac
