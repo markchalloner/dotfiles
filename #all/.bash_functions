@@ -10,6 +10,30 @@ func_cd() {
   dirs
 }
 
+# Convert dev names to github usernames
+# Requires DEV variable e.g.:
+#   DEV="dev1nick1,dev1nick2,...:dev1gh;dev2nick1,...:dev2gh"
+func_dev2gh() {
+  local dev="$(echo "${1}" | tr '[:upper:]' '[:lower:]')"
+  local devs=
+  local names=
+  local git=
+  local gitl=
+  local out=
+  IFS=';' read -a devs <<< "${DEVS}"
+  for i in ${devs[@]}
+  do
+    names="$(echo ",${i%%:*}," | tr '[:upper:]' '[:lower:]')"
+    git="${i##*:}"
+    gitl="$(echo "${git}" | tr '[:upper:]' '[:lower:]')"
+    if [ "${dev}" == "${gitl}" ] || [ "${names//,${dev},/}" != "${names}" ]
+    then
+      out="${git}"
+    fi
+  done <<< "${DEVS}"
+  echo "${out}"
+}
+
 # Append to env variable, takes a variable name, string and optional separator (defaults to :)
 func_envvar_append() {
   local envvar="${1}"

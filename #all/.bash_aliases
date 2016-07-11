@@ -9,6 +9,7 @@ alias vipg="vi ~/.bash_profile && .reload"
 alias vipl="vi ~/.bash_profile_local && .reload"
 alias virg="vi ~/.bashrc && .reload"
 alias virl="vi ~/.bashrc_local && .reload"
+alias virp="vi ~/.bashrc_private && .reload"
 
 # Dotfile management
 alias .cd="builtin cd ${HOME}/dotfiles"
