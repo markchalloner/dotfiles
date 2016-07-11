@@ -38,5 +38,5 @@ fi
 [ -f ~/.bash_aliases ]   && . ~/.bash_aliases
 
 # Import other local bash startup files
-[ -f ~/.bashrc_local ]       && . ~/.bashrc_local
+[ -f ~/.bashrc_local ]   && . ~/.bashrc_local
 
