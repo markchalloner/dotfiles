@@ -1,6 +1,7 @@
 func_gh() {
   local path="${1}"
-  local url_base="https://github.com/workivate"
+  local url_base="https://github.com"
+  local url_company="${url_base}/workivate"
   local url=
   if $(git status > /dev/null 2>&1)
   then
@@ -12,12 +13,22 @@ func_gh() {
     fi
     return
   fi
-  if [ -n "${path}" ]
-  then
-    url="${url_base}/wa-${path}"
-  else
-    url="${url_base}"
-  fi
+  case "${path}" in
+    "f"|"feed")
+      url="${url_base}"
+      ;;
+    "p"|"pulls")
+      author="${2:-markchalloner}"
+      url="${url_base}/pulls?q=is%3Apr+author%3A${author}"
+      ;;
+    "")
+      url="${url_company}"
+      ;;
+    *)
+      sub="${2}"
+      url="${url_company}/${path}/${sub}"
+      ;;
+  esac
   open "${url}"
 }
 

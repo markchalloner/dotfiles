@@ -25,7 +25,7 @@ alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin 
 alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
 alias gitll="git log -1 --oneline | cut -f 2- -d ' '"
 alias gitcl="gitclr && gitcll"
-alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|^\*\" | xargs -n 1 git branch -d"
+alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|test\|^\*\" | xargs -n 1 git branch -d"
 alias gitclr="git remote prune origin"
 alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
