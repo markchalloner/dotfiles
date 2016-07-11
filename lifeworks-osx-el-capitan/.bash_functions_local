@@ -103,6 +103,5 @@ func_phpstorm() {
   else
     file="$(pwd)/${file}"
   fi
-
-  echo /Applications/PhpStorm.app/Contents/MacOS/phpstorm "${file}"
+  /Applications/PhpStorm.app/Contents/MacOS/phpstorm "${file}"
 }
