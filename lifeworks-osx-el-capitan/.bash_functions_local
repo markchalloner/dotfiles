@@ -49,6 +49,7 @@ func_gh() {
       shift 
       sub="${@}"
       sub="${sub// //}"
+      sub="${sub//branch/tree}"
       url="${url_company}/${path}/${sub}"
       ;;
   esac
@@ -58,7 +59,7 @@ func_gh() {
 func_jr() {
   local ticket="${1}"
   local branch=
-  local board=218
+  local board=224
   local url_base="https://workivate.atlassian.net"
   local url=
   if [ -z "${ticket}" ] && $(git status > /dev/null 2>&1)
@@ -71,9 +72,11 @@ func_jr() {
   fi
   case "${ticket}" in
     "b"|"backlog")
+      board="${2:-${board}}"
       url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail"
       ;;
     "a"|"agile")
+      board="${2:-${board}}"
       url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}"
       ;;
     "h"|"home"|"dashboard"|"")

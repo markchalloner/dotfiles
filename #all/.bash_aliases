@@ -46,12 +46,14 @@ alias gitpr="func_gitpr """
 # Navigation
 alias cd="func_cd"
 alias cd_="builtin cd"
-alias cd~="builtin cd ~/"
+alias cd~="builtin cd ${HOME}/"
 alias cd..="builtin cd ../"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls="func_ls"
+alias cdtmp="mkdir -p ${HOME}/tmp && builtin cd ${HOME}/tmp"
+
 
 # Permissions
 chx="chmod +x"
