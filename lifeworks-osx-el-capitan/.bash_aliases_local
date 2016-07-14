@@ -25,6 +25,7 @@ alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
 # PHPStorm
+alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
 
 # SSH

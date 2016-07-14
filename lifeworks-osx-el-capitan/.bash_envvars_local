@@ -3,4 +3,4 @@
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # LifeWorks specific
-export WA_ROOT="~/Vagrant/wa"
+export WA_ROOT="${HOME}/Vagrant/wa"

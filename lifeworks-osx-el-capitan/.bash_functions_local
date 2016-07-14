@@ -19,8 +19,25 @@ func_gh() {
       url="${url_base}"
       ;;
     "p"|"pulls")
-      author="$(func_dev2gh "${2:-markchalloner}")"
-      url="${url_base}/pulls?q=is%3Apr+author%3A${author}"
+      author="$(func_dev2gh "${2}")"
+      state="$(echo "${3}" | tr '[:upper:]' '[:lower:]')"
+      if [ -z "${author}" ]
+      then
+         author="markchalloner"
+         state="${2}"
+      fi
+      case "${state}" in
+        "o"|"open")
+          state="+is%3Aopen"
+          ;;
+        "c"|"closed")
+          state="+is%3Aclosed"
+          ;;
+        *)
+          state=""
+          ;;
+      esac
+      url="${url_base}/pulls?q=is%3Apr+author%3A${author}${state}"
       ;;
     [0-9]*)
       url="${url_company}/wa-api/pull/${path}"
@@ -29,23 +46,7 @@ func_gh() {
       url="${url_company}"
       ;;
     *)
-      case "${path}" in
-        "android"|"api"|"arch"|"backend"|"hermes"|"ios"|"sso"|"zeus")
-          path="wa-${path}"
-          ;;
-        "be")
-          path="wa-backend"
-          ;;
-        "content")
-          path="wa-api-content"
-          ;;
-        "doc")
-          path="wa-api-documentation"
-          ;;
-        "infra")
-          path="wa-infrastructure"
-          ;;
-      esac
+      path="$(func_projnick2full "${path}")"
       shift 
       sub="${@}"
       sub="${sub// //}"
@@ -71,15 +72,15 @@ func_jr() {
     fi
   fi
   case "${ticket}" in
-    "b"|"backlog")
+    b|backlog)
       board="${2:-${board}}"
       url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail"
       ;;
-    "a"|"agile")
+    a|agile)
       board="${2:-${board}}"
       url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}"
       ;;
-    "h"|"home"|"dashboard"|"")
+    h|home|dashboard|"")
       url="${url_base}/secure/Dashboard.jspa"
       ;;
     *)
@@ -97,14 +98,47 @@ func_jr() {
   fi
 }
 
-
 func_phpstorm() {
-  local file="${1}"
-  if [ "${file:0:1}" == "/" ]
+  local proj=
+  local file=
+  if [ $# -ge 2 ]
+  then
+    proj="$(func_projnick2full "${1}")"
+    file="${WA_ROOT}/${proj}/${2}"
+  else
+    file="${1}"
+  fi
+  if [ "${file:0:1}" == "/" ] || [ "${file:0:1}" == "~" ] 
   then
     file="${file/\/srv/${HOME}/Vagrant/wa}"
   else
     file="$(pwd)/${file}"
   fi
   /Applications/PhpStorm.app/Contents/MacOS/phpstorm "${file}"
+}
+
+func_projnick2full() {
+  local nick="${1}"
+  local full=
+  case "${nick}" in
+    android|api|arch|backend|hermes|ios|sso|zeus)
+      full="wa-${nick}"
+      ;;
+    be)
+      full="wa-backend"
+      ;;
+    content)
+      full="wa-api-content"
+      ;;
+    doc)
+      full="wa-api-documentation"
+      ;;
+    infra)
+      full="wa-infrastructure"
+      ;;
+    *)
+      full="${nick}"
+      ;;
+  esac
+  echo "${full}"
 }
