@@ -20,6 +20,8 @@
     untracked = cyan
 [core]
 	excludesfile = ~/.gitexcludes
+[push]
+        default = nothing
 [alias]
 [filter "lfs"]
 	clean = git-lfs clean %f
