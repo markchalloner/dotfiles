@@ -1,6 +1,7 @@
 [user]
     name = Mark Challoner
     email = mark.challoner@lifeworks.com
+	signingkey = 0x58EABDB1293D248
 [color]
     branch = auto
     diff = auto
@@ -23,3 +24,5 @@
 [alias]
 [push]
 	default = nothing
+[commit]
+	gpgsign = true
