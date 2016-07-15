@@ -1,6 +1,7 @@
 [user]
     name = Mark Challoner
     email = mark.challoner@lifeworks.com
+	signingkey = 0x58EABDB1293D248B
 [color]
     branch = auto
     diff = auto
@@ -27,3 +28,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true

@@ -22,6 +22,8 @@ alias .push="(.cd && .pull && { git add -A && git commit -m \"Autocommit on $(ho
 alias _="func_exec"
 
 # Git
+alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"mark.a.r.challoner@gmail.com\""
+alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
 alias gitb="git rev-parse --abbrev-ref HEAD"
 alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
 alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
@@ -31,6 +33,7 @@ alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|stag
 alias gitclr="git remote prune origin"
 alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
 
 # GPG
 alias gpg-auth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
