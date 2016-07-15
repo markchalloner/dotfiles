@@ -133,12 +133,7 @@ func_pushd() {
 # Print a reminder
 func_remind() {
   local msg="${1}"
-  local dsh="$(echo ${msg} | sed 's/./-/g')"
-  echo
-  echo "    --------------------${dsh}----"
-  echo "    | /!\ Did you mean \`${msg}\`? |"
-  echo "    --------------------${dsh}----"
-  echo
+  func_warning "Did you mean \`${msg}\`?"
 }
 
 # Start vagrant box if not running and attempt to run tmux when connecting
@@ -161,6 +156,16 @@ func_vagrant_ssh() {
   vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux send-keys " source \${HOME}/.bash_profile"; tmux send-keys C-m; tmux attach; else tmux new; fi'
 }
 
+# Print a warning
+func_warning() {
+  local msg="${1}"
+  local dsh="$(echo ${msg} | sed 's/./-/g')"
+  echo
+  echo "    ------${dsh}--"
+  echo "    | /!\ ${msg} |"
+  echo "    ------${dsh}--"
+  echo
+}
 # Xdebug
 func_xdb() {
   local idekey="${1:-1}"

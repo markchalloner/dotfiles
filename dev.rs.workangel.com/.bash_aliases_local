@@ -1,3 +1,6 @@
+# Git
+alias git="func_git"
+
 # Log
 alias log="func_log"
 

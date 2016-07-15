@@ -16,7 +16,7 @@ alias .cd="builtin cd ${HOME}/dotfiles"
 alias .reload=". ~/.bash_profile"
 alias .diff="(.cd && git diff)"
 alias .pull="(.cd && git stash && git pull && git stash pop)"
-alias .push="(.cd && .pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" ; git push origin master; } )"
+alias .push="(.cd && .pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" && git push origin master; } )"
 
 # Execution
 alias _="func_exec"
