@@ -6,13 +6,7 @@ func_gh() {
   local sub=
   if $(git status > /dev/null 2>&1)
   then
-    if [ -n "${path}" ]
-    then
-      hub browse -- "${path}"
-    else
-      hub browse
-    fi
-    return
+    func_remind "hub browse"
   fi
   case "${path}" in
     "f"|"feed")

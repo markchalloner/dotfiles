@@ -135,9 +135,9 @@ func_remind() {
   local msg="${1}"
   local dsh="$(echo ${msg} | sed 's/./-/g')"
   echo
-  echo "    -------------------${dsh}---"
-  echo "    | /!\ Did you mean ${msg}? |"
-  echo "    -------------------${dsh}---"
+  echo "    --------------------${dsh}----"
+  echo "    | /!\ Did you mean \`${msg}\`? |"
+  echo "    --------------------${dsh}----"
   echo
 }
 
