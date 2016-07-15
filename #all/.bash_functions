@@ -34,6 +34,37 @@ func_dev2gh() {
   echo "${out}"
 }
 
+# Change directory to a dotfiles repo
+func_dotcd() {
+  local path="${1:-${HOME}/dotfiles}"
+  if [ -d "${path}/.git" ] && (builtin cd "${path}" && git remote -v | grep "origin" | grep "push" | grep -q "markchalloner/dotfiles")
+  then
+    builtin cd "${path}"
+    return 0
+  fi
+  func_warning "Path is not a dotfiles repository"
+  return 1
+}
+
+# Diff a dotfiles repo
+func_dotdiff() {
+  local path="${1:-${HOME}/dotfiles}"
+  (func_dotcd "${path}" && git diff)
+}
+
+# Pull a dotfiles repo
+func_dotpull() {
+  local path="${1:-${HOME}/dotfiles}"
+  (func_dotcd "${path}" && git stash && git pull && git stash pop)
+}
+
+# Push a dotfiles repo
+func_dotpush() {
+  local path="${1:-${HOME}/dotfiles}"
+  local hostname="${2:-$(hostname)}"
+  (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && git commit -m "Autocommit on ${hostname}" && git push origin master)
+}
+
 # Append to env variable, takes a variable name, string and optional separator (defaults to :)
 func_envvar_append() {
   local envvar="${1}"

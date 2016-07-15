@@ -12,11 +12,11 @@ alias virl="vi ~/.bashrc_local && .reload"
 alias virp="vi ~/.bashrc_private && .reload"
 
 # Dotfile management
-alias .cd="builtin cd ${HOME}/dotfiles"
+alias .cd="func_dotcd"
 alias .reload=". ~/.bash_profile"
-alias .diff="(.cd && git diff)"
-alias .pull="(.cd && git stash && git pull && git stash pop)"
-alias .push="(.cd && .pull && { git add -A && git commit -m \"Autocommit on $(hostname)\" && git push origin master; } )"
+alias .diff="func_dotdiff"
+alias .pull="func_dotpull"
+alias .push="func_dotpush"
 
 # Execution
 alias _="func_exec"
