@@ -1,5 +1,6 @@
 func_git() {
   local args="${@}"
+  local arg=
   for arg in ${args}
   do
     case "${arg}" in
@@ -10,4 +11,51 @@ func_git() {
     esac
   done
   eval /usr/bin/git "${@}"
+}
+
+func_log() {
+  local proj="$(func projnick2full "${1}")"
+  local type="${2:-debug}"
+  local date="$(date '+%Y-%m-%d')"
+  local file=
+  case "${proj}" in
+    "messages"|"")
+      file="/var/log/messages"
+      ;;
+    *)
+      file="/var/log/${proj}/"${type}"-"${date}".log"
+      ;;
+   esac
+   if [ -f "${file}}"]
+   then
+     sudo less +F "${file}"
+   else
+     echo "File "${file}" does not exist"
+   fi
+}
+
+func_projnick2full() {
+  local nick="${1}"
+  local full=
+  case "${nick}" in
+    android|api|arch|aviato|backend|hermes|ios|sso|zeus)
+      full="wa-${nick}"
+      ;;
+    be)
+      full="wa-backend"
+      ;;
+    content)
+      full="wa-api-content"
+      ;;
+    doc)
+      full="wa-api-documentation"
+      ;;
+    infra)
+      full="wa-infrastructure"
+      ;;
+    *)
+      full="${nick}"
+      ;;
+  esac
+  echo "${full}"
 }
