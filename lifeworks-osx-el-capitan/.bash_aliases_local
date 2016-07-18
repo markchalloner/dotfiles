@@ -35,7 +35,7 @@ alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
 
 # Vagrant
 alias vupwa="(cdwa && vup)"
-alias vdotwa="(cdwa && vdot)"
+alias vdotwa="(cdwa && vagrant ssh -- -A 'ln -s /vagrant/dotfiles \${HOME}/dotfiles' && vdot)"
 alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
 alias vsshwa="vupwa && vdotwa ; func_vagrant_ssh "${HOME}/Vagrant/wa""
