@@ -55,7 +55,7 @@ func_dotdiff() {
 # Pull a dotfiles repo
 func_dotpull() {
   local path="${1:-${HOME}/dotfiles}"
-  (func_dotcd "${path}" && git stash && git pull && git stash pop)
+  (func_dotcd "${path}" && git -c commit.gpgsign=false stash && git pull && git -c commit.gpgsign=false stash pop)
 }
 
 # Push a dotfiles repo

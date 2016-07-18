@@ -115,7 +115,7 @@ func_projnick2full() {
   local nick="${1}"
   local full=
   case "${nick}" in
-    android|api|arch|backend|hermes|ios|sso|zeus)
+    android|api|arch|aviato|backend|hermes|ios|sso|zeus)
       full="wa-${nick}"
       ;;
     be)
