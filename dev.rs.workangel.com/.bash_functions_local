@@ -1,0 +1,13 @@
+func_git() {
+  local args="${@}"
+  for arg in ${args}
+  do
+    case "${arg}" in
+      "commit"|"push")
+        func_warning "Command git "${arg}" is not allowed"
+        return 1
+        ;;
+    esac
+  done
+  eval /usr/bin/git "${@}"
+}
