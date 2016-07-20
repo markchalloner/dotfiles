@@ -96,6 +96,23 @@ func_envvar_prepend() {
   fi
 }
 
+# Commit optionaly adding the branch if it exactly matches ${1}
+func_gitcm() {
+  local match="${1}"
+  local message="${2}"
+  local branch="$(git rev-parse --abbrev-ref HEAD)"
+  local prefix=""
+  if [ "${message}" == "-m" ]
+  then
+    message="${3}"
+  fi
+  if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
+  then
+    prefix="${branch} "
+  fi
+  git commit -m "${prefix}${message#${prefix}}"
+}
+
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
 func_gitpr() {
   local match="${1}"

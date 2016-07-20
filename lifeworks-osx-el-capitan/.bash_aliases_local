@@ -7,6 +7,7 @@ alias gitbswa="(cdwa && gitbs)"
 alias gitpswa="(cdwa && gitps)"
 
 # Hub
+alias gitcm="func_gitcm RA-\?\?\?\?"
 alias gitpr="func_gitpr RA-\?\?\?\?"
 
 # Navigation
