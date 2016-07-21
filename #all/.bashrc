@@ -41,3 +41,7 @@ fi
 [ -f ~/.bashrc_local ]   && . ~/.bashrc_local
 [ -f ~/.bashrc_private ] && . ~/.bashrc_private
 
+LANG=en_GB.utf8
+PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$PATH:/opt/scalefactory/embedded/bin
+source /srv/environment

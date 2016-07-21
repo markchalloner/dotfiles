@@ -28,4 +28,9 @@ alias xdbbackend="xdb wa-backend"
 
 # WA
 alias wabackendls="sudo bash -c 'source /srv/environment && php /srv/wa-backend/public/index.php' | less -R"
-
+alias wastatus="wastatuspm && wastatusjb"
+alias wastatuspm="sudo pgrep -f '^php [^ ]+ process manager start\$' > /dev/null; if [ \${?} -eq 0 ]; then echo 'Process manager is running'; else echo 'Process manager is not running'; fi"
+alias wastatusjb="sudo pgrep -f '^php [^ ]+ job processqueue\$' > /dev/null; if [ \${?} -eq 0 ]; then echo 'Job queue is running'; else echo 'Job queue is not running'; fi"
+alias wakill="wakillpm && wakilljb"
+alias wakillpm="sudo pkill -f '^php [^ ]+ process manager starti\$'"
+alias wakilljb="sudo pkill -f '^php [^ ]+ job processqueue\$'"
