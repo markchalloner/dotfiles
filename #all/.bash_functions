@@ -78,7 +78,7 @@ func_envvar_append() {
 
 # Echo and exec (unless $PROFILE_DEBUG is set) command
 func_exec() {
-  echo "$@"
+  echo "${@}"
   if [ -z "${PROFILE_DEBUG}" ]
   then
     eval "${@}"
@@ -115,17 +115,19 @@ func_gitcm() {
 
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
 func_gitpr() {
+  local prefix=""
   local match="${1}"
   local base="${2}"
   local branch=$(git rev-parse --abbrev-ref HEAD)
-  local prefix=""
+  local log=$(gitll)
+  log="${log#${branch}}"
   if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
   then
     prefix="${branch} "
   fi
   if type hub > /dev/null 2>&1
   then
-    git push -u origin "${branch}" && hub pull-request -m "${prefix}$(gitll)" -b "${base}"
+    git push -u origin "${branch}" && hub pull-request -m "${prefix}${log}" -b "${base}"
   else
     echo "Hub is not installed"
   fi
@@ -254,7 +256,12 @@ func_xdb() {
   local server_name="${2}"
   shift
   shift
-  local command=${@}
+  local command="${@}"
   local envs='XDEBUG_CONFIG="idekey='${idekey}'" PHP_IDE_CONFIG="serverName='${server_name}'"'
-  eval ${envs} ${@}
+  (
+    export XDEBUG_CONFIG="idekey=${idekey}"
+    export PHP_IDE_CONFIG="serverName=${server_name}"
+    eval ${command}
+  )
 }
+

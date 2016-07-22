@@ -44,7 +44,7 @@ alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
 alias vdotwa="(cdwa && vdot)"
 alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
-alias vsshwa="vupwa && vdotwa ; func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vsshwa="vupwa && vdotwa ; func_vssh "${HOME}/Vagrant/wa""
 alias vupwa="(cdwa && vup)"
 alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 
