@@ -55,7 +55,7 @@ func_dotdiff() {
 # Pull a dotfiles repo
 func_dotpull() {
   local path="${1:-${HOME}/dotfiles}"
-  (func_dotcd "${path}" && git -c commit.gpgsign=false stash && git pull && git -c commit.gpgsign=false stash pop)
+  (func_dotcd "${path}" && func_gitst && git pull && func_gitst pop)
 }
 
 # Push a dotfiles repo
@@ -129,6 +129,21 @@ func_gitpr() {
   else
     echo "Hub is not installed"
   fi
+}
+
+func_gitst() {
+  local gpgsign="$(git config --list | grep "commit.gpgsign" | sed 's/.*=//')"
+  gpgsign="${gpgsign% }"
+  git config commit.gpgsign false
+  git stash ${@}
+  case "${gpgsign}" in
+    true)
+      git config commit.gpgsign true
+      ;;
+    "")
+      git config --unset commit.gpgsign
+      ;;
+   esac
 }
 
 func_hub() { 

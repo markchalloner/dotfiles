@@ -33,7 +33,7 @@ alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|stag
 alias gitclr="git remote prune origin"
 alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-alias gitst="git -c commit.gpgsign=false stash"
+alias gitst="func_gitst"
 
 # GPG
 alias gpg-auth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
