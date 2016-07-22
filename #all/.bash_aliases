@@ -51,12 +51,11 @@ alias cd="func_cd"
 alias cd_="builtin cd"
 alias cd~="builtin cd ${HOME}/"
 alias cd..="builtin cd ../"
+alias cdtmp="mkdir -p ${HOME}/tmp && builtin cd ${HOME}/tmp"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls="func_ls"
-alias cdtmp="mkdir -p ${HOME}/tmp && builtin cd ${HOME}/tmp"
-
 
 # Permissions
 chx="chmod +x"
@@ -68,11 +67,11 @@ alias sudom="sudo bash -c"
 alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
 
 # Vagrant
-alias vup="vagrant up"
-alias vdot="vagrant ssh -- -A 'curl -LsS dotfiles.markc.net | /bin/bash'"
+alias vdot="func_vdot"
 alias vhalt="vagrant halt"
 alias vpro="vagrant provision"
-alias vssh="func_vagrant_ssh"
+alias vssh="func_vssh"
+alias vup="vagrant up"
 
 # Xdebug
 alias xdb="func_xdb PHPSTORM"

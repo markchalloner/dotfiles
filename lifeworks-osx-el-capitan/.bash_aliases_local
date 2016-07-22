@@ -28,6 +28,9 @@ alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
 alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
+# NFS
+alias vinfs="sudo vi /etc/exports && sudo nfsd checkexports > /dev/null && sudo nfsd update"
+
 # PHPStorm
 alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
@@ -38,10 +41,10 @@ alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"
 alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
 
 # Vagrant
-alias vupwa="(cdwa && vup)"
-alias vdotwa="(cdwa && vagrant ssh -- -A 'ln -s /vagrant/dotfiles \${HOME}/dotfiles' && vdot)"
+alias vdotwa="(cdwa && vdot)"
 alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
 alias vsshwa="vupwa && vdotwa ; func_vagrant_ssh "${HOME}/Vagrant/wa""
+alias vupwa="(cdwa && vup)"
 alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 

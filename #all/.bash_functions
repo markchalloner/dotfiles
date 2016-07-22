@@ -184,8 +184,26 @@ func_remind() {
   func_warning "Did you mean \`${msg}\`?"
 }
 
+# Install dotfiles on vagrant box
+func_vdot() {
+  vagrant ssh -- -A <<-EOF
+    #cat <<EOF
+    HOST_IP=\$(netstat -rn | grep '192\.168' | awk '{ gsub("[.]0\$",".1",\$1); print \$1 }')
+    DIR=\${HOME}/dotfiles
+    mkdir -p \${DIR}
+    sudo mount \${HOST_IP}:${HOME}/dotfiles \${DIR} > /dev/null 2>&1
+    curl -LsS link-files.markc.net | bash > /dev/null
+    # Link
+    if [ ! -x "\${HOME}/.link-files" ]
+    then
+      ln -s "\${DIR}" "\${HOME}/.link-files"
+    fi 
+    link-files -o -i
+EOF
+}
+
 # Start vagrant box if not running and attempt to run tmux when connecting
-func_vagrant_ssh() {
+func_vssh() {
   local dir="${1}"
   if [ -n "${TMUX}" ]
   then
@@ -214,6 +232,7 @@ func_warning() {
   echo "    ------${dsh}--"
   echo
 }
+
 # Xdebug
 func_xdb() {
   local idekey="${1:-1}"
