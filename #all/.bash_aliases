@@ -69,7 +69,7 @@ alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > 
 # Vagrant
 alias vdot="func_vdot"
 alias vhalt="vagrant halt"
-alias vpro="vagrant provision"
+alias vpro="vagrant reload --provision"
 alias vssh="func_vssh"
 alias vup="vagrant up"
 

@@ -116,6 +116,7 @@ func_gitcm() {
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
 func_gitpr() {
   local prefix=""
+  local url=""
   local match="${1}"
   local base="${2}"
   local branch=$(git rev-parse --abbrev-ref HEAD)
@@ -127,7 +128,12 @@ func_gitpr() {
   fi
   if type hub > /dev/null 2>&1
   then
-    git push -u origin "${branch}" && hub pull-request -m "${prefix}${log}" -b "${base}"
+    url="$(git push -u origin "${branch}" && hub pull-request -m "${prefix}${log}" -b "${base}")"
+    echo "${url}"
+    if [ -n "${prefix}" ]
+    then
+      func_prcache "${branch}" "${url}"
+    fi
   else
     echo "Hub is not installed"
   fi
@@ -192,6 +198,19 @@ func_pushd() {
   if [ "${PWD}" != "${1}" ]
   then
     builtin pushd "${1}"
+  fi
+}
+
+# Add a branch to pr url mapping to the prs file
+func_prcache() {
+  local personal="${HOME}/.personal"
+  local prs="${personal}/prs.txt"
+  local ticket="${1}"
+  local url="${2}"
+  mkdir -p "${personal}"
+  if [ -f "${prs}" ] && ! $(grep -q "^${ticket}" "${prs}") && ! $(grep -q "${url}$" "${prs}")
+  then
+    echo "${ticket}=${url}" >> "${personal}/prs.txt"
   fi
 }
 

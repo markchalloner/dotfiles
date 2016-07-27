@@ -1,9 +1,61 @@
+func_gcliticket2pull() {
+  local url_base="https://github.com/workivate/"
+  local prs="${HOME}/.personal/prs.txt"
+  local nicks=("api" "arch" "backend" "sso" "content")
+  local ticket="${1}"
+  local ticket_num=""
+  local nick=""
+  local proj=""
+  local url=""
+  if $(echo "${ticket}" | grep -q "^[[:digit:]]\+$")
+  then
+    ticket_num="${ticket}"
+    ticket="RA-${ticket}"
+  else
+    ticket_num="${ticket/RA/}"
+    ticket_num="${ticket_num/-/}"
+  fi
+  if [ -f "${prs}" ]
+  then
+    url="$(grep "^${ticket}=" "${prs}" | head -n 1 | sed 's/^.*=//g')"
+    # Check if this is a pull number
+    if [ -z "${url}" ] && [ "${1}" == "${ticket_num}" ]
+    then
+      url="$(grep "pull/${ticket_num}$" "${HOME}/.personal/prs.txt" | head -n 1 | sed 's/^.*=//g')"
+    fi
+  fi
+  # Requires github_cli: sudo gem install github_cli
+  if [ -z "${url}" ] && $(type gcli > /dev/null 2>&1)
+  then
+    for nick in ${nicks[@]}
+    do
+      proj="$(func_projnick2full "${nick}")"
+      if [ -n "${proj}" ]
+      then
+        echo -n "Searching ${proj} for ticket ${ticket}... "
+        url="$(gcli pull list workivate "${proj}" --params=state:all --format=table --no-pager | grep "┃ \(_links_html_href\|title\)" | sed 's/┃ title *┃ //g' | sed 's/┃ _links_html_href *┃ //g' | sed 's/ ┃//g' | sed 's/  //g' | paste - - | grep "^\([Rr][Aa]-\?\)\?${ticket_num}" | sed 's#.*'${url_base}'#'${url_base}'#g' |  sed 's/ *$//g')"
+        if [ -n "${url}" ]
+        then
+          echo "found!"
+          func_prcache "${ticket}" "${url}"
+          break
+        else
+          echo "not found"
+        fi
+      fi
+    done
+  fi
+  RETVAL="${url}"
+}
+
 func_gh() {
   local path="${1}"
   local url_base="https://github.com"
   local url_company="${url_base}/workivate"
   local url=
   local sub=
+  local pr=
+  local ticket=
   if $(git status > /dev/null 2>&1)
   then
     func_remind "hub browse"
@@ -33,6 +85,11 @@ func_gh() {
       esac
       url="${url_base}/pulls?q=is%3Apr+author%3A${author}${state}"
       ;;
+    "pr"|"pull-request")
+      pr="${2}"
+      func_gcliticket2pull "${pr}"
+      url="${RETVAL}"
+      ;;
     [0-9]*)
       url="${url_company}/wa-api/pull/${path}"
       ;;
@@ -48,7 +105,10 @@ func_gh() {
       url="${url_company}/${path}/${sub}"
       ;;
   esac
-  open "${url}"
+  if [ -n "${url}" ]
+  then
+    open "${url}"
+  fi
 }
 
 func_jr() {
