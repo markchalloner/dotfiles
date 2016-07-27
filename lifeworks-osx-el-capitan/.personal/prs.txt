@@ -1,3 +1,4 @@
 RA-6161=https://github.com/workivate/wa-api/pull/1994
 RA-5493=https://github.com/workivate/wa-backend/pull/318
 RA-6143=https://github.com/workivate/wa-backend/pull/316
+RA-6138=https://github.com/workivate/wa-api/pull/1987

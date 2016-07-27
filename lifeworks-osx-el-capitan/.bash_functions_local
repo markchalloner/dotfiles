@@ -1,12 +1,13 @@
 func_gcliticket2pull() {
   RETVAL=
-  local url_base="https://github.com/workivate/"
+  local url_base="https://github.com/workivate"
   local prs="${HOME}/.personal/prs.txt"
   local nicks=("api" "arch" "backend" "sso" "content")
   local ticket="${1}"
   local ticket_num=""
   local nick=""
   local proj=""
+  local pr=""
   local url=""
   if [ -z "${ticket}" ]
   then
@@ -38,10 +39,11 @@ func_gcliticket2pull() {
       if [ -n "${proj}" ]
       then
         echo -n "Searching ${proj} for ticket ${ticket}... "
-        url="$(gcli pull list workivate "${proj}" --params=state:all --format=table --no-pager | grep "┃ \(_links_html_href\|title\)" | sed 's/┃ title *┃ //g' | sed 's/┃ _links_html_href *┃ //g' | sed 's/ ┃//g' | sed 's/  //g' | paste - - | grep "^\([Rr][Aa]-\?\)\?${ticket_num}" | sed 's#.*'${url_base}'#'${url_base}'#g' |  sed 's/ *$//g')"
-        if [ -n "${url}" ]
+        pr="$((gh pr --list --user "workivate" --repo "${proj}" --state open && gh pr --list --user "workivate" --repo "${proj}" --state closed) | grep '[Rr][Aa][- ]'${ticket_num} | sed 's/^#\([0-9]*\) .*$/\1/g')"
+        if [ -n "${pr}" ]
         then
           echo "found!"
+          url="${url_base}/${proj}/pull/${pr}"
           func_prcache "${ticket}" "${url}"
           break
         else
