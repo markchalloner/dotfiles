@@ -140,7 +140,7 @@ func_gitpr() {
 }
 
 func_gitst() {
-  local gpgsign="$(git config --list | grep "commit.gpgsign" | sed 's/.*=//')"
+  local gpgsign="$(git config --list | grep "commit.gpgsign" | tail -n +2 | tail -n 1  | sed 's/.*=//')"
   gpgsign="${gpgsign% }"
   git config commit.gpgsign false
   git stash ${@}

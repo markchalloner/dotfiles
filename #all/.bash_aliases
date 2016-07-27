@@ -58,7 +58,11 @@ alias ll='ls -alF'
 alias ls="func_ls"
 
 # Permissions
-chx="chmod +x"
+alias chx="chmod +x"
+
+# PR cache
+alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt"
+alias prca="func_prcache"
 
 # Sudo
 alias sudom="sudo bash -c"
