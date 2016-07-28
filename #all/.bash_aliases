@@ -56,6 +56,7 @@ alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls="func_ls"
+alias nv="func_nv"
 
 # Permissions
 alias chx="chmod +x"

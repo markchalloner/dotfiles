@@ -139,6 +139,7 @@ func_gitpr() {
   fi
 }
 
+# Git stash with gpgsign disabled
 func_gitst() {
   local gpgsign="$(git config --list | grep "commit.gpgsign" | tail -n +2 | tail -n 1  | sed 's/.*=//')"
   gpgsign="${gpgsign% }"
@@ -154,6 +155,7 @@ func_gitst() {
    esac
 }
 
+# Use hub rather than git if installed
 func_hub() { 
   if type hub > /dev/null 2>&1
   then
@@ -191,6 +193,12 @@ func_native() {
     shift
     ${cmd} "$@"
   fi
+}
+
+# Navigate (cd) to a shortcut
+func_nv() {
+  # TODO
+  :
 }
 
 # Do nothing if we are already in the directory
