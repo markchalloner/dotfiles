@@ -128,7 +128,8 @@ func_gitpr() {
   fi
   if type hub > /dev/null 2>&1
   then
-    url="$(git push -u origin "${branch}" && hub pull-request -m "${prefix}${log}" -b "${base}")"
+    git push -u origin "${branch}"
+    url="$(hub pull-request -m "${prefix}${log}" -b "${base}")"
     echo "${url}"
     if [ -n "${prefix}" ]
     then

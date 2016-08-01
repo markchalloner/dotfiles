@@ -64,6 +64,7 @@ alias chx="chmod +x"
 # PR cache
 alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt"
 alias prca="func_prcache"
+alias vipr="vi ${HOME}/.personal/prs.txt"
 
 # Sudo
 alias sudom="sudo bash -c"
