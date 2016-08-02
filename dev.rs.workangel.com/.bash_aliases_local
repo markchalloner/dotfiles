@@ -4,6 +4,9 @@ alias git="func_git"
 # Log
 alias log="func_log"
 
+# Mongo
+alias mongo-restart="sudo bash -c 'service mongod stop; rm /data/mongod.lock && service mongod start'"
+
 # Navigation
 alias pushwa="func_pushd ${WA_ROOT}"
 alias cdwa="builtin cd ${WA_ROOT}"
