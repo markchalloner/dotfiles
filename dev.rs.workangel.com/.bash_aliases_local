@@ -24,6 +24,7 @@ alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 # Rake
 alias rakeall="(builtin cd ${HOME} && _ rake api:vagrant && _ rake arch:vagrant && _ rake backend:vagrant && _ rake bouncer:vagrant && _ rake hermes:vagrant && _ rake sso:vagrant && _ rake shim:vagrant && _ rake zeus:vagrant && _ rake automationbackend:vagrant && _ rake db:new)"
 alias rakedb="(cdapi && _ rake api:db && _ deployment/generate-doctrine.sh && cdarch && rake arch:db)"
+alias rakebadge="source ~/.bashrc; source /srv/environment; _ php /srv/wa-api/public/index.php setup badge create"
 
 # Xdebug
 alias xdbapi="xdb wa-api"
