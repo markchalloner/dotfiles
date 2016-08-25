@@ -145,6 +145,9 @@ func_jr() {
     h|home|dashboard|"")
       url="${url_base}/secure/Dashboard.jspa"
       ;;
+    l|platform)
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board_planning}&view=planning.nodetail&quickFilter=933"
+      ;;
     p|planning)
       url="${url_base}/secure/RapidBoard.jspa?rapidView=${board_planning}&view=planning.nodetail"
       ;;

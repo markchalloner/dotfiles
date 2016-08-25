@@ -99,12 +99,12 @@ func_envvar_prepend() {
 # Commit optionaly adding the branch if it exactly matches ${1}
 func_gitcm() {
   local match="${1}"
-  local message="${2}"
+  local message="$(echo -e -n "${2}")"
   local branch="$(git rev-parse --abbrev-ref HEAD)"
   local prefix=""
   if [ "${message}" == "-m" ]
   then
-    message="${3}"
+    message="$(echo -e -n "${3}")"
   fi
   if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
   then
