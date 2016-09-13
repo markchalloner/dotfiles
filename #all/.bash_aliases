@@ -15,7 +15,7 @@ alias virp="vi ~/.bashrc_private && .reload"
 alias .cd="func_dotcd"
 alias .reload=". ~/.bash_profile"
 alias .diff="func_dotdiff"
-alias .pull="func_dotpull"
+alias .pull="func_dotpull; .reload"
 alias .push="func_dotpush"
 
 # Execution
