@@ -47,11 +47,11 @@ alias git="func_hub"
 alias gitpr="func_gitpr """
 
 # Navigation
-alias cd="func_cd"
-alias cd_="builtin cd"
-alias cd~="builtin cd ${HOME}/"
-alias cd..="builtin cd ../"
-alias cdtmp="mkdir -p ${HOME}/tmp && builtin cd ${HOME}/tmp"
+#alias cd="func_cd"
+#alias cd_="builtin cd"
+#alias cd~="builtin cd ${HOME}/"
+#alias cd..="builtin cd ../"
+#alias cdtmp="mkdir -p ${HOME}/tmp && builtin cd ${HOME}/tmp"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
@@ -76,6 +76,7 @@ alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > 
 alias vdot="func_vdot"
 alias vhalt="vagrant halt"
 alias vpro="vagrant reload --provision"
+alias vreset="vagrant destroy -f && vagrant box update && vagrant up"
 alias vssh="func_vssh"
 alias vup="vagrant up"
 
