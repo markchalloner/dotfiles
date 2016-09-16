@@ -13,3 +13,5 @@ RA-2253=https://github.com/workivate/wa-api/pull/2135
 RA-4857=https://github.com/workivate/wa-api/pull/2160
 RA-6437=https://github.com/workivate/wa-api/pull/2168
 RA-6468=https://github.com/workivate/wa-api/pull/2179
+RA-6210=https://github.com/workivate/wa-api/pull/2200
+RA-6525=https://github.com/workivate/wa-api-content/pull/187

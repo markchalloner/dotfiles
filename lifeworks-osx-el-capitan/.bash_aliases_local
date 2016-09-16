@@ -30,6 +30,7 @@ alias cdios="builtin cd ${WA_ROOT}/wa-ios"
 alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
 alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
+alias cdmu="builtin cd ~/Vagrant/marks-ubuntu-trusty-vm"
 
 # NFS
 alias vinfs="sudo vi /etc/exports && sudo nfsd checkexports > /dev/null && sudo nfsd update"
@@ -49,5 +50,6 @@ alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
 alias vsshwa="vupwa && vdotwa ; func_vssh "${HOME}/Vagrant/wa""
 alias vupwa="(cdwa && vup)"
-alias vsshmu="func_vagrant_ssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
+alias vsshmu="vupmu ; func_vssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
+alias vupmu="(cdmu && vup)"
 
