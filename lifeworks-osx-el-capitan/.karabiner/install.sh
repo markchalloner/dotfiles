@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR_FROM="$(dirname ${0})"
+DIR_FROM="$(dirname ${BASH_SOURCE[0]})"
 DIR_TO="${HOME}/Library/Application Support/Karabiner"
 
 FILE_FROM="${DIR_FROM}/private.xml"
