@@ -2,7 +2,7 @@
 :defaults:
   :box:         scalefactory/centos6
   :box_version: '>=0.2.0'
-  :ram:         1536
+  :ram:         4096
   :cores:       1
   :domain:      rs.workangel.com
   :vagrant_mount_options: ['nolock','vers=3','tcp']
