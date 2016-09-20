@@ -39,11 +39,6 @@ alias vinfs="sudo vi /etc/exports && sudo nfsd checkexports > /dev/null && sudo 
 alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
 
-# SSH
-alias sshlocal="vsshwa"
-alias sshdev="ssh -i ${HOME}/.ssh/wa-dev.pem ubuntu@dev.api.workivate.com"
-alias sshqa="ssh -i ${HOME}/.ssh/wa-qa.pem ubuntu@qa.api.workivate.com"
-
 # Vagrant
 alias vdotwa="(cdwa && vdot)"
 alias vhaltwa="(cdwa && vhalt)"
