@@ -6,12 +6,15 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-## Install git-completion
+## Install tools
 
 ```
-brew install git bash-completion
+brew tap homebrew/homebrew-php
+brew install bash-completion git php70 php-code-sniffer phpmd tmux 
 .reload
 ```
+
+## Install tmux
 
 [homebrew]: http://brew.sh
 
