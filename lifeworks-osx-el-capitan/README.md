@@ -1,5 +1,11 @@
 # Manual install steps
 
+## Add SSH key to keychain (share with vagrant)
+
+```
+ssh-add -K
+```
+
 ## Install [homebrew]
 
 ```
