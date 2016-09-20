@@ -44,6 +44,7 @@ ln -s "${INSTALLER_DIR}" "${HOME}/.link-files"
 link-files -i -o
 )
 . ~/.bash_profile
+gpg-restart
 ```
 
 ### Convert dotfiles to ssh
