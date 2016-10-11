@@ -22,6 +22,7 @@ alias .push="func_dotpush"
 alias _="func_exec"
 
 # Git
+alias gitad="git add -A"
 alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"mark.a.r.challoner@gmail.com\""
 alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
 alias gitb="git rev-parse --abbrev-ref HEAD"
@@ -33,6 +34,7 @@ alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|stag
 alias gitclr="git remote prune origin"
 alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias gitpu="git push origin \$(gitb)"
 alias gitst="func_gitst"
 
 # GPG
@@ -55,7 +57,7 @@ alias cdtmp="mkdir -p ${HOME}/Temp && builtin cd ${HOME}/Temp"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
-alias ls="func_ls"
+#alias ls="func_ls"
 alias nv="func_nv"
 
 # Permissions

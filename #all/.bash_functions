@@ -110,7 +110,7 @@ func_gitcm() {
   then
     prefix="${branch} "
   fi
-  git commit -m "${prefix}${message#${prefix}}"
+  git commit -S -m "${prefix}${message#${prefix}}"
 }
 
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})

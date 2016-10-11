@@ -8,4 +8,5 @@ wa_environment_variables:
     BAT_DETAIL_SQS_QUEUE_URL: "https://sqs.eu-west-1.amazonaws.com/755524103935/vagrant_bat_detail_mark_challoner"
     # Job
     AWS_JOB_SQS_URL: "https://sqs.eu-west-1.amazonaws.com/755524103935/vagrant_job_mark_challoner"
+wa_backend_cron: true
 
