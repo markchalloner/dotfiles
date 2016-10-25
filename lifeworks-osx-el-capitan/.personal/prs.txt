@@ -18,3 +18,4 @@ RA-6525=https://github.com/workivate/wa-api-content/pull/187
 RA-6024=https://github.com/workivate/wa-api/pull/2225
 RA-6672=https://github.com/workivate/wa-infrastructure/pull/186
 RA-6739=https://github.com/workivate/wa-api/pull/2280
+RA-6649=https://github.com/workivate/wa-api/pull/2311

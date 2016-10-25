@@ -48,3 +48,8 @@ alias vupwa="(cdwa && vup)"
 alias vsshmu="vupmu ; func_vssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 alias vupmu="(cdmu && vup)"
 
+# VPN
+alias vpn="~/Dropbox/Work/Lifeworks/Software/Scripts/tunnel-blick-totp/tunnel-blick-totp.py --name"
+alias vpn-live="vpn \"WorkAngel-live\""
+alias vpn-test="vpn \"WorkAngel-test\""
+alias vpn-mgmt="vpn \"WorkAngel-mgmt\""
