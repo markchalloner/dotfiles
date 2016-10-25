@@ -44,4 +44,5 @@ fi
 LANG=en_GB.utf8
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$PATH:/opt/scalefactory/embedded/bin
-source /srv/environment
+[ -f /srv/environment ] && source /srv/environment
+
