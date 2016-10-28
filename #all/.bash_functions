@@ -1,3 +1,14 @@
+# Read an alias
+func_aliasr()
+{
+  local cmd="$(type "${1}" | grep "is aliased" | sed 's/.* is aliased to [`]\(.*\)'"'"'/\1/g')"
+  if type pbcopy > /dev/null 2>&1
+  then
+    echo "${cmd}"| pbcopy
+  fi
+  echo "${cmd}"
+}
+
 # Remind user to use pushd/popd
 func_cd() {
   local pwd=$(pwd)

@@ -1,3 +1,6 @@
+# Alias management
+alias aliasr="func_aliasr "\${1}""
+
 # Dotfile editing
 alias viag="vi ~/.bash_aliases && unalias -a && .reload"
 alias vial="vi ~/.bash_aliases_local && unalias -a && .reload"
@@ -22,7 +25,7 @@ alias .push="func_dotpush"
 alias _="func_exec"
 
 # Git
-alias gitad="git add -A"
+alias gitad="git add -A && git diff --cached"
 alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"mark.a.r.challoner@gmail.com\""
 alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
 alias gitb="git rev-parse --abbrev-ref HEAD"
@@ -72,7 +75,7 @@ alias vipr="vi ${HOME}/.personal/prs.txt"
 alias sudom="sudo bash -c"
 
 # Tmux
-alias tmuxs="[ -z "$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
+alias tmuxs="[ -z "\$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
 
 # Vagrant
 alias vdot="func_vdot"
