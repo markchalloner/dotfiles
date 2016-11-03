@@ -76,6 +76,7 @@ alias sudom="sudo bash -c"
 
 # Tmux
 alias tmuxs="[ -z "\$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
+alias tmuxd="tmux detach"
 
 # Vagrant
 alias vdot="func_vdot"

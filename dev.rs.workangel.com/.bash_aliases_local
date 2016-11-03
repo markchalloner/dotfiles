@@ -6,7 +6,8 @@ alias log="func_log"
 
 # Mongo
 alias mongo-restart="sudo bash -c 'service mongod stop; rm /data/mongod.lock > /dev/null 2>&1; service mongod start'"
-alias mongo-restore-wam="mongorestore --drop --db wam_staging /vagrant/tmp/dump/wam"
+alias mongo-restore-wam="mongorestore --drop --db wam /vagrant/tmp/dump/wam"
+alias mongo-restore-wam-staging="mongorestore --drop --db wam_staging /vagrant/tmp/dump/wam"
 
 # Navigation
 alias pushwa="func_pushd ${WA_ROOT}"
