@@ -86,5 +86,8 @@ alias vreset="vagrant destroy -f && vagrant box update && vagrant up"
 alias vssh="func_vssh"
 alias vup="vagrant up"
 
+# Watch
+alias watchmem="func_watchmem"
+
 # Xdebug
 alias xdb="func_xdb PHPSTORM"

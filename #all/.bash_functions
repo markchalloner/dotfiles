@@ -289,6 +289,11 @@ func_warning() {
   echo
 }
 
+# Watch process memory
+func_watchmem() {
+  watch 'ps -e -o rss,command= | grep "^[0-9]\+ '"${1}"'"'
+}
+
 # Xdebug
 func_xdb() {
   local idekey="${1:-1}"
