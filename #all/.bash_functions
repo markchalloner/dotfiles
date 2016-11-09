@@ -291,7 +291,7 @@ func_warning() {
 
 # Watch process memory
 func_watchmem() {
-  watch 'ps -e -o rss,command= | grep "^[0-9]\+ '"${1}"'"'
+  watch 'ps -e -o rss,command= | grep "^[0-9]\+ .*'"${1}"'"'
 }
 
 # Xdebug
