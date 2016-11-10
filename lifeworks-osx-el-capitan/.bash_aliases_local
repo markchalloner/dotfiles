@@ -50,6 +50,6 @@ alias vupmu="(cdmu && vup)"
 
 # VPN
 alias vpn="~/Dropbox/Work/Lifeworks/Software/Scripts/tunnel-blick-totp/tunnel-blick-totp.py --name"
-alias vpn-live="vpn \"WorkAngel-live\""
-alias vpn-test="vpn \"WorkAngel-test\""
-alias vpn-mgmt="vpn \"WorkAngel-mgmt\""
+alias vpnlive="vpn \"WorkAngel-live\""
+alias vpntest="vpn \"WorkAngel-test\""
+alias vpnmgmt="vpn \"WorkAngel-mgmt\""
