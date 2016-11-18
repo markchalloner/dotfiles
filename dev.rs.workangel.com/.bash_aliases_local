@@ -5,6 +5,7 @@ alias git="func_git"
 alias log="func_log"
 
 # Mongo
+alias mongoextractwa="(cdwatmp && tar zxvf \$(ls -t test-db-dump-*.tar.gz | head -n 1))"
 alias mongorestart="sudo bash -c 'service mongod stop; rm /data/mongod.lock > /dev/null 2>&1; service mongod start'"
 alias mongorestorewa="mongorestore --drop --db wam /vagrant/tmp/dump/wam"
 alias mongorestorewastaging="mongorestore --drop --db wam_staging /vagrant/tmp/dump/wam"
@@ -21,7 +22,7 @@ alias cdbackend="builtin cd ${WA_ROOT}/wa-backend"
 alias cdhermes="builtin cd ${WA_ROOT}/wa-hermes"
 alias cdinfra="builtin cd ${WA_ROOT}/wa-infrastructure"
 alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
-alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
+alias cdwatmp="builtin cd /vagrant/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
 # Rake
@@ -34,6 +35,8 @@ alias xdbapi="xdb wa-api"
 alias xdbbackend="xdb wa-backend"
 
 # WA
+alias waapils="sudo bash -c 'source /srv/environment && php /srv/wa-api/public/index.php' | less -R"
+alias waapidocs="php /srv/wa-api/public/index.php odm:generate:proxies && php /srv/wa-api/public/index.php odm:generate:hydrators && php /srv/wa-api/public/index.php odm:generate:persistent-collections ; sudo service php-fpm reload"
 alias wabackendls="sudo bash -c 'source /srv/environment && php /srv/wa-backend/public/index.php' | less -R"
 alias wakill="wakillpm && wakilljb"
 alias wakilljb="sudo pkill -f '^php [^ ]+ job processqueue\$'"

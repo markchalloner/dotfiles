@@ -6,6 +6,9 @@ alias jr="func_jr"
 alias gitbswa="(cdwa && gitbs)"
 alias gitpswa="(cdwa && gitps)"
 
+# HSTS
+alias hstsclean="func_hstsclean"
+
 # Hub
 alias gitcm="func_gitcm RA-\?\?\?\?"
 alias gitpr="func_gitpr RA-\?\?\?\?"

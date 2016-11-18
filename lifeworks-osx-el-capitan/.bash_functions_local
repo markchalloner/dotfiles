@@ -118,6 +118,12 @@ func_gx() {
   fi
 }
 
+func_hstsclean() {
+  local search="${1:-lifeworks}"
+  sed -i.bak '/'${search}'/d' ~/Library/Application\ Support/Firefox/Profiles/*.default/SiteSecurityServiceState.txt
+}
+
+
 func_jr() {
   local ticket="${1}"
   local branch=
