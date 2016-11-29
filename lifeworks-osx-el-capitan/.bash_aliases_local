@@ -43,6 +43,9 @@ alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
 
 # SSH
+alias sshtestapp1="func_ssh test-app1 ${NETUSER}"
+alias sshtestapp2="func_ssh test-app2 ${NETUSER}"
+alias sshtestapp3="func_ssh test-app3 ${NETUSER}"
 alias sshtestmongo1="func_ssh test-mongodb1 ${NETUSER}"
 alias sshtestmongo2="func_ssh test-mongodb2 ${NETUSER}"
 alias sshtestmongo3="func_ssh test-mongodb3 ${NETUSER}"

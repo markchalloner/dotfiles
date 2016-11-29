@@ -66,14 +66,28 @@ func_dotdiff() {
 # Pull a dotfiles repo
 func_dotpull() {
   local path="${1:-${HOME}/dotfiles}"
-  (func_dotcd "${path}" && func_gitst && git pull && func_gitst pop)
+  if func_ghauth > /dev/null
+  then
+    (func_dotcd "${path}" && func_gitst && git pull && func_gitst pop)
+  else
+    echo "Unable to authenticate"
+  fi
 }
 
 # Push a dotfiles repo
 func_dotpush() {
   local path="${1:-${HOME}/dotfiles}"
   local hostname="${2:-$(hostname)}"
-  (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && git commit -m "Autocommit on ${hostname}" && git push origin master)
+  if func_ghauth > /dev/null
+  then
+    (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && git commit -m "Autocommit on ${hostname}" && git push origin master)
+  else
+    echo "Unable to authenticate with github"
+  fi
+}
+
+func_dotreadme() {
+  vi ~/README.md
 }
 
 # Reload profile
@@ -228,6 +242,19 @@ func_gitst() {
       fi
       ;;
    esac
+}
+
+# Authenticate with github
+func_ghauth() {
+  ssh -T git@github.com > /dev/null 2>&1
+  local res=$?
+  if [ ${res} -eq 1 ]
+  then
+    echo "Authentication succeeded"
+    return 0
+  fi
+  echo "Authentication failed"
+  return ${res}
 }
 
 # Use hub rather than git if installed

@@ -16,10 +16,11 @@ alias virp="vi ~/.bashrc_private && .reload"
 
 # Dotfile management
 alias .cd="func_dotcd"
-alias .reload="func_dotreload"
 alias .diff="func_dotdiff"
 alias .pull="func_dotpull; .reload"
 alias .push="func_dotpush"
+alias .readme="func_dotreadme"
+alias .reload="func_dotreload"
 alias .var="func_dotvar"
 
 # Execution
@@ -43,7 +44,7 @@ alias gitpu="git push origin \$(gitb)"
 alias gitst="func_gitst"
 
 # GPG
-alias gpgauth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
+alias gpgauth="func_ghauth"
 alias gpgrestart="gpgstop; gpgstart"
 alias gpgstart="eval \$(gpg-agent --daemon)"
 alias gpgstatus="ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\""

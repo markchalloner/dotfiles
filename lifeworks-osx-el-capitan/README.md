@@ -16,7 +16,7 @@ ssh-add -K
 
 ```
 brew tap homebrew/homebrew-php
-brew install bash-completion git php70 php-code-sniffer phpmd tmux 
+brew install awscli bash-completion git php70 php-code-sniffer phpmd tmux 
 .reload
 ```
 
