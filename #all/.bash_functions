@@ -191,6 +191,25 @@ func_gitpr() {
   fi
 }
 
+# Git merge reminder
+func_gitmg() {
+  cat <<'EOF'
+Merge Tool usage:
+    
+    Ctrl+W [arrow] - move window
+    :diffu         - update diff
+    :diffg B       - use BASE
+    :diffg L       - use LOCAL
+    :diffg R       - use REMOTE
+    :wa            - save all
+    :xa            - save all and exit
+
+EOF
+  read -n 1 -s -p "Press any key to start..."
+  echo ""
+  git mergetool
+}
+
 # Git stash with gpgsign disabled
 func_gitst() {
   local gpgsign="$(git config --list | grep "commit.gpgsign" | tail -n +2 | tail -n 1  | sed 's/.*=//')"
