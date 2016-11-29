@@ -199,10 +199,14 @@ func_gitst() {
   git stash ${@}
   case "${gpgsign}" in
     true)
-      git config commit.gpgsign true
+      git config --local commit.gpgsign true
       ;;
     "")
-      git config --unset commit.gpgsign
+      git config --local --unset commit.gpgsign
+      if ! git config --local --get-regexp '^commit.' > /dev/null 2>&1
+      then
+        git config --remove-section "commit" > /dev/null 2>&1
+      fi
       ;;
    esac
 }
@@ -364,14 +368,5 @@ func_xdb() {
     export PHP_IDE_CONFIG="serverName=${server_name}"
     eval ${command}
   )
-}
-
-# Validate a private variable
-func_privhas() {
-  local name="${1}"
-  if [ -z "${!name}" ]
-  then
-    echo "Variable \$${name} is not set. Is this defined in ${HOME}/.bash_private?"
-  fi
 }
 
