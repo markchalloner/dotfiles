@@ -76,6 +76,46 @@ func_dotpush() {
   (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && git commit -m "Autocommit on ${hostname}" && git push origin master)
 }
 
+# Reload profile
+func_dotreload() {
+  source "${HOME}/.bash_profile"
+}
+
+# Manage private variables
+func_dotvar() {
+  local name="${1}"
+  local value="${2}"
+  local private_file="${HOME}/.bashrc_private"
+  if [ -z "${name}" ]
+  then
+    cat "${private_file}"
+    return
+  fi
+  local line="export ${name}=\"${value}\""
+  echo "${line}"
+  if  [ -f "${private_file}" ] && grep -q "^export ${name}=" "${private_file}"
+  then
+    if [ -z "${value}" ]
+    then
+      echo "Removing variable ${name}"
+      sed -i.bak "/^export ${name}=/d" "${private_file}"
+    else
+      echo "Updating variable ${name}"
+      sed -i.bak "s/^export ${name}=.*/${line}/g" "${private_file}"
+    fi
+    rm "${private_file}.bak"
+  else
+    if [ -z "${value}" ]
+    then
+      echo "Not present, doing nothing"
+    else
+      echo "Adding variable ${name}"
+      echo "${line}" >> "${private_file}"
+    fi
+  fi
+  func_dotreload
+}
+
 # Append to env variable, takes a variable name, string and optional separator (defaults to :)
 func_envvar_append() {
   local envvar="${1}"
@@ -240,6 +280,23 @@ func_remind() {
   func_warning "Did you mean \`${msg}\`?"
 }
 
+# SSH with network user
+func_ssh() {
+  local host="${1}"
+  local user="${2}"
+  if [ -z "${host}" ]
+  then
+    echo "Host not specified"
+    return
+  fi
+  if [ -z "${user}" ]
+  then
+    echo "User not specified"
+    return
+  fi
+  ssh "${user}"@"${host}"
+}
+
 # Install dotfiles on vagrant box
 func_vdot() {
   vagrant ssh -- -A <<-EOF
@@ -307,5 +364,14 @@ func_xdb() {
     export PHP_IDE_CONFIG="serverName=${server_name}"
     eval ${command}
   )
+}
+
+# Validate a private variable
+func_privhas() {
+  local name="${1}"
+  if [ -z "${!name}" ]
+  then
+    echo "Variable \$${name} is not set. Is this defined in ${HOME}/.bash_private?"
+  fi
 }
 

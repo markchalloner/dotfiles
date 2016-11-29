@@ -42,6 +42,11 @@ alias vinfs="sudo vi /etc/exports && sudo nfsd checkexports > /dev/null && sudo 
 alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
 
+# SSH
+alias sshtestmongo1="func_ssh test-mongodb1 ${NETUSER}"
+alias sshtestmongo2="func_ssh test-mongodb2 ${NETUSER}"
+alias sshtestmongo3="func_ssh test-mongodb3 ${NETUSER}"
+
 # Vagrant
 alias vdotwa="(cdwa && vdot)"
 alias vhaltwa="(cdwa && vhalt)"

@@ -16,10 +16,11 @@ alias virp="vi ~/.bashrc_private && .reload"
 
 # Dotfile management
 alias .cd="func_dotcd"
-alias .reload=". ~/.bash_profile"
+alias .reload="func_dotreload"
 alias .diff="func_dotdiff"
 alias .pull="func_dotpull; .reload"
 alias .push="func_dotpush"
+alias .var="func_dotvar"
 
 # Execution
 alias _="func_exec"
@@ -62,6 +63,9 @@ alias la='ls -A'
 alias ll='ls -alF'
 #alias ls="func_ls"
 alias nv="func_nv"
+
+# Network
+alias nsports="sudo netstat -plnt"
 
 # Permissions
 alias chx="chmod +x"
