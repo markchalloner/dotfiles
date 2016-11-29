@@ -205,7 +205,7 @@ func_gitst() {
       git config --local --unset commit.gpgsign
       if ! git config --local --get-regexp '^commit.' > /dev/null 2>&1
       then
-        git config --remove-section "commit" > /dev/null 2>&1
+        git config --local --remove-section "commit" > /dev/null 2>&1
       fi
       ;;
    esac
