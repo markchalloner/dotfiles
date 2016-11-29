@@ -41,11 +41,11 @@ alias gitpu="git push origin \$(gitb)"
 alias gitst="func_gitst"
 
 # GPG
-alias gpg-auth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
-alias gpg-restart="gpg-stop; gpg-start"
-alias gpg-start="eval \$(gpg-agent --daemon)"
-alias gpg-status="ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\""
-alias gpg-stop="PID=\$(gpg-status | awk '{print \$1}'); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\""
+alias gpgauth="ssh -T git@github.com > /dev/null 2>&1; if [ \$? -eq 1 ]; then echo \"Authentication succeeded\"; else echo \"Authentication failed\"; fi"
+alias gpgrestart="gpgstop; gpgstart"
+alias gpgstart="eval \$(gpg-agent --daemon)"
+alias gpgstatus="ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\""
+alias gpgstop="PID=\$(gpgstatus | awk '{print \$1}'); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\""
 
 # Hub
 alias git="func_hub"
