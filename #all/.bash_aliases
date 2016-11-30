@@ -17,6 +17,7 @@ alias virp="vi ~/.bashrc_private && .reload"
 # Dotfile management
 alias .cd="func_dotcd"
 alias .diff="func_dotdiff"
+alias .hub="(.cd && hub browse)"
 alias .pull="func_dotpull; .reload"
 alias .push="func_dotpush"
 alias .readme="func_dotreadme"

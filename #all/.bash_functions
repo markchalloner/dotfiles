@@ -87,7 +87,12 @@ func_dotpush() {
 }
 
 func_dotreadme() {
-  vi ~/README.md
+  if [ "${1}" == "-g" ] || [ "${1}" == "--global" ]
+  then
+    (func_dotcd && vi README.md)
+  else
+    vi ${HOME}/README.md
+  fi
 }
 
 # Reload profile
