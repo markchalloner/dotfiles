@@ -106,7 +106,6 @@ func_dotvar() {
     return
   fi
   local line="export ${name}=\"${value}\""
-  echo "${line}"
   if  [ -f "${private_file}" ] && grep -q "^export ${name}=" "${private_file}"
   then
     if [ -z "${value}" ]

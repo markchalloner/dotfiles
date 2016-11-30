@@ -1,3 +1,108 @@
+func_awsassumerole() {
+  local token="${1}"
+  if [ -z "${AWS_MFA_DEVICE}" ]
+  then
+    echo "Error: MFA device must be set in \$AWS_MFA_DEVICE"
+    return 1
+  fi
+  if [ -z "${AWS_ROLE}" ]
+  then
+    echo "Error: Role must be set in \$AWS_ROLE"
+    return 1
+  fi
+  if [ -z "${token}" ]
+  then
+    echo "Error: MFA token must be provided"
+    return 1
+  fi
+  local output
+  output="$(aws sts assume-role --role-arn "${AWS_ROLE}" --role-session-name "test_readonly" --serial-number "${AWS_MFA_DEVICE}" --token-code "${token}")"
+  local result=${?}
+  AWS_ACCESS_KEY_ID="$(echo "${output}" | sed -n -e '/AccessKeyId/ s/.*".*": "\(.*\)".*/\1/p')"
+  AWS_SECRET_ACCESS_KEY="$(echo "${output}" | sed -n -e '/SecretAccessKey/ s/.*".*": "\(.*\)".*/\1/p')"
+  AWS_SESSION_TOKEN="$(echo "${output}" | sed -n -e '/SessionToken/ s/.*".*": "\(.*\)".*/\1/p')"
+  return ${result}
+}
+
+func_awsips() {
+  local token="${1}"
+  local cache_dir="${HOME}/.aws"
+  local cache_file="${cache_dir}/ips"
+  if [ -n "${token}" ]
+  then
+    mkdir -p "${cache_dir}"
+    (
+      func_awsassumerole "${1}" || return 1
+      export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      export AWS_SECRET_ACCESS_KEY
+      export AWS_SESSION_TOKEN
+      local ips
+      ips=$(aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | "\(.PrivateIpAddress)\ttest-\(.Tags[] | select(.Key == "Name") | .Value)"' | sort -k 2,2)
+      if [ $? -eq 0 ]
+      then
+	echo -e "# Generated at $(date "+%Y-%m-%d %H:%M:%S")\n${ips}" > "${cache_file}"
+        echo "${ips}"
+	return 0
+      else
+        return 1
+      fi
+    )
+  else
+    if [ -f "${cache_file}" ]
+    then
+      cat "${cache_file}"
+    else
+      echo "Error: IPs have not been cached, rerun with an MFA token"
+      return 1
+    fi
+  fi
+}
+
+func_awsip() {
+  local search="${1}"
+  local index="${2:-1}"
+  local token="${3}"
+  if [ -z "${search}" ]
+  then
+    echo "Error: Must provide a search term"
+    return 1
+  fi
+  if [ -z "${token}" ] && [ ${#index} -eq 6 ]
+  then
+    token="${index}"
+    index=1
+  fi
+  local output
+  output=$(func_awsips "${token}")
+  local result="${?}"
+  if [ ${result} -eq 0 ]
+  then
+    echo "${output}" | grep "${search}" | head -n "${index}" | tail -n 1 | cut -f 1
+  else
+    echo "${output}"
+  fi
+  return ${result}
+}
+
+func_awsssh() {
+  if [ -z "${AWS_SSH_USER}" ]
+  then
+    echo "Error: User must be defined in \$AWS_SSH_USER"
+    return 1
+  fi
+  local output
+  output=$(func_awsip "${1}" "${2}" "${3}")
+  local result="${?}"
+  if [ ${result} -eq 0 ]
+  then
+    ssh "${AWS_SSH_USER}"@"${output}"
+    return 0
+  else
+    echo "${output}"
+    return ${result}
+  fi
+}
+
 func_gcliticket2pull() {
   RETVAL=
   local url_base="https://github.com/workivate"

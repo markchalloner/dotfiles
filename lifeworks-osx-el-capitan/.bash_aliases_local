@@ -1,3 +1,8 @@
+# AWS
+alias awsips="func_awsips"
+alias awsip="func_awsip"
+alias awsssh="func_awsssh"
+
 # Browser
 alias gx="func_gx"
 alias jr="func_jr"
