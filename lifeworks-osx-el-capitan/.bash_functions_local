@@ -77,7 +77,15 @@ func_awsip() {
   local result="${?}"
   if [ ${result} -eq 0 ]
   then
-    echo "${output}" | grep "${search}" | head -n "${index}" | tail -n 1 | cut -f 1
+    local ip=$(echo "${output}" | grep "${search}" | head -n "${index}" | tail -n 1 | cut -f 1)
+    if [ -n "${ip}" ]
+    then
+      echo "${ip}"
+      return 0
+    else
+      echo "Error: IP for ${search} not found"
+      return 1
+    fi
   else
     echo "${output}"
   fi
