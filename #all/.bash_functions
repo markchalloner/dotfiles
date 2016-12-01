@@ -251,14 +251,44 @@ func_gitst() {
 # Authenticate with github
 func_ghauth() {
   ssh -T git@github.com > /dev/null 2>&1
-  local res=$?
-  if [ ${res} -eq 1 ]
+  local result=${?}
+  if [ ${result} -eq 1 ]
   then
     echo "Authentication succeeded"
     return 0
   fi
   echo "Authentication failed"
-  return ${res}
+  return ${result}
+}
+
+func_gpgstart() {
+  local gpgvars
+  gpgvars=$(gpg-agent --daemon)
+  local result=${?}
+  if [ ${result} -eq 0 ]
+  then
+    eval ${gpgvars}
+    gpg --card-status > /dev/null 2>&1
+    result=${?}
+    if [ ${result} -ne 0 ]
+    then
+      func_gpgstop
+      echo "GPG card access failed, is it locked by another process?"
+    fi
+  fi
+  return ${result}
+}
+
+func_gpgstatus() {
+  ps -A | grep "gpg-agent --daemon" | grep -v "grep"
+}
+
+func_gpgstop() {
+  local pid=$(gpgstatus | awk '{print $1}')
+  if [ -n "${pid}" ]
+  then
+    kill -9 "${pid}"
+  fi
 }
 
 # Use hub rather than git if installed

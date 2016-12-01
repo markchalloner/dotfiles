@@ -1,7 +1,8 @@
 # AWS
 alias awsips="func_awsips"
 alias awsip="func_awsip"
-alias awsssh="func_awsssh"
+alias awsssh="gpgrestart && func_awsssh"
+alias awssshkey="func_awssshkey"
 
 # Browser
 alias gx="func_gx"

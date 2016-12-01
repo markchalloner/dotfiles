@@ -47,9 +47,9 @@ alias gitst="func_gitst"
 # GPG
 alias gpgauth="func_ghauth"
 alias gpgrestart="gpgstop; gpgstart"
-alias gpgstart="eval \$(gpg-agent --daemon)"
-alias gpgstatus="ps -A | grep \"gpg-agent --daemon\" | grep -v \"grep\""
-alias gpgstop="PID=\$(gpgstatus | awk '{print \$1}'); [ -n \"\${PID}\" ] && kill -9 \"\${PID}\""
+alias gpgstart="func_gpgstart"
+alias gpgstatus="func_gpgstatus"
+alias gpgstop="func_gpgstop"
 
 # Hub
 alias git="func_hub"

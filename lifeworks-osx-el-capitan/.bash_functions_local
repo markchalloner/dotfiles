@@ -111,6 +111,25 @@ func_awsssh() {
   fi
 }
 
+func_awssshkey() {
+  if [ -z "${AWS_SSH_USER}" ]
+  then
+    echo "Error: User must be defined in \$AWS_SSH_USER"
+    return 1
+  fi
+  local output
+  output=$(func_awsip "${1}" "${2}" "${3}")
+  local result="${?}"
+  if [ ${result} -eq 0 ]
+  then
+    ssh-copy-id -f -o PubkeyAuthentication=no "${AWS_SSH_USER}"@"${output}"
+    return 0
+  else
+    echo "${output}"
+    return ${result}
+  fi
+}
+
 func_gcliticket2pull() {
   RETVAL=
   local url_base="https://github.com/workivate"
