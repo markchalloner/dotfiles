@@ -16,7 +16,7 @@ ssh-add -K
 
 ```
 brew tap homebrew/homebrew-php
-brew install awscli bash-completion git jq php70 php-code-sniffer phpmd tmux 
+brew install awscli bash-completion git hub jq php70 php-code-sniffer phpmd tmux 
 .reload
 ```
 
@@ -38,6 +38,7 @@ sudo bash -c 'cat <<EOF >> /etc/exports
 "${HOME}/dotfiles"
 EOF'
 sudo /sbin/nfsd restart
+```
 
 [homebrew]: http://brew.sh
 
