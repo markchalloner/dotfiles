@@ -33,7 +33,7 @@ func_awsips() {
     mkdir -p "${cache_dir}"
     (
       func_awsassumerole "${1}" || return 1
-      export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      export AWS_ACCESS_KEY_ID
       export AWS_SECRET_ACCESS_KEY
       export AWS_SESSION_TOKEN
       local ips
@@ -128,6 +128,30 @@ func_awssshkey() {
     echo "${output}"
     return ${result}
   fi
+}
+
+func_awsupdbtest() {
+  local file="${1}"
+  if [ -z "${file}" ]
+  then
+    echo "Error: Database file must be specified"
+    return 1
+  fi
+  if [ -z "${AWS_S3_DB_TEST_ACCESS_KEY_ID}" ]
+  then
+    echo "Error: AWS key must be defined in \$AWS_S3_DB_TEST_ACCESS_KEY_ID"
+    return 1
+  fi
+  if [ -z "${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}" ]
+  then
+    echo "Error: AWS secret must be defined in \$AWS_S3_DB_TEST_SECRET_ACCESS_KEY"
+    return 1
+  fi
+  (
+    export AWS_ACCESS_KEY_ID="${AWS_S3_DB_TEST_ACCESS_KEY_ID}"
+    export AWS_SECRET_ACCESS_KEY="${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}"
+    aws s3 cp ${file} s3://wam-testdb-vagrant
+  ) 
 }
 
 func_gcliticket2pull() {
