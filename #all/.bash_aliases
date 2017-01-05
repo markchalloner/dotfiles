@@ -70,6 +70,9 @@ alias nv="func_nv"
 # Network
 alias nsports="sudo netstat -plnt"
 
+# NFS
+alias nfsr="ls -alR > /dev/null"
+
 # Permissions
 alias chx="chmod +x"
 
