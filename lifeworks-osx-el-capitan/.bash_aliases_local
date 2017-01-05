@@ -1,6 +1,7 @@
 # AWS
 alias awsips="func_awsips"
 alias awsip="func_awsip"
+alias awsmongo="gpgrestart && func_awsmongo"
 alias awsssh="gpgrestart && func_awsssh"
 alias awssshkey="func_awssshkey"
 

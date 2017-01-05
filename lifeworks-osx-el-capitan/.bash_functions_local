@@ -92,6 +92,14 @@ func_awsip() {
   return ${result}
 }
 
+func_awsmongo() {
+  #local input=$(cat)
+  local prompt='Type mongo command followed by Ctrl+D:'$'\n'
+  IFS= read -r -d $'\cd' -p "${prompt}" input
+  local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
+  echo 'use wam'$'\n'"${input}" | ssh "${AWS_SSH_USER}"@"$(func_awsip test-app)" "${command}"
+}
+
 func_awsssh() {
   if [ -z "${AWS_SSH_USER}" ]
   then

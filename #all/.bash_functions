@@ -384,17 +384,27 @@ func_ssh() {
 # Install dotfiles on vagrant box
 func_vdot() {
   vagrant ssh -- -A <<-EOF
-    #cat <<EOF
     HOST_IP=\$(netstat -rn | grep '192\.168' | awk '{ gsub("[.]0\$",".1",\$1); print \$1 }')
     DIR=\${HOME}/dotfiles
     mkdir -p \${DIR}
     sudo mount \${HOST_IP}:${HOME}/dotfiles \${DIR} > /dev/null 2>&1
-    curl -LsS link-files.markc.net | bash > /dev/null
     # Link
     if [ ! -x "\${HOME}/.link-files" ]
     then
       ln -s "\${DIR}" "\${HOME}/.link-files"
-    fi 
+    fi
+    # Install link-files
+    if ! type link-files > /dev/null 2>&1 
+    then
+      if [ -f "\${DIR}/deps/link-files/Makefile" ]
+      then
+        (cd "\${DIR}/deps/link-files" && sudo make install > /dev/null)
+      else
+        echo "Error: Dependency \"link-files\" has not been downloaded on host."
+        exit 1
+      fi
+    fi
+    # Link
     link-files -o -i
 EOF
 }

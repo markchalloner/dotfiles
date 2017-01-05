@@ -28,3 +28,5 @@ RA-7186=https://github.com/workivate/wa-infrastructure/pull/255
 RA-7081=https://github.com/workivate/wa-api/pull/2472
 RA-7376=https://github.com/workivate/wa-api/pull/2573
 RA-7406=https://github.com/workivate/wa-api/pull/2589
+RA-7247=https://github.com/workivate/wa-api/pull/2624
+RA-7131=https://github.com/workivate/wa-api/pull/2629
