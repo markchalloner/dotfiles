@@ -17,6 +17,7 @@ ssh-add -K
 ```
 brew tap homebrew/homebrew-php
 brew install awscli bash-completion git hub jq php56 php56-intl php-code-sniffer phpmd tmux 
+brew install --HEAD opensc
 .reload
 ```
 
