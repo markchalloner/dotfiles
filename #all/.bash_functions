@@ -80,7 +80,7 @@ func_dotpush() {
   local hostname="${2:-$(hostname)}"
   if func_ghauth > /dev/null
   then
-    (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && git commit -m "Autocommit on ${hostname}" && git push origin master)
+    (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
   else
     echo "Unable to authenticate with github"
   fi
@@ -179,7 +179,17 @@ func_gitcm() {
   then
     prefix="${branch} "
   fi
+  echo -n "Stopping PIV and starting GPG... "
+  if func_yubigpg
+  then
+    echo "OK."
+  else
+    echo "Failed."
+    return 1
+  fi
   git commit -S -m "${prefix}${message#${prefix}}"
+  echo -n "Restarting PIV. "
+  func_yubipiv
 }
 
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
@@ -261,6 +271,11 @@ func_ghauth() {
   return ${result}
 }
 
+# GPG
+func_gpgrestart() {
+  func_gpgstop && func_gpgstart
+}
+
 func_gpgstart() {
   local gpgvars
   gpgvars=$(gpg-agent --daemon)
@@ -280,7 +295,14 @@ func_gpgstart() {
 }
 
 func_gpgstatus() {
-  ps -A | grep "gpg-agent --daemon" | grep -v "grep"
+  local out=$(ps -A | grep "gpg-agent --daemon" | grep -v "grep")
+  if [ -n "${out}" ]
+  then
+    echo "${out}"
+    return 0
+  else
+    return 1
+  fi
 }
 
 func_gpgstop() {
@@ -335,6 +357,28 @@ func_native() {
 func_nv() {
   # TODO
   :
+}
+
+# PIV
+func_pivrestart() {
+  func_pivstop && func_pivstart
+}
+
+# 
+func_pivstart() {
+  eval $(ssh-agent) > /dev/null 2>&1 
+  if [ $? -eq 0 ]
+  then
+    ssh-add -D > /dev/null 2>&1
+    ssh-add -e /usr/local/lib/pkcs11/opensc-pkcs11.so > /dev/null 2>&1
+    ssh-add -s /usr/local/lib/pkcs11/opensc-pkcs11.so 2> /dev/null
+    ssh-add -K > /dev/null 2>&1
+  fi
+}
+
+func_pivstop() {
+  ssh-agent -k > /dev/null 2>&1 || pkill ssh-agent 
+  return 0
 }
 
 # Do nothing if we are already in the directory
@@ -460,3 +504,12 @@ func_xdb() {
   )
 }
 
+# Yubikey switch to PIV mode
+func_yubipiv() {
+  func_gpgstop && func_pivrestart
+}
+
+# Yubikey switch to GPG mode
+func_yubigpg() {
+  func_pivstop && func_gpgrestart
+}

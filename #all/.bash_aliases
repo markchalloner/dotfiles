@@ -44,9 +44,11 @@ alias gitmg="func_gitmg"
 alias gitpu="git push origin \$(gitb)"
 alias gitst="func_gitst"
 
+# Github
+alias ghauth="func_ghauth"
+
 # GPG
-alias gpgauth="func_ghauth"
-alias gpgrestart="gpgstop; gpgstart"
+alias gpgrestart="func_gpgrestart"
 alias gpgstart="func_gpgstart"
 alias gpgstatus="func_gpgstatus"
 alias gpgstop="func_gpgstop"
@@ -76,6 +78,11 @@ alias nfsr="ls -alR > /dev/null"
 # Permissions
 alias chx="chmod +x"
 
+# PIV
+alias pivrestart="func_pivrestart"
+alias pivstart="func_pivstart"
+alias pivstop="func_pivstop" 
+
 # PR cache
 alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt"
 alias prca="func_prcache"
@@ -101,3 +108,7 @@ alias watchmem="func_watchmem"
 
 # Xdebug
 alias xdb="func_xdb PHPSTORM"
+
+# Yubikey
+alias yubigpg="func_yubigpg"
+alias yubipiv="func_yubipiv"
