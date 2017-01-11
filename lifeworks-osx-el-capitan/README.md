@@ -14,11 +14,28 @@ ssh-add -K
 
 ## Install tools
 
+### Via Brew
+
 ```
 brew tap homebrew/homebrew-php
 brew install awscli bash-completion git hub jq php56 php56-intl php-code-sniffer phpmd tmux 
 brew install --HEAD opensc
 .reload
+```
+
+### Manually
+
+#### Yubikeylockd
+
+```
+(
+mkdir -p ~/tmp
+cd ~/tmp
+git clone https://github.com/shtirlic/yubikeylockd.git
+cd yubikeylockd
+make clean && make
+)
+rm -rf ~/tmp/yubikeylockd
 ```
 
 ## Give vagrant mount permissions
