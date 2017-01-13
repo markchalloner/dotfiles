@@ -93,11 +93,45 @@ func_awsip() {
 }
 
 func_awsmongo() {
-  #local input=$(cat)
-  local prompt='Type mongo command followed by Ctrl+D:'$'\n'
-  IFS= read -r -d $'\cd' -p "${prompt}" input
   local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
-  echo 'use wam'$'\n'"${input}" | ssh "${AWS_SSH_USER}"@"$(func_awsip test-app)" "${command}"
+  local pin=$(mktemp -u)
+  local pout=$(mktemp -u)
+  local perr=$(mktemp -u)
+  mkfifo -m 600 "${pin}"
+  mkfifo -m 600 "${pout}"
+  mkfifo -m 600 "${perr}"
+
+  exec 5>&2
+  (ssh "${AWS_SSH_USER}"@"$(func_awsip test-app)" "${command}" <"${pin}" >${pout} 2>&5 &)
+  exec 3>"${pin}"
+  #exec 4>${pout}
+
+  while read -t 2 output && [ -n "${output}" ]
+  do
+    echo "${output}"
+  done <"${pout}"
+  while true
+  do
+    echo -n "mongo> "
+    read input
+    if echo "${input}" | grep -q "\(^ *exit;\? *$\)"
+    then
+      break
+    fi
+    echo "${input}" >"${pin}"
+    # Read output 
+    while read -t 1 output && [ -n "${output}" ]
+    do
+      echo "${output}"
+    done <"${pout}"
+  done
+
+  # Close pipe.
+  exec 3>&-
+  exec 5>&-
+  rm "${pin}" > /dev/null
+  rm "${pout}" > /dev/null
+  rm "${perr}" > /dev/null
 }
 
 func_awsssh() {

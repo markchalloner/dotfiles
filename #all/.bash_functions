@@ -504,12 +504,19 @@ func_xdb() {
   )
 }
 
+# Yubikey switch to GPG mode
+func_yubigpg() {
+  func_pivstop && func_gpgrestart
+}
+
+# Yubikey switch to no mode
+func_yubinul() {
+  func_gpgstop
+  func_pivstop
+}
+
 # Yubikey switch to PIV mode
 func_yubipiv() {
   func_gpgstop && func_pivrestart
 }
 
-# Yubikey switch to GPG mode
-func_yubigpg() {
-  func_pivstop && func_gpgrestart
-}

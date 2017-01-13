@@ -111,4 +111,5 @@ alias xdb="func_xdb PHPSTORM"
 
 # Yubikey
 alias yubigpg="func_yubigpg"
+alias yubinul="func_yubinul"
 alias yubipiv="func_yubipiv"
