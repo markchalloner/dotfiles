@@ -372,7 +372,7 @@ func_pivstart() {
     ssh-add -D > /dev/null 2>&1
     ssh-add -e /usr/local/lib/pkcs11/opensc-pkcs11.so > /dev/null 2>&1
     ssh-add -s /usr/local/lib/pkcs11/opensc-pkcs11.so 2> /dev/null
-    ssh-add -K > /dev/null 2>&1
+    #ssh-add -K > /dev/null 2>&1
   fi
 }
 
