@@ -41,7 +41,8 @@ alias gitclr="git remote prune origin"
 alias gitco="git checkout"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gitmg="func_gitmg"
-alias gitpu="git push origin \$(gitb)"
+alias gitpl="yubipiv ; git pull"
+alias gitpu="yubipiv ; git push origin \$(gitb)"
 alias gitst="func_gitst"
 
 # Github
