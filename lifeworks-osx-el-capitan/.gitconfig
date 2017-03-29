@@ -1,7 +1,7 @@
 [user]
 	name = Mark Challoner
 	email = mark.challoner@lifeworks.com
-	signingkey = 0x58EABDB1293D248B
+	signingkey = 0x58EABDB1293D248B!
 [color]
 	branch = auto
 	diff = auto

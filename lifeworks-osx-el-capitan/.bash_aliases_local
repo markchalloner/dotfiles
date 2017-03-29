@@ -4,6 +4,7 @@ alias awsip="func_awsip"
 alias awsmongo="func_awsmongo"
 alias awsssh="func_awsssh"
 alias awssshkey="func_awssshkey"
+alias awsupdbtest="func_awsupdbtest"
 
 # Browser
 alias gx="func_gx"
@@ -17,7 +18,8 @@ alias gitpswa="(cdwa && gitps)"
 alias hstsclean="func_hstsclean"
 
 # Hub
-alias gitcm="func_gitcm RA-\?\?\?\?"
+alias gitcm="func_gitcm RA-\?\?\?\? y"
+alias gitcn="func_gitcm RA-\?\?\?\? n"
 alias gitpr="func_gitpr RA-\?\?\?\?"
 
 # Navigation
@@ -44,6 +46,7 @@ alias cdmu="builtin cd ~/Vagrant/marks-ubuntu-trusty-vm"
 
 # NFS
 alias vinfs="sudo vi /etc/exports && sudo nfsd checkexports > /dev/null && sudo nfsd update"
+alias nfsrwa="(cdwa && nfsr)"
 
 # PHPStorm
 alias pt="func_phpstorm"

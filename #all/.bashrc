@@ -46,3 +46,4 @@ PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$PATH:/opt/scalefactory/embedded/bin
 [ -f /srv/environment ] && source /srv/environment
 
+source /srv/environment

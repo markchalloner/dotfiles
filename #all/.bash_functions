@@ -168,12 +168,23 @@ func_envvar_prepend() {
 # Commit optionaly adding the branch if it exactly matches ${1}
 func_gitcm() {
   local match="${1}"
-  local message="$(echo -e -n "${2}")"
+  local hooks
+  if echo "${2}" | grep -i -q '^y\(es\)\?$'
+  then
+    hooks=" "
+  elif echo "${2}" | grep -i -q '^no\?$'
+  then
+    hooks=" -n"
+  else
+    echo "Second parameter must enable/disable hooks with y or n."
+    return 1
+  fi
+  local message="$(echo -e -n "${3}")"
   local branch="$(git rev-parse --abbrev-ref HEAD)"
   local prefix=""
   if [ "${message}" == "-m" ]
   then
-    message="$(echo -e -n "${3}")"
+    message="$(echo -e -n "${4}")"
   fi
   if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
   then
@@ -187,9 +198,9 @@ func_gitcm() {
     echo "Failed."
     return 1
   fi
-  git commit -S -m "${prefix}${message#${prefix}}"
-  echo -n "Restarting PIV. "
-  func_yubipiv
+  git commit${hooks} -S -m "${prefix}${message#${prefix}}"
+  echo -n "Stopping GPG. "
+  func_yubinul
 }
 
 # If hub is installed open a pull-request (optionally adding the branch if it exactly matches ${1})
