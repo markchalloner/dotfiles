@@ -218,6 +218,7 @@ func_gitpr() {
   fi
   if type hub > /dev/null 2>&1
   then
+    func_yubipiv
     git push -u origin "${branch}"
     url="$(hub pull-request -m "${prefix}${log}" -b "${base}")"
     echo "${url}"
