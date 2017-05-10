@@ -7,9 +7,15 @@
   :domain:      rs.workangel.com
   :vagrant_mount_options: ['nolock','vers=3','tcp']
   #:vagrant_share_type: rsync
-  #:vagrant_rsync_args: ["--verbose", "--archive", "-z"]
-  #:vagrant_rsync_ignore: ['node_modules','vendor','public','dist','bower_components']
-
+  #:vagrant_rsync_args: ["--verbose", "--archive", "-z", "--no-links"]
+  #:vagrant_rsync_ignore: [
+  #  '.git/',
+  #  '/node_modules',
+  #  '/vendor',
+  #  '/dist',
+  #  '/bower_components',
+  #  'packaging/vendor',
+   #]
 
 :boxes:
   dev:
@@ -31,29 +37,44 @@
         - automation
         - automationbackend
         - aviato
+        - hippo
         - apibackend
+        - adminsftp
     :synced_folders:
-        -   :path: ./wa-api
-            :guestpath: /srv/wa-api
-        -   :path: ./wa-api-content
-            :guestpath: /srv/wa-api-content
-        -   :path: ./wa-arch
-            :guestpath: /srv/wa-arch
-        -   :path: ./wa-backend
-            :guestpath: /srv/wa-backend
-        -   :path: ./wa-bouncer
-            :guestpath: /srv/wa-bouncer
-        -   :path: ./wa-sso
-            :guestpath: /srv/wa-sso
-        -   :path: ./wa-zeus
-            :guestpath: /srv/wa-zeus
-        -   :path: ./wa-hermes
-            :guestpath: /srv/wa-hermes
-        -   :path: ./lw-shim-api
-            :guestpath: /srv/wa-shim-api
-        -   :path: ./wa-automation-backend
-            :guestpath: /srv/wa-automation-backend
-        -   :path: ./wa-automation
-            :guestpath: /srv/wa-automation
-        -   :path: ./wa-aviato
-            :guestpath: /srv/wa-aviato
+      - :path: ./wa-api
+        :guestpath: /srv/wa-api
+      - :path: ./wa-api-content
+        :guestpath: /srv/wa-api-content
+      - :path: ./wa-arch
+        :guestpath: /srv/wa-arch
+      - :path: ./wa-backend
+        :guestpath: /srv/wa-backend
+      - :path: ./wa-bouncer
+        :guestpath: /srv/wa-bouncer
+      - :path: ./wa-sso
+        :guestpath: /srv/wa-sso
+      - :path: ./wa-zeus
+        :guestpath: /srv/wa-zeus
+      - :path: ./wa-hermes
+        :guestpath: /srv/wa-hermes
+      - :path: ./lw-shim-api
+        :guestpath: /srv/wa-shim-api
+      - :path: ./wa-automation-backend
+        :guestpath: /srv/wa-automation-backend
+      - :path: ./wa-automation
+        :guestpath: /srv/wa-automation
+      - :path: ./wa-aviato
+        :guestpath: /srv/wa-aviato
+        :vagrant_rsync_ignore: ['/target']
+      - :path: ./wa-hippo
+        :guestpath: /srv/wa-hippo
+      - :path: ./lw-admin-sftp
+        :guestpath: /srv/wa-admin-sftp
+
+    # We set these explicity to prevent vagrant user from using proxy settings in
+    # /srv/environment during vagrant provision
+    :puppet_envs:
+      :http_proxy: ''
+      :https_proxy: ''
+      :HTTP_PROXY: ''
+      :HTTPS_PROXY: ''

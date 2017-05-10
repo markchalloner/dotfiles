@@ -92,7 +92,20 @@ func_awsip() {
   return ${result}
 }
 
-func_awsmongo() {
+func_awsmongocmd() {
+  local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
+  local query="${1}"
+
+  func_yubigpg
+  if [ "${?}" -ne 0 ]
+  then
+    return
+  fi
+
+  echo "${query}" | func_awsssh test-app 1 "${command}" | grep -v "I NETWORK"
+}
+
+func_awsmongoshell() {
   local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
   local pin=$(mktemp -u)
   local pout=$(mktemp -u)
@@ -101,8 +114,14 @@ func_awsmongo() {
   mkfifo -m 600 "${pout}"
   mkfifo -m 600 "${perr}"
 
+  func_yubigpg
+  if [ "${?}" -ne 0 ]
+  then
+    return
+  fi
+
   exec 5>&2
-  (ssh "${AWS_SSH_USER}"@"$(func_awsip test-app)" "${command}" <"${pin}" >${pout} 2>&5 &)
+  (ssh -o PasswordAuthentication=no "${AWS_SSH_USER}"@"$(func_awsip test-app)" "${command}" <"${pin}" >${pout} 2>&5 &)
   exec 3>"${pin}"
   #exec 4>${pout}
 
@@ -115,7 +134,7 @@ func_awsmongo() {
     echo -n "mongo> "
     read input
     if echo "${input}" | grep -q "\(^ *exit;\? *$\)"
-    then
+   then
       break
     fi
     echo "${input}" >"${pin}"
@@ -145,8 +164,7 @@ func_awsssh() {
   local result="${?}"
   if [ ${result} -eq 0 ]
   then
-    func_yubigpg && ssh "${AWS_SSH_USER}"@"${output}" "${3}"
-    func_yubinul
+    func_yubipiv && ssh "${AWS_SSH_USER}"@"${output}" "${3}"
     return 0
   else
     echo "${output}"
@@ -195,6 +213,7 @@ func_awsupdbtest() {
     echo "Error: AWS secret must be defined in \$AWS_S3_DB_TEST_SECRET_ACCESS_KEY"
     return 1
   fi
+  yubipiv
   local file="wam-test-db-dump.tar.gz"
   local output
   output=$(func_awsip "mongodb1")

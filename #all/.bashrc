@@ -48,3 +48,4 @@ if [ -f /srv/environment ]
 then
 	source /srv/environment
 fi
+source /srv/environment

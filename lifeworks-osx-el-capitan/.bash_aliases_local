@@ -1,7 +1,8 @@
 # AWS
 alias awsips="func_awsips"
 alias awsip="func_awsip"
-alias awsmongo="func_awsmongo"
+alias awsmongocmd="func_awsmongocmd"
+alias awsmongoshell="func_awsmongoshell"
 alias awsssh="func_awsssh"
 alias awssshkey="func_awssshkey"
 alias awsupdbtest="func_awsupdbtest"
