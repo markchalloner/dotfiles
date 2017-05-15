@@ -92,20 +92,7 @@ func_awsip() {
   return ${result}
 }
 
-func_awsmongocmd() {
-  local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
-  local query="${1}"
-
-  func_yubipiv
-  if [ "${?}" -ne 0 ]
-  then
-    return
-  fi
-
-  echo "${query}" | func_awsssh test-app 1 "${command}" | grep -v "I NETWORK"
-}
-
-func_awsmongoshell() {
+func_awsmongocmdline() {
   local role="${1:-"wam"}"
   local connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
   local name_var
@@ -126,8 +113,27 @@ func_awsmongoshell() {
       echo "Unknown role ${role}."
       return 1
   esac
+  RETVAL='. /srv/environment ; mongo --quiet --host "'${connection_var}'" "'${name_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
+}
 
-  local command='. /srv/environment ; mongo --quiet --host "'${connection_var}'" "'${name_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
+func_awsmongocmd() {
+  func_awsmongocmdline "${1}" || return 1 
+  local command="${RETVAL}"
+  local query="${2}"
+
+  func_yubipiv
+  if [ "${?}" -ne 0 ]
+  then
+    return
+  fi
+
+  echo "${query}" | func_awsssh test-app 1 "${command}" | grep -v "I NETWORK"
+}
+
+func_awsmongoshell() {
+  func_awsmongocmdline "${1}" || return 1 
+  local command="${RETVAL}"
+
   local pin=$(mktemp -u)
   local pout=$(mktemp -u)
   local perr=$(mktemp -u)

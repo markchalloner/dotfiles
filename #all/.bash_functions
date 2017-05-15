@@ -66,24 +66,20 @@ func_dotdiff() {
 # Pull a dotfiles repo
 func_dotpull() {
   local path="${1:-${HOME}/dotfiles}"
-  if func_ghauth > /dev/null
+  local no_auth="${2}"  
+  if [ "${no_auth}" != "no-auth" ]
   then
-    (func_dotcd "${path}" && func_gitst && git pull && func_gitst pop)
-  else
-    echo "Unable to authenticate"
+    func_yubipiv
   fi
+  (func_dotcd "${path}" && func_gitst && git pull && func_gitst pop)
 }
 
 # Push a dotfiles repo
 func_dotpush() {
   local path="${1:-${HOME}/dotfiles}"
   local hostname="${2:-$(hostname)}"
-  if func_ghauth > /dev/null
-  then
-    (func_dotcd "${path}" && func_dotpull "${path}" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
-  else
-    echo "Unable to authenticate with github"
-  fi
+  func_yubipiv
+  (func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
 }
 
 func_dotreadme() {
