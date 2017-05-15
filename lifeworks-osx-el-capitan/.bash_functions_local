@@ -96,7 +96,7 @@ func_awsmongocmd() {
   local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
   local query="${1}"
 
-  func_yubigpg
+  func_yubipiv
   if [ "${?}" -ne 0 ]
   then
     return
@@ -106,7 +106,28 @@ func_awsmongocmd() {
 }
 
 func_awsmongoshell() {
-  local command='. /srv/environment ; mongo --quiet --host "$DB_WAM_SHELL_CONNECTION_STRING" "$DB_WAM_DBNAME" ${DB_WAM_USER:+-u "$DB_WAM_USER" -p "$DB_WAM_PASSWORD"}'
+  local role="${1:-"wam"}"
+  local connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
+  local name_var
+  local user_var
+  local pass_var
+  case "${role}" in
+    "arch")
+      name_var="\${DB_ARCH_DBNAME}"
+      user_var="\${DB_ARCH_USER}"
+      pass_var="\${DB_ARCH_PASSWORD}"
+      ;;
+    "wam")
+      name_var="\${DB_WAM_DBNAME}"
+      user_var="\${DB_WAM_USER}"
+      pass_var="\${DB_WAM_PASSWORD}"
+      ;;
+    *)
+      echo "Unknown role ${role}."
+      return 1
+  esac
+
+  local command='. /srv/environment ; mongo --quiet --host "'${connection_var}'" "'${name_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
   local pin=$(mktemp -u)
   local pout=$(mktemp -u)
   local perr=$(mktemp -u)
@@ -114,7 +135,7 @@ func_awsmongoshell() {
   mkfifo -m 600 "${pout}"
   mkfifo -m 600 "${perr}"
 
-  func_yubigpg
+  func_yubipiv
   if [ "${?}" -ne 0 ]
   then
     return
