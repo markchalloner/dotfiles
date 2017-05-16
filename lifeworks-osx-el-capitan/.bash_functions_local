@@ -211,6 +211,7 @@ func_awssshkey() {
   if [ ${result} -eq 0 ]
   then
     func_yubinul
+    ssh-keygen -R "${output}"
     ssh-copy-id -f -o PubkeyAuthentication=no "${AWS_SSH_USER}"@"${output}"
     return 0
   else

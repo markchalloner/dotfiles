@@ -13,7 +13,9 @@ alias mongorunwa="mongo localhost:27017/wam"
 
 # MySQL
 alias mysqlshell="mysql -uroot -p\${DB_MYSQL_HIPPO_ROOT_PASSWORD}"
-alias mysqlrestorewa="mysqlshell hippo < /vagrant/tmp/test_lifeworks.sql"
+alias mysqlrestorehippo="mysqlshell hippo < /vagrant/tmp/lifeworks_dev_hippo.sql"
+alias mysqldumphippo="mysqldump -uroot -p\${DB_MYSQL_HIPPO_ROOT_PASSWORD} hippo > /vagrant/tmp/lifeworks_dev_hippo.sql"
+
 # Navigation
 alias pushwa="func_pushd ${WA_ROOT}"
 alias cdwa="builtin cd ${WA_ROOT}"
