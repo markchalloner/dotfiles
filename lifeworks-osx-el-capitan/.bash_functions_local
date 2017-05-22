@@ -117,16 +117,20 @@ func_awsmongocmdline() {
 }
 
 func_awsmongocmd() {
-  func_awsmongocmdline "${1}" || return 1 
-  local command="${RETVAL}"
-  local query="${2}"
-
-  func_yubipiv
+  local query
+  if [ $# -lt 2 ]
+  then
+    local query="${1}"
+    func_awsmongocmdline || return 1
+  else
+    local query="${2}"
+    func_awsmongocmdline "${1}" || return 1
+  fi
   if [ "${?}" -ne 0 ]
   then
     return
   fi
-
+  local command="${RETVAL}"
   echo "${query}" | func_awsssh test-app 1 "${command}" | grep -v "I NETWORK"
 }
 

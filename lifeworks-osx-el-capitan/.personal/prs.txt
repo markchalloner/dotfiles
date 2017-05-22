@@ -64,3 +64,4 @@ RA-8549=https://github.com/workivate/wa-api/pull/3386
 RA-8148=https://github.com/workivate/wa-api/pull/3394
 RA-8580=https://github.com/workivate/wa-api/pull/3398
 RA-8606=https://github.com/workivate/wa-api/pull/3430
+RA-8664=https://github.com/workivate/wa-api/pull/3457
