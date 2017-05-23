@@ -68,6 +68,7 @@ alias vhaltwa="(cdwa && vhalt)"
 alias vprowa="(cdwa && vpro)"
 alias vsshwa="vupwa && vdotwa ; func_vssh "${HOME}/Vagrant/wa""
 alias vupwa="(cdwa && vup)"
+alias vrewa="(cdwa && vre)"
 alias vsshmu="vupmu ; func_vssh "${HOME}/Vagrant/marks-ubuntu-trusty-vm""
 alias vupmu="(cdmu && vup)"
 

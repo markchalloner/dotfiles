@@ -44,8 +44,7 @@ fi
 LANG=en_GB.utf8
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$PATH:/opt/scalefactory/embedded/bin
-if [ -f /srv/environment ]
-then
-	source /srv/environment
-fi
+# Ignore the auto-added line if necessary
+[ ! -f /srv/environment ] && return
+# Added automatically by Vagrant
 source /srv/environment
