@@ -78,7 +78,9 @@ func_dotpull() {
 func_dotpush() {
   local path="${1:-${HOME}/dotfiles}"
   local hostname="${2:-$(hostname)}"
-  func_yubipiv
+  # Test GPG will start
+  func_gpgstart && \
+  func_yubipiv && \
   (func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
 }
 
@@ -273,7 +275,7 @@ func_gitst() {
 
 # Authenticate with github
 func_ghauth() {
-  ssh -T git@github.com > /dev/null 2>&1
+  func_ssh -T git@github.com > /dev/null 2>&1
   local result=${?}
   if [ ${result} -eq 1 ]
   then
@@ -295,8 +297,8 @@ func_gpgstart() {
   local result=${?}
   if [ ${result} -eq 0 ]
   then
-    eval ${gpgvars}
-    gpg --card-status > /dev/null 2>&1
+    eval "${gpgvars}"
+    gpg --no-tty --card-status > /dev/null 2>&1
     result=${?}
     if [ ${result} -ne 0 ]
     then
@@ -423,19 +425,35 @@ func_remind() {
 
 # SSH with network user
 func_ssh() {
-  local host="${1}"
-  local user="${2}"
-  if [ -z "${host}" ]
+  /usr/bin/ssh $@
+  func_termcolor "default"
+}
+
+# Term color
+func_termcolor() {
+  color="${1}"
+  if [ -z "${color}" ] || [ "${color}" == "default" ]
   then
-    echo "Host not specified"
-    return
+    printf '\e[0m'
+    return 0
   fi
-  if [ -z "${user}" ]
+  if echo "${color}" | grep -q '[^0-9;]'
   then
-    echo "User not specified"
-    return
+    echo "Error: not an RGB value in the form RRR;GGG;BBB"
+    return 1
   fi
-  ssh "${user}"@"${host}"
+  printf '\e[38;2;'${color}'m'
+}
+
+# TOTP
+func_totpvalid() {
+  local token="${1}"
+  if [ -z "${token}" ]
+  then
+    echo "Error no token argument passed."
+    return 2
+  fi
+  [ ${#token} == 6 ] && [ -z "${token//[0-9]/}" ]
 }
 
 # Install dotfiles on vagrant box

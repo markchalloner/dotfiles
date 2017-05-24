@@ -90,6 +90,9 @@ alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.tx
 alias prca="func_prcache"
 alias vipr="vi ${HOME}/.personal/prs.txt"
 
+# SSH
+alias ssh="func_ssh"
+
 # Sudo
 alias sudom="sudo bash -c"
 
