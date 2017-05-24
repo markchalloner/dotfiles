@@ -249,9 +249,14 @@ EOF
 # Git stash with gpgsign disabled
 func_gitst() {
   local gpgsign="$(git config --list | grep "commit.gpgsign" | tail -n +2 | tail -n 1  | sed 's/.*=//')"
+  local untracked
   gpgsign="${gpgsign% }"
   git config commit.gpgsign false
-  git stash ${@}
+  if [ $# -eq 0 ] || [ "$1" == "save" ]
+  then
+    untracked=" -u"
+  fi
+  git stash${untracked} ${@}
   case "${gpgsign}" in
     true)
       git config --local commit.gpgsign true
