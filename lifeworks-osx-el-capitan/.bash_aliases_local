@@ -10,6 +10,7 @@ alias awsupdbtest="func_awsupdbtest"
 # Browser
 alias gx="func_gx"
 alias jr="func_jr"
+alias up="func_up"
 
 # Git
 alias gitbswa="(cdwa && gitbs)"

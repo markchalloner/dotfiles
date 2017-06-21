@@ -426,7 +426,9 @@ func_remind() {
 # SSH with network user
 func_ssh() {
   /usr/bin/ssh $@
+  local result=${?}
   func_termcolor "default"
+  return ${result}
 }
 
 # Term color

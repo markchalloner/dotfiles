@@ -55,6 +55,9 @@ alias gpgstart="func_gpgstart"
 alias gpgstatus="func_gpgstatus"
 alias gpgstop="func_gpgstop"
 
+# Hosts
+alias vihosts="sudo vi /etc/hosts"
+
 # Hub
 alias git="func_hub"
 alias gitpr="func_gitpr """

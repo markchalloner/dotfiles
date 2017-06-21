@@ -129,17 +129,21 @@ func_awsip() {
 func_awsmongocmdline() {
   local db="${1:-"wam"}"
   local connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
-  local name_var
   local user_var
   local pass_var
   case "${db}" in
     "arch")
-      name_var="\${DB_ARCH_DBNAME}"
+      connection_var="\${DB_ARCH_SHELL_CONNECTION_STRING}"
       user_var="\${DB_ARCH_USER}"
       pass_var="\${DB_ARCH_PASSWORD}"
       ;;
+    "sso")
+      connection_var="\${SSO_MONGODB_SHELL_CONNECTION_STRING}"
+      user_var="\${SSO_DB_SSO_USER}"
+      pass_var="\${SSO_DB_SSO_PASSWORD}"
+      ;;
     "wam")
-      name_var="\${DB_WAM_DBNAME}"
+      connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
       user_var="\${DB_WAM_USER}"
       pass_var="\${DB_WAM_PASSWORD}"
       ;;
@@ -147,7 +151,8 @@ func_awsmongocmdline() {
       echo "Unknown database ${db}."
       return 1
   esac
-  RETVAL='. /srv/environment ; mongo --quiet --host "'${connection_var}'" "'${name_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
+  RETVAL='. /srv/environment ; mongo --quiet --host "'${connection_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
+  echo "${RETVAL}"
 }
 
 func_awsmongocmd() {
@@ -314,15 +319,64 @@ func_awsupdbtest() {
   fi
   yubipiv
   local file="wam-test-db-dump.tar.gz"
+
+  func_awsupcmd wam-testdb-vagrant "${AWS_S3_DB_TEST_ACCESS_KEY_ID}" "${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}" "${file}" "/${file}"
+  local upload_cmd="${RETVAL}"
+
   local output
   output=$(func_awsip "test" "mongodb1")
-  func_ssh "${AWS_SSH_USER}"@"${output}" "rm -rf ${file} dump > /dev/null && mongodump -o dump -d wam --authenticationDatabase admin -u ${DB_TEST_ADMIN_USER} -p ${DB_TEST_ADMIN_PASS} && tar -czvf ${file} dump/" \
-  && scp "${AWS_SSH_USER}"@"${output}":"~/${file}" /tmp \
-  && (
-    export AWS_ACCESS_KEY_ID="${AWS_S3_DB_TEST_ACCESS_KEY_ID}"
-    export AWS_SECRET_ACCESS_KEY="${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}"
-    aws s3 cp /tmp/${file} s3://wam-testdb-vagrant
-  )
+
+  func_ssh "${AWS_SSH_USER}"@"${output}" <<-EOF
+    set -e
+    echo "Removing old dump."
+    rm -rf ${file} dump > /dev/null
+    echo "Dumping data."
+    mongodump -o dump -d wam --authenticationDatabase admin -u ${DB_TEST_ADMIN_USER} -p ${DB_TEST_ADMIN_PASS}
+    echo "Compressing."
+    tar -czvf ${file} dump/
+    echo "Uploading to S3."
+    ${upload_cmd}
+    echo "Done."
+EOF
+}
+
+func_awsupcmd() {
+  local bucket="${1}"
+  local key="${2}"
+  local secret="${3}"
+  local file_local="${4}"
+  local file_remote="${5}"
+  if [ -z "${bucket}" ]
+  then
+    echo "Error: AWS bucket must be provided"
+    return 1
+  fi
+  if [ -z "${key}" ]
+  then
+    echo "Error: AWS key must be provided"
+    return 1
+  fi
+  if [ -z "${secret}" ]
+  then
+    echo "Error: AWS secret must be provided"
+    return 1
+  fi
+  if [ -z "${file_local}" ]
+  then
+    echo "Error: Local filename must be provided"
+    return 1
+  fi
+  if [ -z "${file_remote}" ]
+  then
+    echo "Error: Remote filename must be provided"
+    return 1
+  fi
+  local date=$(date +"%a, %d %b %Y %T %z")
+  local acl="x-amz-acl:private"
+  local content_type="application/x-compressed-tar"
+  local string="PUT\n\n${content_type}\n${date}\n${acl}\n/${bucket}${file_remote}"
+  signature=$(echo -en "${string}" | openssl sha1 -hmac "${secret}" -binary | base64)
+  RETVAL='curl -X PUT -T "'${file_local}'" -H "Host: '${bucket}'.s3.amazonaws.com" -H "Date: '${date}'" -H "Content-Type: '${content_type}'" -H "'${acl}'" -H "Authorization: AWS '${key}':'${signature}'" "https://'${bucket}'.s3.amazonaws.com'${file_remote}'"'
 }
 
 func_env2termcolor() {
@@ -492,7 +546,7 @@ func_jr() {
       ;;
     b|backlog)
       board="${2:-${board}}"
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail"
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail&quickFilter=939&quickFilter=981"
       ;;
     h|home|dashboard|"")
       url="${url_base}/secure/Dashboard.jspa"
@@ -563,3 +617,26 @@ func_projnick2full() {
   echo "${full}"
 }
 
+func_up() {
+  local path="${1}"
+  local url_base="http://upsource.localhost"
+  local url=
+  local sub=
+  case "${path}" in
+    "f"|"feed"|"")
+      url="${url_base}"
+      ;;
+    *)
+      path="$(func_projnick2full "${path}")"
+      shift
+      sub="${@}"
+      sub="${sub// //}"
+      sub="${sub//prs/reviews}"
+      url="${url_base}/${path}/${sub}"
+      ;;
+  esac
+  if [ -n "${url}" ]
+  then
+    open "${url}"
+  fi
+}
