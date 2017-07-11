@@ -429,8 +429,7 @@ func_gcliticket2pull() {
       url="$(grep "pull/${ticket_num}$" "${HOME}/.personal/prs.txt" | head -n 1 | sed 's/^.*=//g')"
     fi
   fi
-  # Requires nodegh: sudo npm install gh -g && gh us -l
-  if [ -z "${url}" ] && $(type gh > /dev/null 2>&1)
+  if [ -z "${url}" ]
   then
     for state in "open" "closed"
     do

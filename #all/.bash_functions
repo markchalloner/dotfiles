@@ -79,7 +79,8 @@ func_dotpush() {
   local path="${1:-${HOME}/dotfiles}"
   local hostname="${2:-$(hostname)}"
   # Test GPG will start
-  func_gpgstart && \
+  func_pivstop && \
+  func_gpgrestart && \
   func_yubipiv && \
   (func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
 }
