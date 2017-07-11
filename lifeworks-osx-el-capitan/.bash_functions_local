@@ -402,7 +402,7 @@ func_gcliticket2pull() {
   RETVAL=
   local url_base="https://github.com/workivate"
   local prs="${HOME}/.personal/prs.txt"
-  local nicks=("api" "arch" "backend" "sso" "content")
+  local nicks=("infra" "api" "arch" "backend" "sso" "content")
   local ticket="${1}"
   local ticket_num=""
   local nick=""
@@ -415,11 +415,10 @@ func_gcliticket2pull() {
   fi
   if $(echo "${ticket}" | grep -q "^[[:digit:]]\+$")
   then
-    ticket_num="${ticket}"
+    ticket_match="RA *- *${ticket}"
     ticket="RA-${ticket}"
   else
-    ticket_num="${ticket/RA/}"
-    ticket_num="${ticket_num/-/}"
+    ticket_match="${ticket/-/ *- *}"
   fi
   if [ -f "${prs}" ]
   then
@@ -430,29 +429,44 @@ func_gcliticket2pull() {
       url="$(grep "pull/${ticket_num}$" "${HOME}/.personal/prs.txt" | head -n 1 | sed 's/^.*=//g')"
     fi
   fi
-  # Requires nodegh: sudo npm install gh -g
+  # Requires nodegh: sudo npm install gh -g && gh us -l
   if [ -z "${url}" ] && $(type gh > /dev/null 2>&1)
   then
-    for nick in ${nicks[@]}
+    for state in "open" "closed"
     do
-      proj="$(func_projnick2full "${nick}")"
-      if [ -n "${proj}" ]
-      then
-        echo -n "Searching ${proj} for ticket ${ticket}... "
-        pr="$((gh pr --list --user "workivate" --repo "${proj}" --state open && gh pr --list --user "workivate" --repo "${proj}" --state closed) | grep '[Rr][Aa][- ]'${ticket_num} | sed 's/^#\([0-9]*\) .*$/\1/g')"
-        if [ -n "${pr}" ]
+      for nick in ${nicks[@]}
+      do
+        proj="$(func_projnick2full "${nick}")"
+        if [ -n "${proj}" ]
         then
-          echo "found!"
-          url="${url_base}/${proj}/pull/${pr}"
-          func_prcache "${ticket}" "${url}"
-          break
-        else
-          echo "not found"
+          echo -n "Searching ${proj} for ${state} ticket ${ticket}... "
+          pr="$(cd ${WA_ROOT}/${proj} && hub issue --state="${state}" --include-pulls | grep -i "${ticket_match}" | sed 's/^[^#]*#\([0-9]*\) .*$/\1/g')"
+          if [ -n "${pr}" ]
+          then
+            echo "found!"
+            url="${url_base}/${proj}/pull/${pr}"
+            func_prcache "${ticket}" "${url}"
+            break 2
+          else
+            echo "not found"
+          fi
         fi
-      fi
+      done
     done
   fi
   RETVAL="${url}"
+}
+
+func_grumapply() {
+  eval "$(func_grumcat)";
+}
+
+func_grumcat() {
+  cat "${HOME}/grumphp.log"
+}
+
+func_grumsave() {
+  cat - | sed '1,/^You can fix all errors by running following commands:/d;'| tee "${HOME}/grumphp.log"
 }
 
 func_gx() {
@@ -619,7 +633,7 @@ func_projnick2full() {
 
 func_up() {
   local path="${1}"
-  local url_base="http://upsource.localhost"
+  local url_base="http://67.207.70.48"
   local url=
   local sub=
   case "${path}" in
@@ -631,7 +645,7 @@ func_up() {
       shift
       sub="${@}"
       sub="${sub// //}"
-      sub="${sub//prs/reviews}"
+      sub="${sub//pr/reviews}"
       url="${url_base}/${path}/${sub}"
       ;;
   esac

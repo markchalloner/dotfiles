@@ -184,7 +184,7 @@ func_gitcm() {
   then
     message="$(echo -e -n "${4}")"
   fi
-  if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
+  if [ -n "${match}" ] && echo "${branch}" | grep -q "${match}"
   then
     prefix="${branch} "
   fi
@@ -210,7 +210,7 @@ func_gitpr() {
   local branch=$(git rev-parse --abbrev-ref HEAD)
   local log=$(gitll)
   log="${log#${branch}}"
-  if [ "${match}" != "" ] && [ "${branch#${match}}" == "" ]
+  if [ -n "${match}" ] && echo "${branch}" | grep -q "${match}"
   then
     prefix="${branch} "
   fi

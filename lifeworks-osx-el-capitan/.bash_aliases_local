@@ -16,13 +16,18 @@ alias up="func_up"
 alias gitbswa="(cdwa && gitbs)"
 alias gitpswa="(cdwa && gitps)"
 
+# Grumphp
+alias grumapply="func_grumapply"
+alias grumcat="func_grumcat"
+alias grumsave="func_grumsave"
+
 # HSTS
 alias hstsclean="func_hstsclean"
 
 # Hub
-alias gitcm="func_gitcm RA-\?\?\?\? y"
-alias gitcn="func_gitcm RA-\?\?\?\? n"
-alias gitpr="func_gitpr RA-\?\?\?\?"
+alias gitcm="func_gitcm '\(IN\|ISS\|RA\)-[0-9]\+' y"
+alias gitcn="func_gitcn '\(IN\|ISS\|RA\)-[0-9]\+' n"
+alias gitpr="func_gitpr '\(IN\|ISS\|RA\)-[0-9]\+'"
 
 # Navigation
 alias pushdev="func_pushd ~/Development"
@@ -42,6 +47,7 @@ alias cdhermes="builtin cd ${WA_ROOT}/wa-hermes"
 alias cdinfra="builtin cd ${WA_ROOT}/wa-infrastructure"
 alias cdinfrafork="builtin cd ${WA_ROOT}/wa-infrastructure-fork"
 alias cdios="builtin cd ${WA_ROOT}/wa-ios"
+alias cdshim="builtin cd ${WA_ROOT}/lw-shim-api"
 alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
 alias cdwatmp="builtin cd ${WA_ROOT}/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
