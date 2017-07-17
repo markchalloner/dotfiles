@@ -230,8 +230,18 @@ func_gitpr() {
   fi
 }
 
-# Git merge reminder
 func_gitmg() {
+  local branch="${1}"
+  if [ -z "${branch}" ]
+  then
+    echo "Error no branch argument passed."
+    return 1
+  fi
+  yubigpg && git merge -n -S "${branch}"
+}
+
+# Git merge reminder
+func_gitmt() {
   cat <<'EOF'
 Merge Tool usage:
     
@@ -451,12 +461,7 @@ func_termcolor() {
 # TOTP
 func_totpvalid() {
   local token="${1}"
-  if [ -z "${token}" ]
-  then
-    echo "Error no token argument passed."
-    return 2
-  fi
-  [ ${#token} == 6 ] && [ -z "${token//[0-9]/}" ]
+  [ ${#token} -ge 6 ] && [ ${#token} -le 8 ] && [ -z "${token//[0-9]/}" ]
 }
 
 # Install dotfiles on vagrant box

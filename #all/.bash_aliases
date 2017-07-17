@@ -33,7 +33,7 @@ alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"
 alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
 alias gitb="git rev-parse --abbrev-ref HEAD"
 alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
-alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
+alias gitdf="git diff"
 alias gitll="git log -1 --oneline | cut -f 2- -d ' '"
 alias gitcl="gitclr && gitcll"
 alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|test\|^\*\" | xargs -n 1 git branch -d"
@@ -42,8 +42,11 @@ alias gitco="git checkout"
 alias gitdf="git diff"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gitmg="func_gitmg"
-alias gitpl="yubipiv ; git pull"
-alias gitpu="yubipiv ; git push origin \$(gitb)"
+alias gitmt="func_gitmt"
+alias gitpl="yubipiv && git pull"
+alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
+alias gitpu="yubipiv && git push origin \$(gitb)"
+alias gitsa="git status"
 alias gitst="func_gitst"
 
 # Github
@@ -61,6 +64,9 @@ alias vihosts="sudo vi /etc/hosts"
 # Hub
 alias git="func_hub"
 alias gitpr="func_gitpr """
+
+# Less
+alias less="less -R"
 
 # Navigation
 #alias cd="func_cd"

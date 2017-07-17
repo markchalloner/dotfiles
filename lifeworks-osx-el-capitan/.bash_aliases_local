@@ -26,7 +26,7 @@ alias hstsclean="func_hstsclean"
 
 # Hub
 alias gitcm="func_gitcm '\(IN\|ISS\|RA\)-[0-9]\+' y"
-alias gitcn="func_gitcn '\(IN\|ISS\|RA\)-[0-9]\+' n"
+alias gitcn="func_gitcm '\(IN\|ISS\|RA\)-[0-9]\+' n"
 alias gitpr="func_gitpr '\(IN\|ISS\|RA\)-[0-9]\+'"
 
 # Navigation

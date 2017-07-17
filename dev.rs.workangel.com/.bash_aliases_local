@@ -30,6 +30,9 @@ alias cdsso="builtin cd ${WA_ROOT}/wa-sso"
 alias cdwatmp="builtin cd /vagrant/tmp"
 alias cdzeus="builtin cd ${WA_ROOT}/wa-zeus"
 
+# Puppet
+alias purun="sudo puppet apply --verbose --debug --trace --hiera_config /etc/puppet/hiera.yaml /etc/puppet/rs.workangel.com/manifests/site.pp 2>&1 | tee puppet.log"
+
 # Rake
 alias rakeall="(builtin cd ${HOME} && _ rake api:vagrant && _ rake arch:vagrant && _ rake backend:vagrant && _ rake bouncer:vagrant && _ rake hermes:vagrant && _ rake sso:vagrant && _ rake shim:vagrant && _ rake zeus:vagrant && _ rake automationbackend:vagrant && _ rake db:new)"
 alias rakedb="(cdapi && _ rake api:db && _ deployment/generate-doctrine.sh && cdarch && rake arch:db)"

@@ -156,27 +156,28 @@ func_awsmongocmdline() {
 }
 
 func_awsmongocmd() {
-  local environment="${1}"
-  if [ -z "${environment}" ]
+  local stdin
+  read -t 1 stdin
+  local env="${1}"
+  if [ -z "${env}" ]
   then
     echo "Error: missing environment."
     return 1
   fi
+  local db="${2}"
   local query
-  if [ $# -lt 3 ]
+  if [ -n "${stdin}" ]
   then
-    local query="${2}"
-    func_awsmongocmdline || return 1
+    query="${stdin}"
+  elif [ $# -lt 3 ]
+  then
+    db=""
+    query="${2}"
   else
-    local query="${3}"
-    func_awsmongocmdline "${2}" || return 1
+    query="${3}"
   fi
-  #if [ "${?}" -ne 0 ]
-  #then
-  #  return
-  #fi
-  local command="${RETVAL}"
-  echo "${query}" | func_awsssh "${environment}" app 1 "${command}"
+  func_awsmongocmdline "${db}" || return 1
+  echo "${query}" | func_awsssh "${env}" app 1 "${cmd}"
 }
 
 func_awsmongoshell() {
@@ -188,101 +189,75 @@ func_awsmongoshell() {
   fi
   func_awsmongocmdline "${2}" || return 1
   local command="${RETVAL}"
-
-  local pin=$(mktemp -u)
-  local pout=$(mktemp -u)
-  local perr=$(mktemp -u)
-  mkfifo -m 600 "${pin}"
-  mkfifo -m 600 "${pout}"
-  mkfifo -m 600 "${perr}"
-
   func_yubipiv || return 1
-
-  #trap 'func_awsmongoshelltrap ${pin} ${pout} ${perr}' SIGHUP SIGINT SIGTERM
-
   func_env2termcolor "${environment}"
   func_termcolor "${RETVAL}"
-
-  exec 5>&2
-  (func_ssh -o PasswordAuthentication=no "${AWS_SSH_USER}"@"$(func_awsip "${environment}" "app")" "${command}" <"${pin}" >${pout} 2>&5 &)
-  exec 3>"${pin}"
-  #exec 4>${pout}
-
-  while read -t 2 output && [ -n "${output}" ]
-  do
-    echo "${output}"
-  done <"${pout}"
-
-  while true
-  do
-    echo -n "mongo> "
-    read input
-    if echo "${input}" | grep -q "\(^ *exit;\? *$\)"
-    then
-      break
-    fi
-    echo "${input}" >"${pin}"
-    # Read output 
-    while read -t 1 output && [ -n "${output}" ]
-    do
-      echo "${output}"
-    done <"${pout}"
-  done
-
-  # Close and remove pipe.
-  exec 3>&-
-  exec 5>&-
-  rm "${pin}" > /dev/null
-  rm "${pout}" > /dev/null
-  rm "${perr}" > /dev/null
-
+  func_ssh -o PasswordAuthentication=no "${AWS_SSH_USER}"@"$(func_awsip "${environment}" "app" 1)" "${command}"
   func_termcolor "default"
 }
 
 func_awsssh() {
-  local env="${1:-test}"
-  if [ -z "${token}" ] && func_totpvalid "${env}"
+  local stdin
+  read -t 1 stdin
+  local env="${1}"
+  local role="${2}"
+  local id="${3}"
+  local token="${4}"
+  local cmd="${5}"
+  if [ -z "${cmd}" ] && ! func_totpvalid "${token}"
   then
-    token="${env}"
-    role="test"
+    cmd="${token}"
+    token=""
   fi
-  # Role
-  case "${env}" in
-    "live"|"mgmt"|"test")
-      ;;
-    *)
-      echo "Error: Unknown environment \"${env}\""
-  esac
-  func_env2termcolor "${env}"
-  local term_color="${RETVAL}"
-  # SSH user
   if [ -z "${AWS_SSH_USER}" ]
   then
     echo "Error: User must be defined in \$AWS_SSH_USER"
     return 1
   fi
-  # Define the variable first so we can capture the command result
   local output
-  output=$(func_awsip "${1}" "${2}" "${3}" "${4}")
+  output=$(func_awsip "${env}" "${role}" "${id}" "${token}")
   local result="${?}"
-  if [ ${result} -eq 0 ]
+  if [ ${result} -ne 0 ]
   then
-    func_yubipiv && func_termcolor "${term_color}" && func_ssh "${AWS_SSH_USER}"@"${output}" "${4}"
-    return 0
-  else
     echo "${output}"
     return ${result}
   fi
+  func_env2termcolor "${env}"
+  local term_color="${RETVAL}"
+  func_termcolor "${term_color}"
+  if ! func_yubipiv
+  then
+    func_termcolor "default"
+    return 1
+  fi
+  ssh -o PreferredAuthentications=publickey "${AWS_SSH_USER}"@"${output}" true
+  result="${?}"
+  if [ ${result} -eq 255 ]
+  then
+    func_termcolor "${term_color}"
+    func_awssshkey "${env}" "${role}" "${id}" "${token}" && func_yubipiv
+    result="${?}"
+  fi
+  if [ ${result} -eq 0 ]
+  then
+    func_termcolor "${term_color}"
+    ssh -o PreferredAuthentications=publickey "${AWS_SSH_USER}"@"${output}" "${cmd}" <<< "${stdin}"
+  fi
+  func_termcolor "default"
 }
 
 func_awssshkey() {
+  local env="${1}"
+  local role="${2}"
+  local id="${3}"
+  local token="${4}"
   if [ -z "${AWS_SSH_USER}" ]
   then
     echo "Error: User must be defined in \$AWS_SSH_USER"
     return 1
   fi
   local output
-  output=$(func_awsip "${1}" "${2}" "${3}" "${4}")
+  output=$(func_awsip "${env}" "${role}" "${id}" "${token}")
   local result="${?}"
   if [ ${result} -eq 0 ]
   then
