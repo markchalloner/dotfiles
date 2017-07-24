@@ -152,7 +152,6 @@ func_awsmongocmdline() {
       return 1
   esac
   RETVAL='. /srv/environment ; mongo --quiet --host "'${connection_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
-  echo "${RETVAL}"
 }
 
 func_awsmongocmd() {
@@ -165,6 +164,7 @@ func_awsmongocmd() {
     return 1
   fi
   local db="${2}"
+  local cmd
   local query
   if [ -n "${stdin}" ]
   then
@@ -176,23 +176,26 @@ func_awsmongocmd() {
   else
     query="${3}"
   fi
+  func_env2termcolor "${env}"
+  func_termcolor "${RETVAL}"
   func_awsmongocmdline "${db}" || return 1
-  echo "${query}" | func_awsssh "${env}" app 1 "${cmd}"
+  cmd="${RETVAL}"
+  func_awsssh "${env}" app 1 "${cmd}" <<< "${query}" | grep -v 'I NETWORK'
 }
 
 func_awsmongoshell() {
-  local environment="${1}"
-  if [ -z "${environment}" ]
+  local env="${1}"
+  local cmd
+  if [ -z "${env}" ]
   then
     echo "Error: missing environment."
     return 1
   fi
   func_awsmongocmdline "${2}" || return 1
-  local command="${RETVAL}"
-  func_yubipiv || return 1
-  func_env2termcolor "${environment}"
+  cmd="${RETVAL}"
+  func_env2termcolor "${env}"
   func_termcolor "${RETVAL}"
-  func_ssh -o PasswordAuthentication=no "${AWS_SSH_USER}"@"$(func_awsip "${environment}" "app" 1)" "${command}"
+  func_awsssh "${env}" app 1 "${cmd}"
   func_termcolor "default"
 }
 
@@ -241,7 +244,12 @@ func_awsssh() {
   if [ ${result} -eq 0 ]
   then
     func_termcolor "${term_color}"
-    ssh -o PreferredAuthentications=publickey "${AWS_SSH_USER}"@"${output}" "${cmd}" <<< "${stdin}"
+    if [ -n "${stdin}" ]
+    then
+      ssh -o PreferredAuthentications=publickey "${AWS_SSH_USER}"@"${output}" "${cmd}" <<< "${stdin}"
+    else
+      ssh -t -o PreferredAuthentications=publickey "${AWS_SSH_USER}"@"${output}" "${cmd}"
+    fi
   fi
   func_termcolor "default"
 }
@@ -515,8 +523,6 @@ func_hstsclean() {
 func_jr() {
   local ticket="${1}"
   local branch=
-  local board=224
-  local board_planning=221
   local url_base="https://workivate.atlassian.net"
   local url=
   if [ -z "${ticket}" ] && $(git status > /dev/null 2>&1)
@@ -528,22 +534,17 @@ func_jr() {
     fi
   fi
   case "${ticket}" in
-    a|agile)
-      board="${2:-${board}}"
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}"
+    a|api)
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=180&view=planning.nodetail&quickFilter=811"
       ;;
-    b|backlog)
-      board="${2:-${board}}"
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board}&view=planning.nodetail&quickFilter=939&quickFilter=981"
+    i|in)
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=234&view=planning.nodetail&quickFilter=1008"
+      ;;
+    s|iss)
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=241&view=detail&quickFilter=1073"
       ;;
     h|home|dashboard|"")
       url="${url_base}/secure/Dashboard.jspa"
-      ;;
-    l|platform)
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board_planning}&view=planning.nodetail&quickFilter=933"
-      ;;
-    p|planning)
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=${board_planning}&view=planning.nodetail&quickFilter=909"
       ;;
     *)
       ticket="$(echo "${ticket}" | tr '[:lower:]' '[:upper:]' | sed 's/^\([A-Z][A-Z]*\)\([0-9][0-9]*\)/\1-\2/g')"

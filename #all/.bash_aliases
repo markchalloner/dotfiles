@@ -105,6 +105,12 @@ alias ssh="func_ssh"
 # Sudo
 alias sudom="sudo bash -c"
 
+# Tee
+alias tee="stripcolors | tee"
+
+# Terminal
+alias stripcolors="sed 's/'$'\E''\[[0-9;]*[A-Za-z]//g'"
+
 # Tmux
 alias tmuxs="[ -z "\$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
 alias tmuxd="tmux detach"
@@ -114,7 +120,7 @@ alias vdot="func_vdot"
 alias vhalt="vagrant halt"
 alias vpro="vagrant reload --provision"
 alias vre="vagrant reload"
-alias vreset="vagrant destroy -f && vagrant box update && vagrant up"
+alias vreset="vagrant destroy -f && vagrant box update && vagrant up --debug"
 alias vssh="func_vssh"
 alias vup="vagrant up"
 
