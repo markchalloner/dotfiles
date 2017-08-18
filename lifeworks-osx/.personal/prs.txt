@@ -78,3 +78,4 @@ ISS-63=https://github.com/workivate/wa-infrastructure/pull/568
 ISS-25=https://github.com/workivate/wa-infrastructure/pull/572
 RA-7460=https://github.com/workivate/wa-api/pull/2643
 RA-9117=https://github.com/workivate/wa-api/pull/3802
+RA-9157=https://github.com/workivate/wa-api/pull/3827
