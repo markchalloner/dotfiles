@@ -22,6 +22,7 @@ brew install awscli bash-completion git jq php56 php56-intl php-code-sniffer php
 brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
 brew install --devel hub
 brew install --HEAD opensc
+brew install Caskroom/cask/virtualbox Caskroom/cask/virtualbox-extension-pack Caskroom/cask/vagrant Caskroom/cask/vagrant-manager
 .reload
 ```
 

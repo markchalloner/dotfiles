@@ -53,6 +53,10 @@ func_awsexportenv() {
   export AWS_SESSION_TOKEN
 }
 
+func_awsipsraw() {
+  aws ec2 describe-instances --query 'Reservations[].Instances[].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | sort_by(@, &name) | @[].[ip, name] | map(&join(`" "`, @), @)'  | sed -e 's/^  *"\([0-9.][0-9.]*\) \([^"]*\)",*/\1'$'\t''\2/g' -e '/^[]\[]$/d'
+}
+
 func_awsips() {
   local role="${1:-test}"
   local token="${2}"
@@ -66,22 +70,14 @@ func_awsips() {
   if [ -n "${token}" ]
   then
     mkdir -p "${cache_dir}"
-    (
-      func_awsassumerole "${1}" "${2}" || return 1
-      export AWS_ACCESS_KEY_ID
-      export AWS_SECRET_ACCESS_KEY
-      export AWS_SESSION_TOKEN
-      local ips
-      ips=$(aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | "\(.PrivateIpAddress)\t'${role}'-\(.Tags[] | select(.Key == "Name") | .Value)"' | sort -k 2,2)
-      if [ $? -eq 0 ]
-      then
-	echo -e "# Generated at $(date "+%Y-%m-%d %H:%M:%S")\n${ips}" > "${cache_file}"
-        echo "${ips}"
-	return 0
-      else
-        return 1
-      fi
-    )
+    ips=$(func_awssudo "${1}" "${2}" func_awsipsraw)
+    if [ $? -eq 0 ]
+    then
+      echo -e "# Generated at $(date "+%Y-%m-%d %H:%M:%S")\n${ips}" | tee "${cache_file}"
+      return 0
+    else
+      return 1
+    fi
   else
     if [ -f "${cache_file}" ]
     then
@@ -378,6 +374,23 @@ func_awssshkey() {
     return ${result}
   fi
 }
+
+func_awssudo() {
+  (
+    func_awsassumerole "${1}" "${2}" || return 1
+    export AWS_ACCESS_KEY_ID
+    export AWS_SECRET_ACCESS_KEY
+    export AWS_SESSION_TOKEN
+    shift
+    shift
+    if [ -z "${1}" ]
+    then
+      echo "Error: No command passed."
+    fi
+    ${@}
+  )
+}
+
 
 func_awsupdbtest() {
   if [ -z "${DB_TEST_ADMIN_USER}" ]

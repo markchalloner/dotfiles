@@ -6,6 +6,7 @@ alias awsmongoshell="func_awsmongoshell"
 alias awsscp="func_awsscp"
 alias awsssh="func_awsssh"
 alias awssshkey="func_awssshkey"
+alias awssudo="func_awssudo"
 alias awsupdbtest="func_awsupdbtest"
 
 # Browser
@@ -85,3 +86,4 @@ alias vpn="~/Dropbox/Work/Lifeworks/Software/Scripts/tunnel-blick-totp/tunnel-bl
 alias vpnlive="vpn \"WorkAngel-live\""
 alias vpntest="vpn \"WorkAngel-test\""
 alias vpnmgmt="vpn \"WorkAngel-mgmt\""
+alias vpnall="vpnmgmt ; vpnlive ; vpntest"
