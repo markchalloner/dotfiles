@@ -54,7 +54,7 @@ func_awsexportenv() {
 }
 
 func_awsipsraw() {
-  aws ec2 describe-instances --query 'Reservations[].Instances[].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | sort_by(@, &name) | @[].[ip, name] | map(&join(`" "`, @), @)'  | sed -e 's/^  *"\([0-9.][0-9.]*\) \([^"]*\)",*/\1'$'\t''\2/g' -e '/^[]\[]$/d'
+  aws ec2 describe-instances --query 'Reservations[].Instances[?PrivateIpAddress!=null][].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | sort_by(@, &name) | @[].[ip, name] | map(&join(`" "`, @), @)'  | sed -e 's/^  *"\([0-9.][0-9.]*\) \([^"]*\)",*/\1'$'\t''\2/g' -e '/^[]\[]$/d'
 }
 
 func_awsips() {
@@ -561,7 +561,7 @@ func_grumcat() {
 }
 
 func_grumsave() {
-  cat - | sed '1,/^You can fix all errors by running following commands:/d;'| tee "${HOME}/grumphp.log"
+  cat - | sed '1,/^You can fix all errors by running following commands:/d;' | tee "${HOME}/grumphp.log"
 }
 
 func_gx() {
