@@ -1,6 +1,7 @@
 # AWS
 alias awsips="func_awsips"
 alias awsip="func_awsip"
+alias awscqs="func_awscreatequeues"
 alias awsmongocmd="func_awsmongocmd"
 alias awsmongoshell="func_awsmongoshell"
 alias awsscp="func_awsscp"
