@@ -392,7 +392,7 @@ func_pivrestart() {
 
 # 
 func_pivstart() {
-  eval $({ssh-agent -P '/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent;} 2> /dev/null) > /dev/null 2>&1
+  eval $({ ssh-agent -P '/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null) > /dev/null 2>&1
   if [ $? -eq 0 ]
   then
     ssh-add -D > /dev/null 2>&1
@@ -440,6 +440,10 @@ func_ssh() {
   local result=${?}
   func_termcolor "default"
   return ${result}
+}
+
+func_sshp() {
+  func_yubipiv && func_ssh -o PreferredAuthentications=publickey $@
 }
 
 # Term color

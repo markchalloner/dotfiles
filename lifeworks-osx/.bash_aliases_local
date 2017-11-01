@@ -28,9 +28,9 @@ alias grumsave="func_grumsave"
 alias hstsclean="func_hstsclean"
 
 # Hub
-alias gitcm="func_gitcm '\(IN\|ISS\|RA\)-[0-9]\+' y"
-alias gitcn="func_gitcm '\(IN\|ISS\|RA\)-[0-9]\+' n"
-alias gitpr="func_gitpr '\(IN\|ISS\|RA\)-[0-9]\+'"
+alias gitcm="func_gitcm '\(IN\|ISS\|LT\|RA\)-[0-9]\+' y"
+alias gitcn="func_gitcm '\(IN\|ISS\|LT\|RA\)-[0-9]\+' n"
+alias gitpr="func_gitpr '\(IN\|ISS\|LT\|RA\)-[0-9]\+'"
 
 # Navigation
 alias pushdev="func_pushd ~/Development"
