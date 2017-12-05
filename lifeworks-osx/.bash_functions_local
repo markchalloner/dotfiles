@@ -19,6 +19,12 @@ func_awsassumerole() {
   fi
   # Role
   case "${role}" in
+    "data-live")
+      aws_role="AWS_DATA_LIVE_ROLE"
+      ;;
+    "data-test")
+      aws_role="AWS_DATA_TEST_ROLE"
+      ;;
     "live")
       aws_role="AWS_LIVE_ROLE"
       ;;

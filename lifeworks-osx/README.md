@@ -17,6 +17,7 @@ ssh-add -K
 ### Via Brew
 
 ```
+brew tap caskroom/cask
 brew tap homebrew/homebrew-php
 brew install awscli bash-completion git jq php56 php56-intl php-code-sniffer phpmd tmux 
 brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
