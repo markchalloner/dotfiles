@@ -683,13 +683,13 @@ func_jr() {
   fi
   case "${ticket}" in
     a|api)
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=180&view=planning.nodetail&quickFilter=811"
+      url="${url_base}/secure/RapidBoard.jspa?projectKey=LT&rapidView=259"
       ;;
     i|in)
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=234&view=planning.nodetail&quickFilter=1008"
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=234&view=planning.nodetail"
       ;;
     s|iss)
-      url="${url_base}/secure/RapidBoard.jspa?rapidView=241&view=detail&quickFilter=1073"
+      url="${url_base}/secure/RapidBoard.jspa?rapidView=241&view=detail"
       ;;
     h|home|dashboard|"")
       url="${url_base}/secure/Dashboard.jspa"
