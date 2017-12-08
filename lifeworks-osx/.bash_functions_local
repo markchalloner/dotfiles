@@ -513,16 +513,24 @@ func_awsupcmd() {
 func_env2termcolor() {
   RETVAL=""
   case "${1}" in
+    "data-live")
+      RETVAL="255;51;153"
+      return 0
+      ;;
+    "data-test")
+      RETVAL="255;204;153"
+      return 0
+      ;;
     "live")
       RETVAL="255;0;0"
       return 0
       ;;
     "mgmt")
-      RETVAL="255;0;127"
+      RETVAL="204;0;255"
       return 0
       ;;
     "test")
-      RETVAL="255;127;0"
+      RETVAL="255;153;0"
       return 0
       ;;
   esac
