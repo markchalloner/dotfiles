@@ -33,6 +33,7 @@ then
 fi
 
 # Import other global configs
+[ -f ~/.bash_prompt ]   && . ~/.bash_prompt
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 [ -f ~/.bash_envvars ]   && . ~/.bash_envvars
 [ -f ~/.bash_aliases ]   && . ~/.bash_aliases

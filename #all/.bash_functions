@@ -96,7 +96,9 @@ func_dotreadme() {
 
 # Reload profile
 func_dotreload() {
+  type link-files > /dev/null 2>&1 && link-files -i -q
   source "${HOME}/.bash_profile"
+  [ -f "${HOME}/.inputrc" ] && bind -f  "${HOME}/.inputrc"
 }
 
 # Manage private variables
@@ -483,16 +485,17 @@ func_vdot() {
     # Install link-files
     if ! type link-files > /dev/null 2>&1 
     then
-      if [ -f "\${DIR}/deps/link-files/Makefile" ]
-      then
-        (cd "\${DIR}/deps/link-files" && sudo make install > /dev/null)
-      else
-        echo "Error: Dependency \"link-files\" has not been downloaded on host."
-        exit 1
-      fi
+      (
+        cd "\${DIR}"
+        if [ ! -d "\${DIR}/deps/link-files" ]
+        then
+          ./deps-download.sh
+        fi
+        cd "deps/link-files" && sudo make install > /dev/null
+      )
     fi
     # Link
-    link-files -o -i
+    link-files -o -i -q
 EOF
 }
 

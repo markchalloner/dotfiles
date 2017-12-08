@@ -15,6 +15,10 @@ while IFS='' read -r dep  || [ -n "${dep}" ]
 do
   name="${dep%%=*}"
   source="${dep#*=}"
+  if [ -z "${name}" ] || [ -z "${source}" ]
+  then
+    exit
+  fi
   dir_dep="${DIR_DEPS}/${name}"
   mkdir -p "${dir_dep}"
   (
