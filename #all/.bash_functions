@@ -448,6 +448,21 @@ func_sshp() {
   func_yubipiv && func_ssh -o PreferredAuthentications=publickey $@
 }
 
+# Read stdin
+func_stdin() {
+  local char
+  local stdin=""
+  if read -n 1 -t 1 char
+  then
+    if (( $? <= 128 ))
+    then
+       IFS= read -r -d '' stdin
+       stdin="${char}${stdin}"
+    fi
+  fi
+  RETVAL="${stdin}"
+}
+
 # Term color
 func_termcolor() {
   color="${1}"

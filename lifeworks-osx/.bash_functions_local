@@ -192,8 +192,8 @@ func_awsmongocmdline() {
 }
 
 func_awsmongocmd() {
-  local stdin
-  read -t 1 stdin
+  func_stdin
+  local stdin="${RETVAL}"
   local env="${1}"
   if [ -z "${env}" ]
   then
@@ -213,6 +213,7 @@ func_awsmongocmd() {
   else
     query="${3}"
   fi
+  echo "${query}"
   query="DBQuery.shellBatchSize = 9999; ${query}"
   func_env2termcolor "${env}"
   func_termcolor "${RETVAL}"
@@ -331,8 +332,8 @@ func_awsscp() {
 }
 
 func_awsssh() {
-  local stdin
-  read -t 1 stdin
+  func_stdin
+  local stdin="${RETVAL}"
   local env="${1}"
   local role="${2}"
   local id="${3}"
