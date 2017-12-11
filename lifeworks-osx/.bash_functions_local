@@ -164,78 +164,164 @@ func_awsip() {
 }
 
 func_awsmongocmdline() {
-  local db="${1:-"wam"}"
-  local connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
-  local user_var
-  local pass_var
-  case "${db}" in
-    "arch")
-      connection_var="\${DB_ARCH_SHELL_CONNECTION_STRING}"
-      user_var="\${DB_ARCH_USER}"
-      pass_var="\${DB_ARCH_PASSWORD}"
-      ;;
-    "sso")
-      connection_var="\${SSO_MONGODB_SHELL_CONNECTION_STRING}"
-      user_var="\${SSO_DB_SSO_USER}"
-      pass_var="\${SSO_DB_SSO_PASSWORD}"
-      ;;
-    "wam")
-      connection_var="\${DB_WAM_SHELL_CONNECTION_STRING}"
-      user_var="\${DB_WAM_USER}"
-      pass_var="\${DB_WAM_PASSWORD}"
-      ;;
-    *)
-      echo "Unknown database ${db}."
-      return 1
-  esac
-  RETVAL='. /srv/environment ; mongo --quiet --host "'${connection_var}'" -u "'${user_var}'" -p "'${pass_var}'"'
+  local env="${1}"
+  local db="${2:-"wam"}"
+  func_awsmongouser "${env}" || return 1
+  local user="${RETVAL}"
+  func_awsmongopass "${env}" || return 1
+  local pass="${RETVAL}"
+  RETVAL="mongo '${db}' --quiet --authenticationDatabase admin -u '${user}' -p '${pass}'"
 }
 
 func_awsmongocmd() {
   func_stdin
   local stdin="${RETVAL}"
   local env="${1}"
+  # Default to 3
+  local instance="${2}"
+  # Default to wam
+  local db="${3}"
+  local query="${4}"
+  local cmd
+
   if [ -z "${env}" ]
   then
     echo "Error: missing environment."
     return 1
   fi
-  local db="${2}"
-  local cmd
-  local query
+
+  # Set defaults
+  if [ $# -lt 3 ]
+  then
+    instance="3"
+    db="wam"
+    query="${2}"
+  elif [ $# -lt 4 ]
+  then
+    db="wam"
+    query="${3}"
+  fi
+
+  # Use stdin for query if supplied.
   if [ -n "${stdin}" ]
   then
     query="${stdin}"
-  elif [ $# -lt 3 ]
-  then
-    db=""
-    query="${2}"
-  else
-    query="${3}"
   fi
-  echo "${query}"
-  query="DBQuery.shellBatchSize = 9999; ${query}"
+
+  if [ -z "${query}" ]
+  then
+    echo "Error: no query."
+  fi
+
+  func_awsmongocmdline "${env}" "${db}" || return 1
+  cmd="${RETVAL}"
+
+  func_awsmongoinstance "${instance}"
+  instance="${RETVAL}"
+
   func_env2termcolor "${env}"
   func_termcolor "${RETVAL}"
-  func_awsmongocmdline "${db}" || return 1
-  cmd="${RETVAL}"
-  func_awsssh "${env}" app 1 "${cmd}" <<< "${query}" | grep -v 'I NETWORK'
+  echo "${query}"
+  query="rs.slaveOk(); DBQuery.shellBatchSize = 9999; ${query}"
+  # Use the first instance as we have built a unique instance name.
+  func_awsssh "${env}" "${instance}" 1 "${cmd}" <<< "${query}" | grep -v 'I NETWORK'
+}
+
+func_awsmongoinstance() {
+  local instance="${1:-3}"
+  # Build mongo instance name.
+  if grep -qv "mongodb" <<< "${instance}"
+  then
+    if [ "${instance}" == "1" ] || [ "${instance}" == "2" ] || [ "${instance}" == "3" ] || [ "${instance:0}" == "-" ]
+    then
+      instance="mongodb${instance}"
+    else
+      instance="mongodb-${instance}"
+    fi
+  fi
+  RETVAL="${instance}"
+}
+
+func_awsmongopass() {
+  local env="${1:-test}"
+  local pass
+  # Role
+  case "${env}" in
+    "data-live")
+      pass="${DB_DATA_LIVE_ADMIN_PASS}"
+      ;;
+    "data-test")
+      pass="${DB_DATA_TEST_ADMIN_PASS}"
+      ;;
+    "live")
+      pass="${DB_LIVE_ADMIN_PASS}"
+      ;;
+    "test")
+      pass="${DB_TEST_ADMIN_PASS}"
+      ;;
+    *)
+      echo "Error: Unknown environment \"${env}\"."
+      return 1
+  esac
+  if [ -z "${user}" ]
+  then
+    echo "Error: Environment user variable not found."
+    return 1
+  fi
+  RETVAL="${pass}"
 }
 
 func_awsmongoshell() {
   local env="${1}"
+  local instance="${2:-3}"
+  local db="${3:-wam}"
+
   local cmd
   if [ -z "${env}" ]
   then
     echo "Error: missing environment."
     return 1
   fi
-  func_awsmongocmdline "${2}" || return 1
+
+  func_awsmongocmdline "${env}" "${db}" || return 1
   cmd="${RETVAL}"
+
+  func_awsmongoinstance "${instance}"
+  instance="${RETVAL}"
+
   func_env2termcolor "${env}"
   func_termcolor "${RETVAL}"
-  func_awsssh "${env}" app 1 "${cmd}"
+  func_awsssh "${env}" "${instance}" 1 "${cmd}"
   func_termcolor "default"
+}
+
+func_awsmongouser() {
+  local env="${1:-test}"
+  local user
+  # Role
+  case "${env}" in
+    "data-live")
+      user="${DB_DATA_LIVE_ADMIN_USER}"
+      ;;
+    "data-test")
+      user="${DB_DATA_TEST_ADMIN_USER}"
+      ;;
+    "live")
+      user="${DB_LIVE_ADMIN_USER}"
+      ;;
+    "test")
+      user="${DB_TEST_ADMIN_USER}"
+      ;;
+    *)
+      echo "Error: Unknown environment \"${env}\"."
+      return 1
+  esac
+  if [ -z "${user}" ]
+  then
+    echo "Error: Environment user variable not found."
+    return 1
+  fi
+  RETVAL="${user}"
 }
 
 func_awsscp() {
@@ -335,7 +421,7 @@ func_awsssh() {
   func_stdin
   local stdin="${RETVAL}"
   local env="${1}"
-  local role="${2}"
+  local instance="${2}"
   local id="${3}"
   local token="${4}"
   local cmd="${5}"
@@ -350,7 +436,7 @@ func_awsssh() {
     return 1
   fi
   local output
-  output=$(func_awsip "${env}" "${role}" "${id}" "${token}")
+  output=$(func_awsip "${env}" "${instance}" "${id}" "${token}")
   local result="${?}"
   if [ ${result} -ne 0 ]
   then
@@ -370,7 +456,7 @@ func_awsssh() {
   if [ ${result} -eq 255 ]
   then
     func_termcolor "${term_color}"
-    func_awssshkey "${env}" "${role}" "${id}" "${token}" && func_yubipiv
+    func_awssshkey "${env}" "${instance}" "${id}" "${token}" && func_yubipiv
     result="${?}"
   fi
   if [ ${result} -eq 0 ]
@@ -388,7 +474,7 @@ func_awsssh() {
 
 func_awssshkey() {
   local env="${1}"
-  local role="${2}"
+  local instance="${2}"
   local id="${3}"
   local token="${4}"
   if [ -z "${AWS_SSH_USER}" ]
@@ -397,7 +483,7 @@ func_awssshkey() {
     return 1
   fi
   local output
-  output=$(func_awsip "${env}" "${role}" "${id}" "${token}")
+  output=$(func_awsip "${env}" "${instance}" "${id}" "${token}")
   local result="${?}"
   if [ ${result} -eq 0 ]
   then
@@ -452,7 +538,7 @@ func_awsupdbtest() {
   yubipiv
   local file="wam-test-db-dump.tar.gz"
 
-  func_awsupcmd wam-testdb-vagrant "${AWS_S3_DB_TEST_ACCESS_KEY_ID}" "${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}" "${file}" "/${file}"
+  func_awsupcmdline wam-testdb-vagrant "${AWS_S3_DB_TEST_ACCESS_KEY_ID}" "${AWS_S3_DB_TEST_SECRET_ACCESS_KEY}" "${file}" "/${file}"
   local upload_cmd="${RETVAL}"
 
   local output
@@ -472,7 +558,7 @@ func_awsupdbtest() {
 EOF
 }
 
-func_awsupcmd() {
+func_awsupcmdline() {
   local bucket="${1}"
   local key="${2}"
   local secret="${3}"
