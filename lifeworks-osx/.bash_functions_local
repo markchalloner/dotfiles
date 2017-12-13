@@ -872,3 +872,55 @@ func_up() {
     open "${url}"
   fi
 }
+
+# YAML
+func_yamldecode() {
+  local string
+  local key_pri="${HOME}/Vagrant/wa/private-mgmt.pem"
+  local key_pub="${HOME}/Vagrant/wa/wa-infrastructure/rs.workangel.com/modules/wa_kms_eyaml/files/public.pem"
+  if [ ! -f "${key_pri}" ]
+  then
+    echo 'Error: private key should be saved to '${key_pri}'.'
+    return 1
+  fi
+  if [ ! -f "${key_pub}" ]
+  then
+    echo 'Error: public key should be saved to '${key_pub}'.'
+    return 1
+  fi
+  func_stdin
+  if [ -n "${RETVAL}" ]
+  then
+    string="${RETVAL}"
+  elif [ -n "${1}" ]
+  then
+    string="${1}"
+  else
+    echo "Error: string to decrypt must be passed via stdin or as an argument."
+    return 1
+  fi
+  eyaml decrypt --pkcs7-private-key "${key_pri}" --pkcs7-public-key "${key_pub}" --string "${string}"
+}
+
+func_yamlencode() {
+  local string
+  local key_pub="${HOME}/Vagrant/wa/wa-infrastructure/rs.workangel.com/modules/wa_kms_eyaml/files/public.pem"
+  if [ ! -f "${key_pub}" ]
+  then
+    echo 'Error: public key should be saved to '${key_pub}'.'
+    return 1
+  fi
+  func_stdin
+  if [ -n "${RETVAL}" ]
+  then
+    string="${RETVAL}"
+  elif [ -n "${1}" ]
+  then
+    string="${1}"
+  else
+    echo "Error: string to encrypt must be passed via stdin or as an argument."
+    return 1
+  fi
+  eyaml encrypt --pkcs7-public-key "${key_pub}" --output string --string "${string}"
+}
+

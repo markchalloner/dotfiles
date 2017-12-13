@@ -15,10 +15,6 @@ alias gx="func_gx"
 alias jr="func_jr"
 alias up="func_up"
 
-# Eyaml
-alias eyamldec="eyaml decrypt --pkcs7-private-key \"\${HOME}/Vagrant/wa/private-mgmt.pem\" --pkcs7-public-key \"\${HOME}/Vagrant/wa/wa-infrastructure/rs.workangel.com/modules/wa_kms_eyaml/files/public.pem\" --string"
-alias eyamlenc="eyaml encrypt --pkcs7-public-key \"\${HOME}/Vagrant/wa/wa-infrastructure/rs.workangel.com/modules/wa_kms_eyaml/files/public.pem\" --output string --string"
-
 # Git
 alias gitbswa="(cdwa && gitbs)"
 alias gitpswa="(cdwa && gitps)"
@@ -95,3 +91,8 @@ alias vpnlive="vpn \"WorkAngel-live\""
 alias vpntest="vpn \"WorkAngel-test\""
 alias vpnmgmt="vpn \"WorkAngel-mgmt\""
 alias vpnoffice="networksetup -connectpppoeservice \"LifeWorks VPN\""
+
+# YAML
+alias yamld="func_yamldecode"
+alias yamle="func_yamlencode"
+
