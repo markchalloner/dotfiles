@@ -1,5 +1,4 @@
-# AWS
-alias awsips="func_awsips"
+
 alias awsip="func_awsip"
 alias awscqs="func_awscreatequeues"
 alias awsmongocmd="func_awsmongocmd"
@@ -48,7 +47,6 @@ alias cdbackend="builtin cd ${WA_ROOT}/wa-backend"
 alias cdhippo="builtin cd ${WA_ROOT}/wa-hippo"
 alias cdhermes="builtin cd ${WA_ROOT}/wa-hermes"
 alias cdinfra="builtin cd ${WA_ROOT}/wa-infrastructure"
-alias cdinfrafork="builtin cd ${WA_ROOT}/wa-infrastructure-fork"
 alias cdios="builtin cd ${WA_ROOT}/wa-ios"
 alias cdshim="builtin cd ${WA_ROOT}/lw-shim-api"
 alias cdsso="builtin cd ${WA_ROOT}/wa-sso"

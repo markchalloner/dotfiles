@@ -579,18 +579,16 @@ func_xdb() {
 func_yamlparse() {
   local file="${1}"; shift
   local key="${1}"; shift
-
   if [ -z "${file}" ]
   then
     echo 'Error: must provide a file.'
     return 1
   fi
-
   if ! type ruby > /dev/null 2>&1
   then
     echo 'Error: ruby must be installed.'
   fi
-
+  key="$(<<< "${key}" sed 's/\[/.\[/g' | tr '.' $'\n' | sed 's/^\([0-9][0-9]*\)$/[\1]/g' | sed "s/^\([^[][^[]*\)/['\1']/g" | tr -d $'\n')"
   local cmd="hash = YAML.load(File.read('${file}')) ; pp hash${key}"
   echo -e "$(ruby -r pp -r yaml <<< "${cmd}")" | sed -e 's/^"//g' -e 's/"$//g'
 }
