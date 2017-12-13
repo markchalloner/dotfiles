@@ -104,6 +104,7 @@ alias vipr="vi ${HOME}/.personal/prs.txt"
 # SSH
 alias ssh="func_ssh"
 alias sshp="func_sshp"
+alias sshunpin="func_sshunpin"
 
 # Sudo
 alias sudom="sudo bash -c"
@@ -132,6 +133,9 @@ alias watchmem="func_watchmem"
 
 # Xdebug
 alias xdb="func_xdb PHPSTORM"
+
+# YAML
+alias yamlp="func_yamlparse"
 
 # Yubikey
 alias yubigpg="func_yubigpg"

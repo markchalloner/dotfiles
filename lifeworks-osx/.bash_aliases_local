@@ -88,9 +88,10 @@ alias vupmu="(cdmu && vup)"
 
 # VPN
 alias vpn="~/Dropbox/Work/Lifeworks/Software/Scripts/tunnel-blick-totp/tunnel-blick-totp.py --name"
+alias vpnall="vpnmgmt ; vpnlive ; vpndatalive; vpntest"
 alias vpndatalive="vpn \"WorkAngel-data-live\""
 alias vpndatatest="vpn \"WorkAngel-data-test\""
 alias vpnlive="vpn \"WorkAngel-live\""
 alias vpntest="vpn \"WorkAngel-test\""
 alias vpnmgmt="vpn \"WorkAngel-mgmt\""
-alias vpnall="vpnmgmt ; vpnlive ; vpntest"
+alias vpnoffice="networksetup -connectpppoeservice \"LifeWorks VPN\""

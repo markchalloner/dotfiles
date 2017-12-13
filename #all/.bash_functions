@@ -448,6 +448,16 @@ func_sshp() {
   func_yubipiv && func_ssh -o PreferredAuthentications=publickey $@
 }
 
+func_sshunpin()
+{
+  line="${1}"
+  if [ -z "${line}" ]
+  then
+    echo "Error: line number must be specified."
+  fi
+  sed -i.bak -e "${line}d" "${HOME}/.ssh/known_hosts"
+}
+
 # Read stdin
 func_stdin() {
   local char
@@ -563,6 +573,26 @@ func_xdb() {
     export PHP_IDE_CONFIG="serverName=${server_name}"
     eval ${command}
   )
+}
+
+# YAML
+func_yamlparse() {
+  local file="${1}"; shift
+  local key="${1}"; shift
+
+  if [ -z "${file}" ]
+  then
+    echo 'Error: must provide a file.'
+    return 1
+  fi
+
+  if ! type ruby > /dev/null 2>&1
+  then
+    echo 'Error: ruby must be installed.'
+  fi
+
+  local cmd="hash = YAML.load(File.read('${file}')) ; pp hash${key}"
+  echo -e "$(ruby -r pp -r yaml <<< "${cmd}")" | sed -e 's/^"//g' -e 's/"$//g'
 }
 
 # Yubikey switch to GPG mode
