@@ -873,6 +873,34 @@ func_up() {
   fi
 }
 
+func_vpn() {
+  local name="${1}"; shift
+  local cmd="tunnel-blick-totp.py"
+  local args
+  local totp
+
+  if ! type ${cmd} > /dev/null 2>&1
+  then
+    echo "Error: ${cmd} must be present on the path."
+    return 1
+  fi
+
+  if [ "${#}" -eq 0 ]
+  then
+    totp="$(func_yubitotp 'LifeWorks: ' -c)"
+    if [ $? -ne 0 ]
+    then
+      echo 'Error: cannot obtain TOTP, is the Yubikey inserted?'
+      return 1
+    fi
+    args="--otp ${totp}"
+  else
+    args="${@}"
+  fi
+
+  ${cmd} --name "${name}" ${args}
+}
+
 # YAML
 func_yamldecode() {
   local string

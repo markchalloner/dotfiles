@@ -652,3 +652,22 @@ func_yubipiv() {
   func_gpgstop && func_pivrestart
 }
 
+# Yubikey TOTP
+func_yubitotp() {
+  local query="${1}"; shift
+  local code_only="${1}"; shift
+
+  if ! type yubioath > /dev/null 2>&1
+  then
+    echo "Error: yubioath must be present on the path."
+    return 1
+  fi
+
+  if [ "${code_only}" == "-c" ] || [ "${code_only}" == "--code" ]
+  then
+    yubioath "${query}" 2> /dev/null | sed 's/.*  *//g'
+    return ${PIPESTATUS[0]}
+  else
+    yubioath "${query}" 2> /dev/null
+  fi
+}

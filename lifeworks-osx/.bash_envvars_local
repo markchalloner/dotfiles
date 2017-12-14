@@ -11,6 +11,7 @@ func_pathadd "${ANT_HOME}/bin"
 func_pathadd "${MAVEN_HOME}/bin"
 func_pathadd "${GRADLE_HOME}/bin"
 func_pathadd "${ANDROID_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/19.1.0"
+func_pathadd "/Applications/Yubico Authenticator.app/Contents/MacOS"
 
 # LifeWorks specific
 export WA_ROOT="${HOME}/Vagrant/wa"
