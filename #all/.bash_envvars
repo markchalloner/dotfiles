@@ -1,2 +1,2 @@
-func_envvar_append "PATH" "${HOME}/bin:${HOME}/Software/Bin"
+func_pathadd "${HOME}/bin:${HOME}/Software/Bin"
 

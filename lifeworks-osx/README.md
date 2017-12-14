@@ -19,7 +19,7 @@ ssh-add -K
 ```
 brew tap caskroom/cask
 brew tap homebrew/homebrew-php
-brew install awscli bash-completion git jq php56 php56-intl php-code-sniffer phpmd tmux 
+brew install awscli bash-completion git jq php56 php56-intl php-code-sniffer phpmd tmux ykman 
 brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
 brew install --devel hub
 brew install --HEAD opensc

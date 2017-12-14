@@ -146,15 +146,6 @@ func_envvar_append() {
   fi
 }
 
-# Echo and exec (unless $PROFILE_DEBUG is set) command
-func_exec() {
-  echo "${@}"
-  if [ -z "${PROFILE_DEBUG}" ]
-  then
-    eval "${@}"
-  fi
-}
-
 # Prepend to env variable, takes a variable name, string and optional separator (defaults to :)
 func_envvar_prepend() {
   local envvar="${1}"
@@ -163,6 +154,15 @@ func_envvar_prepend() {
   if [[ "${separator}${!envvar}${separator}" != *"${separator}${string}${separator}"* ]]
   then
     export ${envvar}="${string}${!envvar:+"${separator}${!envvar}"}"
+  fi
+}
+
+# Echo and exec (unless $PROFILE_DEBUG is set) command
+func_exec() {
+  echo "${@}"
+  if [ -z "${PROFILE_DEBUG}" ]
+  then
+    eval "${@}"
   fi
 }
 
@@ -385,6 +385,49 @@ func_native() {
 func_nv() {
   # TODO
   :
+}
+
+# PATH
+func_pathadd() {
+  local position="${1}"; shift
+  local paths="${1}"; shift
+  local paths_array
+
+  if [ -z "${paths}" ]
+  then
+    paths="${position}"
+    position="-b"
+  fi
+  
+  IFS=':' read -ra paths_array <<< "${paths}"
+  paths=""
+  for path in "${paths_array[@]}"
+  do
+    if [ -n "${path}" ] && grep -vq "\(^\|:\)${path}\($\|:\)" <<< "${PATH}"
+    then
+      if [ -n "${paths}" ]
+      then
+        paths="${paths}:${path}"
+      else
+        paths="${path}"
+      fi
+    fi
+  done
+
+  if [ -z "${paths}" ]
+  then
+    return 1
+  fi
+
+  case "${position}" in
+    -a|--after)
+      PATH="${PATH}:${paths}"
+      ;;
+    -b|--before|*)
+      PATH="${paths}:${PATH}"
+      ;;
+   esac
+   export PATH
 }
 
 # PIV

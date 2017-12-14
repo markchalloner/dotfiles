@@ -23,13 +23,13 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # Bash completion
 if [ -f /usr/share/bash-completion/bash_completion ]
 then
-	. /usr/share/bash-completion/bash_completion
+  . /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]
 then
-	. /etc/bash_completion
+  . /etc/bash_completion
 elif type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ] 
 then
-	. $(brew --prefix)/etc/bash_completion
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # Import other global configs
@@ -43,8 +43,9 @@ fi
 [ -f ~/.bashrc_private ] && . ~/.bashrc_private
 
 LANG=en_GB.utf8
-PATH=$PATH:$HOME/.composer/vendor/bin
-PATH=$PATH:/opt/scalefactory/embedded/bin
+func_pathadd "${HOME}/.composer/vendor/bin"
+func_pathadd "/opt/scalefactory/embedded/bin"
+
 # Ignore the auto-added line if necessary
 [ ! -f /srv/environment ] && return
 # Added automatically by Vagrant
