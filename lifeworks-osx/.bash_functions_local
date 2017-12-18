@@ -97,7 +97,7 @@ func_awsips() {
   if [ -z "${token}" ] && func_totpvalid "${role}"
   then
      token="${role}"
-      role="test"
+     role="test"
   fi
   local cache_dir="${HOME}/.aws"
   local cache_file="${cache_dir}/ips-${role}"

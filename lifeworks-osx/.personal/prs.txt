@@ -132,3 +132,5 @@ IN-579=https://github.com/workivate/wa-infrastructure/pull/788
 IN-518-fix_no_fpm_alt=https://github.com/workivate/wa-infrastructure/pull/790
 IN-541=https://github.com/workivate/wa-infrastructure/pull/796
 IN-542=https://github.com/workivate/wa-infrastructure/pull/811
+ISS-302=https://github.com/workivate/wa-backend/pull/517
+ISS-302-2=https://github.com/workivate/wa-backend/pull/518
