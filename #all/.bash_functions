@@ -189,7 +189,7 @@ func_gitcm() {
   fi
   if [ -n "${match}" ] && echo "${branch}" | grep -q "${match}"
   then
-    prefix="${branch} "
+    prefix="$(grep -o "${match}" <<< "${branch}") "
   fi
   echo -n "Stopping PIV and starting GPG... "
   if func_yubigpg

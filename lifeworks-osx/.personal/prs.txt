@@ -134,3 +134,5 @@ IN-541=https://github.com/workivate/wa-infrastructure/pull/796
 IN-542=https://github.com/workivate/wa-infrastructure/pull/811
 ISS-302=https://github.com/workivate/wa-backend/pull/517
 ISS-302-2=https://github.com/workivate/wa-backend/pull/518
+ISS-391=https://github.com/workivate/wa-infrastructure/pull/817
+IN-573-cert-filtering=https://github.com/workivate/wa-infrastructure/pull/818
