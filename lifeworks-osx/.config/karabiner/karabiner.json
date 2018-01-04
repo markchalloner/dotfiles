@@ -18,7 +18,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -38,7 +37,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -62,7 +62,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -82,7 +81,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -106,7 +106,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -126,7 +125,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -150,7 +150,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -170,7 +169,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -194,7 +194,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -214,7 +213,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -238,7 +238,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -258,7 +257,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -282,7 +282,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -302,7 +301,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -326,7 +326,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -346,7 +345,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -370,7 +370,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -390,7 +389,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -414,7 +414,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -434,7 +433,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -458,7 +458,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -478,7 +477,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -502,7 +502,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -522,7 +521,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -546,7 +546,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -566,7 +565,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -590,7 +590,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -610,7 +609,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -634,7 +634,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -654,7 +653,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -678,7 +678,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -698,7 +697,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -722,7 +722,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -742,7 +741,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -766,7 +766,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -786,7 +785,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -810,7 +810,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -830,7 +829,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -854,7 +854,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -874,7 +873,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -898,7 +898,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -918,7 +917,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -947,7 +947,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -967,7 +966,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -991,7 +991,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1011,7 +1010,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1035,7 +1035,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1055,7 +1054,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1079,7 +1079,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1099,7 +1098,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1123,7 +1123,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1143,7 +1142,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1167,7 +1167,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1187,7 +1186,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1211,7 +1211,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1231,7 +1230,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1255,7 +1255,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1275,7 +1274,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1299,7 +1299,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1319,7 +1318,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1343,7 +1343,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1363,7 +1362,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1387,7 +1387,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1407,7 +1406,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1431,7 +1431,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1451,7 +1450,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1475,7 +1475,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1495,7 +1494,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1519,7 +1519,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1539,7 +1538,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1563,7 +1563,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1583,7 +1582,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1607,7 +1607,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1627,7 +1626,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1651,7 +1651,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1671,7 +1670,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1695,7 +1695,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1715,7 +1714,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1739,7 +1739,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1759,7 +1758,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1783,7 +1783,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1803,7 +1802,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1827,7 +1827,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1847,7 +1846,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1876,7 +1876,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1896,7 +1895,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1920,7 +1920,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1940,7 +1939,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -1964,7 +1964,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -1984,7 +1983,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2008,7 +2008,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2028,7 +2027,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2052,7 +2052,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2072,7 +2071,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2096,7 +2096,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2116,7 +2115,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2140,7 +2140,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2160,7 +2159,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2184,7 +2184,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2204,7 +2203,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2228,7 +2228,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2248,7 +2247,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2272,7 +2272,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2292,7 +2291,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2316,7 +2316,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2336,7 +2335,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2360,7 +2360,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2380,7 +2379,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2404,7 +2404,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2424,7 +2423,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2448,7 +2448,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2468,7 +2467,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2492,7 +2492,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2512,7 +2511,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2536,7 +2536,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2556,7 +2555,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2580,7 +2580,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2600,7 +2599,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2624,7 +2624,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2644,7 +2643,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2668,7 +2668,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2688,7 +2687,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2712,7 +2712,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2732,7 +2731,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2756,7 +2756,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2776,7 +2775,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2805,7 +2805,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2813,7 +2812,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2837,7 +2837,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2845,7 +2844,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2869,7 +2869,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2877,7 +2876,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2901,7 +2901,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2909,7 +2908,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2933,7 +2933,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2941,7 +2940,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2965,7 +2965,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -2973,7 +2972,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -2997,7 +2997,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3005,7 +3004,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3029,7 +3029,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3037,7 +3036,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3061,7 +3061,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3069,7 +3068,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3093,7 +3093,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3101,7 +3100,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3125,7 +3125,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3133,7 +3132,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3155,20 +3155,20 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "is_pointing_device": false,
+                                                "product_id": 1957,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
                                 "from": {
-                                    "conditions": [
-                                        {
-                                            "type": "device_if",
-                                            "identifiers": [
-                                                {
-                                                    "is_keyboard": true,
-                                                    "is_pointing_device": false,
-                                                    "product_id": 1957,
-                                                    "vendor_id": 1118
-                                                }
-                                            ]
-                                        }
-                                    ],
                                     "key_code": "x",
                                     "modifiers": {
                                         "mandatory": [
@@ -3189,7 +3189,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3197,7 +3196,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3221,7 +3221,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3229,7 +3228,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3253,7 +3253,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3261,7 +3260,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3285,7 +3285,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3293,7 +3292,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3317,7 +3317,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3325,7 +3324,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3349,7 +3349,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3357,7 +3356,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3381,7 +3381,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3389,7 +3388,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3411,20 +3411,20 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "is_pointing_device": false,
+                                                "product_id": 1957,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
                                 "from": {
-                                    "conditions": [
-                                        {
-                                            "type": "device_if",
-                                            "identifiers": [
-                                                {
-                                                    "is_keyboard": true,
-                                                    "is_pointing_device": false,
-                                                    "product_id": 1957,
-                                                    "vendor_id": 1118
-                                                }
-                                            ]
-                                        }
-                                    ],
                                     "key_code": "5",
                                     "modifiers": {
                                         "mandatory": [
@@ -3443,20 +3443,20 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "is_pointing_device": false,
+                                                "product_id": 1957,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
                                 "from": {
-                                    "conditions": [
-                                        {
-                                            "type": "device_if",
-                                            "identifiers": [
-                                                {
-                                                    "is_keyboard": true,
-                                                    "is_pointing_device": false,
-                                                    "product_id": 1957,
-                                                    "vendor_id": 1118
-                                                }
-                                            ]
-                                        }
-                                    ],
                                     "key_code": "6",
                                     "modifiers": {
                                         "mandatory": [
@@ -3482,7 +3482,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3502,7 +3501,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3526,7 +3526,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3546,7 +3545,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3570,7 +3570,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3590,7 +3589,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3614,7 +3614,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3634,7 +3633,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3658,7 +3658,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3678,7 +3677,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3702,7 +3702,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3722,7 +3721,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3746,7 +3746,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3766,7 +3765,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3790,7 +3790,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3810,7 +3809,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3834,7 +3834,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3854,7 +3853,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3878,7 +3878,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3898,7 +3897,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3922,7 +3922,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3942,7 +3941,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -3966,7 +3966,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -3986,7 +3985,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4010,7 +4010,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4030,7 +4029,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4054,7 +4054,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4074,7 +4073,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4098,7 +4098,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4118,7 +4117,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4142,7 +4142,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4162,7 +4161,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4186,7 +4186,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4206,7 +4205,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4230,7 +4230,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4250,7 +4249,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4274,7 +4274,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4294,7 +4293,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4318,7 +4318,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4338,7 +4337,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4362,7 +4362,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4382,7 +4381,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4402,10 +4402,10 @@
                                     }
                                 ],
                                 "type": "basic"
-                            },                            {
+                            },
+                            {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4425,7 +4425,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4449,7 +4450,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4469,7 +4469,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4493,7 +4494,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4513,7 +4513,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4542,7 +4543,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4562,7 +4562,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4586,7 +4587,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4606,7 +4606,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4630,7 +4631,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4650,7 +4650,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4674,7 +4675,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4694,7 +4694,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4718,7 +4719,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4738,7 +4738,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4762,7 +4763,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4782,7 +4782,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4806,7 +4807,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4826,7 +4826,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4850,7 +4851,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4870,7 +4870,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4894,7 +4895,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4914,7 +4914,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4938,7 +4939,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -4958,7 +4958,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -4982,7 +4983,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5002,7 +5002,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5026,7 +5027,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5046,7 +5046,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5070,7 +5071,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5090,7 +5090,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5114,7 +5115,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5134,7 +5134,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5158,7 +5159,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5178,7 +5178,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5202,7 +5203,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5222,7 +5222,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5246,7 +5247,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5266,7 +5266,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5290,7 +5291,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5310,7 +5310,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5334,7 +5335,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5354,7 +5354,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5378,7 +5379,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5398,7 +5398,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5422,7 +5423,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5442,7 +5442,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5466,7 +5467,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5486,7 +5486,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5510,7 +5511,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5530,7 +5530,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5554,7 +5555,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5574,7 +5574,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5603,7 +5604,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5623,7 +5623,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5647,7 +5648,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5667,7 +5667,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5691,7 +5692,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5711,7 +5711,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5735,7 +5736,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5755,7 +5755,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5779,7 +5780,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5799,7 +5799,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5823,7 +5824,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5843,7 +5843,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5867,7 +5868,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5887,7 +5887,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5911,7 +5912,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5931,7 +5931,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5955,7 +5956,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -5975,7 +5975,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -5999,7 +6000,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6019,7 +6019,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6043,7 +6044,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6063,7 +6063,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6087,7 +6088,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6107,7 +6107,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6131,7 +6132,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6151,7 +6151,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6175,7 +6176,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6195,7 +6195,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6219,7 +6220,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6239,7 +6239,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6263,7 +6264,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6283,7 +6283,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6307,7 +6308,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6327,7 +6327,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6351,7 +6352,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6371,7 +6371,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6395,7 +6396,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6415,7 +6415,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6439,7 +6440,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6459,7 +6459,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6483,7 +6484,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6503,7 +6503,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6527,7 +6528,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6547,7 +6547,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6571,7 +6572,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6591,7 +6591,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6615,7 +6616,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6635,7 +6635,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6664,7 +6665,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6684,7 +6684,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6708,7 +6709,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6728,7 +6728,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6752,7 +6753,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6772,7 +6772,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6796,7 +6797,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6816,7 +6816,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6840,7 +6841,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6860,7 +6860,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6884,7 +6885,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6904,7 +6904,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6928,7 +6929,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6948,7 +6948,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -6972,7 +6973,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -6992,7 +6992,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7016,7 +7017,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7036,7 +7036,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7060,7 +7061,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7080,7 +7080,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7104,7 +7105,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7124,7 +7124,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7148,7 +7149,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7168,7 +7168,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7192,7 +7193,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7212,7 +7212,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7236,7 +7237,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7256,7 +7256,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7280,7 +7281,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7300,7 +7300,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7324,7 +7325,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7344,7 +7344,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7368,7 +7369,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7388,7 +7388,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7412,7 +7413,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7432,7 +7432,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7456,7 +7457,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7476,7 +7476,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7500,7 +7501,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7520,7 +7520,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7544,7 +7545,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7564,7 +7564,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7588,7 +7589,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7608,7 +7608,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7632,7 +7633,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7652,7 +7652,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7676,7 +7677,6 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
                                                 "is_keyboard": true,
@@ -7696,7 +7696,8 @@
                                                 "product_id": 1957,
                                                 "vendor_id": 1118
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -7883,6 +7884,14 @@
                             "to": {
                                 "key_code": "right_command"
                             }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": {
+                                "key_code": "grave_accent_and_tilde"
+                            }
                         }
                     ]
                 },
@@ -8016,7 +8025,7 @@
             "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "keyboard_type": "iso"
+                "keyboard_type": "ansi"
             }
         }
     ]
