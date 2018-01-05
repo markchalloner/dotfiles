@@ -141,3 +141,4 @@ ISS-398=https://github.com/workivate/wa-api/pull/4490
 IN-609=https://github.com/workivate/wa-infrastructure/pull/826
 ISS-368=https://github.com/workivate/wa-infrastructure/pull/827
 ISS-368-2=https://github.com/workivate/wa-infrastructure/pull/828
+IN-609-2=https://github.com/workivate/wa-infrastructure/pull/835

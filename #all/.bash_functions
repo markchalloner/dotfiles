@@ -221,7 +221,7 @@ func_gitpr() {
   then
     func_yubipiv
     git push -u origin "${branch}"
-    url="$(hub pull-request -m "${prefix}${log}" -b "${base}")"
+    url="$(hub pull-request -m "${prefix}${log#${prefix}}" -b "${base}")"
     echo "${url}"
     if [ -n "${prefix}" ]
     then

@@ -223,7 +223,6 @@ func_awsmongocmd() {
   func_termcolor "${RETVAL}"
   echo "${query}"
   query="rs.slaveOk(); DBQuery.shellBatchSize = 9999; ${query}"
-  echo "${query}"
   # Use the first instance as we have built a unique instance name.
   func_awsssh "${env}" "${instance}" 1 "${cmd}" <<< "${query}" | grep -v 'I NETWORK'
 }
