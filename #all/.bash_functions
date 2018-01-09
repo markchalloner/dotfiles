@@ -212,7 +212,7 @@ func_gitpr() {
   local base="${2}"
   local branch=$(git rev-parse --abbrev-ref HEAD)
   local log=$(gitll)
-  log="${log#${branch}}"
+  log="${log#${branch} }"
   if [ -n "${match}" ] && echo "${branch}" | grep -q "${match}"
   then
     prefix="${branch} "
@@ -221,7 +221,7 @@ func_gitpr() {
   then
     func_yubipiv
     git push -u origin "${branch}"
-    url="$(hub pull-request -m "${prefix}${log#${prefix}}" -b "${base}")"
+    url="$(hub pull-request -m "${prefix}${log#$(grep -o "${match}" <<< "${branch}") }" -b "${base}")"
     echo "${url}"
     if [ -n "${prefix}" ]
     then

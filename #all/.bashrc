@@ -50,3 +50,5 @@ func_pathadd "/opt/scalefactory/embedded/bin"
 [ ! -f /srv/environment ] && return
 # Added automatically by Vagrant
 source /srv/environment
+PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$PATH:/opt/scalefactory/embedded/bin
