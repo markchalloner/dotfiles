@@ -151,3 +151,4 @@ IN-612-2=https://github.com/workivate/wa-infrastructure/pull/843
 IN-629=https://github.com/workivate/wa-infrastructure/pull/845
 IN-630=https://github.com/workivate/lw-external-scripts/pull/1
 IN-631=https://github.com/workivate/wa-infrastructure/pull/846
+IN-634=https://github.com/workivate/wa-infrastructure/pull/848
