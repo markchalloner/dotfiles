@@ -1,0 +1,21 @@
+# List any projects you would like to replace with the repository versions for development
+# or testing.
+#- :path: ./lw-shim-api
+#  :guestpath: /srv/wa-shim-api
+#- :path: ./wa-arch
+#  :guestpath: /srv/wa-arch
+#- :path: ./wa-aviato
+#  :guestpath: /srv/wa-aviato
+#  :vagrant_rsync_ignore: ['/target']
+#- :path: ./wa-backend
+#  :guestpath: /srv/wa-backend
+#- :path: ./wa-bouncer
+#  :guestpath: /srv/wa-bouncer
+#- :path: ./wa-hippo
+#  :guestpath: /srv/wa-hippo
+#- :path: ./wa-hermes
+#  :guestpath: /srv/wa-hermes
+#- :path: ./wa-sso
+#  :guestpath: /srv/wa-sso
+#- :path: ./wa-zeus
+#  :guestpath: /srv/wa-zeus-dev

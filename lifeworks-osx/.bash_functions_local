@@ -927,7 +927,7 @@ func_yamldecode() {
     echo "Error: string to decrypt must be passed via stdin or as an argument."
     return 1
   fi
-  eyaml decrypt --pkcs7-private-key="${key_pri}" --pkcs7-public-key="${key_pub}" --stdin <<< "${string}"
+  eyaml decrypt --pkcs7-private-key="${key_pri}" --pkcs7-public-key="${key_pub}" --string "${string}"
 }
 
 func_yamlencode() {
@@ -954,7 +954,7 @@ func_yamlencode() {
   fi
   encrypted="$(eyaml encrypt --pkcs7-public-key="${key_pub}" --output=string --stdin <<< "${string}")"
   decrypted="$(func_yamldecode <<< "${encrypted}")"
-  diff="$(diff -B <(echo "${string}") <(echo "${decrypted}"))"
+  diff="$(diff <(echo "${string}") <(echo "${decrypted}"))"
   if [ $? -ne 0 ]
   then
     echo "Error: decrypted string does not match input:"$'\n'"${diff}"
