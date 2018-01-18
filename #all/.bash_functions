@@ -447,6 +447,17 @@ func_pivstart() {
   fi
 }
 
+func_pivstatus() {
+  local out=$(ps -A | grep "ssh-agent" | grep -v "grep")
+  if [ -n "${out}" ]
+  then
+    echo "${out}"
+    return 0
+  else
+    return 1
+  fi
+}
+
 func_pivstop() {
   ssh-agent -k > /dev/null 2>&1 || pkill ssh-agent 
   return 0
@@ -470,6 +481,21 @@ func_prcache() {
   if [ -f "${prs}" ] && ! $(grep -q "^${ticket}" "${prs}") && ! $(grep -q "${url}$" "${prs}")
   then
     echo "${ticket}=${url}" >> "${personal}/prs.txt"
+  fi
+}
+
+# Prompt
+func_promptyubistatus() {
+  if system_profiler SPUSBDataType | grep -q "Yubikey"
+  then
+    echo -n "yubikey"
+    func_yubistatus > /dev/null 2>&1
+    case $? in
+      1) echo -n "[gpg]" ;;
+      2) echo -n "[piv]" ;; 
+    esac
+  else
+    echo -n "nothing"
   fi
 }
 
@@ -650,6 +676,20 @@ func_yubinul() {
 # Yubikey switch to PIV mode
 func_yubipiv() {
   func_gpgstop && func_pivrestart
+}
+
+func_yubistatus() {
+  if func_gpgstatus > /dev/null 2>&1
+  then
+    echo "gpg-mode"
+    return 1
+  fi
+  if func_pivstatus > /dev/null 2>&1
+  then
+    echo "piv-mode"
+    return 2
+  fi
+  return 3
 }
 
 # Yubikey TOTP

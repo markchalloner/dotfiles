@@ -94,6 +94,7 @@ alias chx="chmod +x"
 # PIV
 alias pivrestart="func_pivrestart"
 alias pivstart="func_pivstart"
+alias pivstatus="func_pivstatus"
 alias pivstop="func_pivstop" 
 
 # PR cache

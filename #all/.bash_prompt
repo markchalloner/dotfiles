@@ -1,13 +1,14 @@
 # If interactive shell.
 if [[ $- == *i* ]]
 then
-  PROMPT_USER_COLOR="$(tput bold)$(tput setaf 6)"
+  PROMPT_USER_COLOR="$(tput bold)$(tput setaf 5)"
   PROMPT_PREPOSITION_COLOR="$(tput bold)"
-  PROMPT_DEVICE_COLOR="$(tput bold)$(tput setaf 2)"
-  PROMPT_DATE_COLOR="$(tput bold)$(tput setaf 3)"
-  PROMPT_DIR_COLOR="$(tput bold)$(tput setaf 1)"
-  PROMPT_GIT_STATUS_COLOR="$(tput bold)$(tput setaf 5)"
-  PROMPT_GIT_PROGRESS_COLOR="$(tput bold)$(tput setaf 5)"
+  PROMPT_DEVICE_COLOR="$(tput bold)$(tput setaf 1)"
+  PROMPT_HSM_COLOR="$(tput bold)$(tput setaf 3)"
+  PROMPT_DATE_COLOR="$(tput bold)$(tput setaf 2)"
+  PROMPT_DIR_COLOR="$(tput bold)$(tput setaf 6)"
+  PROMPT_GIT_STATUS_COLOR="$(tput bold)$(tput setaf 4)"
+  PROMPT_GIT_PROGRESS_COLOR="$(tput bold)$(tput setaf 4)"
   PROMPT_SYMBOL_COLOR="$(tput bold)"
 
   PROMPT_SYNCED_SYMBOL=" $(tput setaf 2)["$'\xe2\x9c\x93'"]"
@@ -18,6 +19,15 @@ then
   PROMPT_DIRTY_UNPULLED_SYMBOL=" $(tput setaf 1)["$'\xe2\x9c\x97\xe2\x87\xa3'"]"
   PROMPT_UNPUSHED_UNPULLED_SYMBOL=" $(tput setaf 2)["$'\xe2\x9c\x93\xe2\x87\xa3\xe2\x87\xa1'"]"
   PROMPT_DIRTY_UNPUSHED_UNPULLED_SYMBOL=" $(tput setaf 1)["$'\xe2\x9c\x97\xe2\x87\xa3\xe2\x87\xa1'"]"
+
+  PROMPT_SYNCED_SYMBOL="["$'\xe2\x9c\x93'"]"
+  PROMPT_DIRTY_SYNCED_SYMBOL="["$'\xe2\x9c\x97'"]"
+  PROMPT_UNPUSHED_SYMBOL="["$'\xe2\x9c\x93\xe2\x87\xa1'"]"
+  PROMPT_DIRTY_UNPUSHED_SYMBOL="["$'\xe2\x9c\x97\xe2\x87\xa1'"]"
+  PROMPT_UNPULLED_SYMBOL="["$'\xe2\x9c\x93\xe2\x87\xa3'"]"
+  PROMPT_DIRTY_UNPULLED_SYMBOL="["$'\xe2\x9c\x97\xe2\x87\xa3'"]"
+  PROMPT_UNPUSHED_UNPULLED_SYMBOL="["$'\xe2\x9c\x93\xe2\x87\xa3\xe2\x87\xa1'"]"
+  PROMPT_DIRTY_UNPUSHED_UNPULLED_SYMBOL="["$'\xe2\x9c\x97\xe2\x87\xa3\xe2\x87\xa1'"]"
 
   # Load sexy-bash-prompt
   if [ -n "${BASH_SOURCE}" ]
@@ -34,6 +44,8 @@ then
 PS1="\[$sexy_bash_prompt_user_color\]\u\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]on\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_device_color\]\h\[$sexy_bash_prompt_reset\] \
+\[$sexy_bash_prompt_preposition_color\]with\[$sexy_bash_prompt_reset\] \
+\[$PROMPT_HSM_COLOR\]\$(func_promptyubistatus)\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]at\[$sexy_bash_prompt_reset\] \
 \[$PROMPT_DATE_COLOR\]$(date "+%Y-%m-%d %H:%M:%S")\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]in\[$sexy_bash_prompt_reset\] \
