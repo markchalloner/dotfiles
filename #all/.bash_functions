@@ -489,7 +489,14 @@ func_prcache() {
 
 # Prompt
 func_promptyubistatus() {
-  if system_profiler SPUSBDataType | grep -q "Yubikey"
+  local command=""
+  for i in "lsusb" "system_profiler SPUSBDataType"
+  do
+    type "${i%% *}" > /dev/null 2>&1 &&
+      command="${i}" &&
+      break
+  done
+  if [ -n "${command}" ] && ${command} | grep -q "Yubikey"
   then
     echo -n "yubikey"
     func_yubistatus > /dev/null 2>&1
