@@ -162,3 +162,4 @@ IN-651=https://github.com/workivate/wa-infrastructure/pull/866
 IN-654-2=https://github.com/workivate/wa-infrastructure/pull/867
 IN-656-2=https://github.com/workivate/wa-infrastructure/pull/869
 IN-652-2=https://github.com/workivate/wa-infrastructure/pull/874
+IN-584=https://github.com/workivate/wa-infrastructure/pull/876

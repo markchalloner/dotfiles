@@ -611,16 +611,18 @@ func_vssh() {
     echo "Running in a tmux session; run \"tmux detach\" first."
     return 1
   fi
-  if [ -n "${dir}" ]
-  then
-    builtin cd "${dir}"
-  fi
-  vagrant status | grep -q "running (virtualbox)"
-  if [ $? -ne 0 ]
-  then
-    vagrant up
-  fi
-  vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux send-keys " source \${HOME}/.bash_profile"; tmux send-keys C-m; tmux attach; else tmux new; fi'
+  (
+    if [ -n "${dir}" ]
+    then
+      builtin cd "${dir}"
+    fi
+    vagrant status | grep -q "running (virtualbox)"
+    if [ $? -ne 0 ]
+    then
+      vagrant up
+    fi
+    vagrant ssh -- -A -t 'if tmux has > /dev/null 2>&1; then tmux send-keys " source \${HOME}/.bash_profile"; tmux send-keys C-m; tmux attach; else tmux new; fi'
+  )
 }
 
 # Print a warning

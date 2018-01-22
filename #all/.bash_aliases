@@ -125,7 +125,7 @@ alias vdot="func_vdot"
 alias vhalt="vagrant halt"
 alias vpro="vagrant reload --provision"
 alias vre="vagrant reload"
-alias vreset="vagrant destroy -f && vagrant box update && vagrant up --debug"
+alias vreset="vagrant destroy -f && vagrant box update && vagrant up"
 alias vssh="func_vssh"
 alias vup="vagrant up"
 

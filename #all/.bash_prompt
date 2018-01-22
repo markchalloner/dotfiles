@@ -47,7 +47,7 @@ PS1="\[$sexy_bash_prompt_user_color\]\u\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]with\[$sexy_bash_prompt_reset\] \
 \[$PROMPT_HSM_COLOR\]\$(func_promptyubistatus)\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]at\[$sexy_bash_prompt_reset\] \
-\[$PROMPT_DATE_COLOR\]$(date "+%Y-%m-%d %H:%M:%S")\[$sexy_bash_prompt_reset\] \
+\[$PROMPT_DATE_COLOR\]\D{%F %T}\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]in\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\]\
 \$( sexy_bash_prompt_is_on_git && \
