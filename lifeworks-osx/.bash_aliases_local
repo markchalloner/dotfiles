@@ -10,6 +10,9 @@ alias awssshkey="func_awssshkey"
 alias awssudo="func_awssudo"
 alias awsupdbtest="func_awsupdbtest"
 
+# Buildcloud
+alias bcinit="(cdinfra && func_bcinit)"
+
 # Browser
 alias gx="func_gx"
 alias jr="func_jr"

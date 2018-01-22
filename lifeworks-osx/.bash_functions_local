@@ -597,6 +597,47 @@ func_awsupcmdline() {
   RETVAL='curl -X PUT -T "'${file_local}'" -H "Host: '${bucket}'.s3.amazonaws.com" -H "Date: '${date}'" -H "Content-Type: '${content_type}'" -H "'${acl}'" -H "Authorization: AWS '${key}':'${signature}'" "https://'${bucket}'.s3.amazonaws.com'${file_remote}'"'
 }
 
+func_bcinit() {
+  local dir="support/aws-buildcloud"
+  local dir_base="$(grep -o "^.*/wa-infrastructure" <<< "${PWD}")"
+  local env=""
+  local env_upper=""
+  local aws_access_key_id_var=""
+  local aws_secret_access_key_var=""
+  local aws_access_key_id=""
+  local aws_secret_access_key=""
+  if [ -z "$dir_base" ] || [ ! -d "$dir_base" ]
+  then
+    echo 'Error: must be in a valid wa-infrastructure project.'
+    return 1
+  fi
+  (
+    cd "$dir_base/$dir"
+    mkdir -p "rs.workangel.com/vpc_credentials"
+    for env in "mgmt" "live" "test" "data-live" "data-test"
+    do
+        env_upper="$(awk '{gsub("-","_",$0)}{print toupper($0)}' <<< "$env")"
+        aws_access_key_id_var="AWS_${env_upper}_ACCESS_KEY_ID"
+        aws_secret_access_key_var="AWS_${env_upper}_SECRET_ACCESS_KEY"
+        aws_access_key_id="${!aws_access_key_id_var}"
+        aws_secret_access_key="${!aws_secret_access_key_var}"
+        if [ -z "$aws_access_key_id" ]
+        then
+            echo "Warning: Unable to find access key id for $env in $aws_access_key_id_var."
+	    continue
+        fi
+        if [ -z "$aws_secret_access_key" ]
+        then
+            echo "Warning: Unable to find secret access key for $env in $aws_secret_access_key_var."
+	    continue
+        fi
+        printf "%s\n%s\n%s\n%s\n" "---" ":aws_access_key_id: \"${aws_access_key_id}\"" ":aws_secret_access_key: \"${aws_secret_access_key}\"" ":aws_region: \"eu-west-1\"" > rs.workangel.com/vpc_credentials/${env}.yaml
+    done
+    rm -rf vendor/bundle
+    bundle install
+  )
+}
+
 func_env2termcolor() {
   RETVAL=""
   case "${1}" in
