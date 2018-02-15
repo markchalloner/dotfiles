@@ -743,10 +743,6 @@ func_gx() {
   local sub=
   local pr=
   local ticket=
-  if $(git status > /dev/null 2>&1)
-  then
-    func_remind "hub browse"
-  fi
   case "${path}" in
     "f"|"feed")
       url="${url_base}"
@@ -774,6 +770,10 @@ func_gx() {
       ;;
     "pr"|"pull-request")
       pr="${2}"
+      if [ -z "$pr" ] && git status > /dev/null 2>&1 && grep -q '\(IN\|ISS\|LT\|RA\)-[0-9]\+' <<< "$(git rev-parse --abbrev-ref HEAD)"
+      then
+        pr="$(git rev-parse --abbrev-ref HEAD)"
+      fi
       func_gcliticket2pull "${pr}"
       url="${RETVAL}"
       ;;
@@ -888,6 +888,19 @@ func_projnick2full() {
       ;;
   esac
   echo "${full}"
+}
+
+func_teelog() {
+  func_stdin
+  local stdin="${RETVAL}"
+  local dir="$HOME/tmp"
+  local ticket="$1"
+  if [ -z "$ticket" ]
+  then
+    ticket="output"
+  fi
+  mkdir -p "$dir"
+  sed 's/'$'\E''\[[0-9;]*[A-Za-z]//g' <<< "$stdin" | tee "$dir/$ticket.log"
 }
 
 func_up() {

@@ -46,6 +46,7 @@ alias cdarch="builtin cd ${WA_ROOT}/wa-arch"
 alias cdaviato="builtin cd ${WA_ROOT}/wa-aviato"
 alias cdbouncer="builtin cd ${WA_ROOT}/wa-bouncer"
 alias cdcontent="builtin cd ${WA_ROOT}/wa-api-content"
+alias cdcore="builtin cd ${WA_ROOT}/lw-core-scripts"
 alias cddoc="builtin cd ${WA_ROOT}/wa-api-documentation"
 alias cdbackend="builtin cd ${WA_ROOT}/wa-backend"
 alias cdhippo="builtin cd ${WA_ROOT}/wa-hippo"
@@ -67,12 +68,11 @@ alias pt="func_phpstorm"
 alias phpstorm="func_phpstorm"
 
 # SSH
-alias sshtestapp1="func_ssh test-app1 ${NETUSER}"
-alias sshtestapp2="func_ssh test-app2 ${NETUSER}"
-alias sshtestapp3="func_ssh test-app3 ${NETUSER}"
-alias sshtestmongo1="func_ssh test-mongodb1 ${NETUSER}"
-alias sshtestmongo2="func_ssh test-mongodb2 ${NETUSER}"
-alias sshtestmongo3="func_ssh test-mongodb3 ${NETUSER}"
+alias sshsftp="ssh -i ${SSH_SFTP_KEY} ${SSH_SFTP_USER}@${SSH_SFTP_HOST}"
+alias sshdatalive="ssh -i ${SSH_DATA_LIVE_KEY} ${SSH_DATA_LIVE_USER}@${SSH_DATA_LIVE_HOST}"
+
+# Tee
+alias teelog="func_teelog"
 
 # Vagrant
 alias vdotwa="(cdwa && vdot)"
