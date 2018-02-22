@@ -24,7 +24,7 @@ curl -sSL https://raw.githubusercontent.com/git/git/master/contrib/completion/gi
 curl -sSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o /usr/share/git-core/git-prompt.sh
 curl -kLsS https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg > /bin/apt-cyg && chmod a+x /bin/apt-cyg
 apt-cyg install wget
-apt-cyg install git make python python-pip python-setuptools ssh-pageant vim
+apt-cyg install git make procps-ng python python-pip python-setuptools ssh-pageant vim
 pip install awscli
 ```
 

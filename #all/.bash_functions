@@ -527,6 +527,93 @@ func_sshp() {
   func_yubipiv && func_ssh -o PreferredAuthentications=publickey $@
 }
 
+func_sshtunneldown() {
+    local dir_config=$HOME/.ssh-tunnel
+    local file_known_hosts=$dir_config/known_hosts
+    local file_control_path=$dir_config/control_path
+    local hosts=( "$@" )
+    local status="$(func_sshtunnelstatus)"
+    if [ -z "$status" ]
+    then
+      return 1
+    fi
+    while IFS='' read -r line || [[ -n "$line" ]]
+    do
+      host=${line%% *}
+      port=${line#* }
+      if [ ${#hosts[@]} -eq 0 ] || printf '%s\n' "${hosts[@]}" | grep -q "^$host$"
+      then
+        echo "Destroying existing SSH tunnel to $host on $port."
+        ssh -O "exit" -S "${file_control_path}_${port}" "$host" > /dev/null 2>&1
+        sed -i.bak "/^$host,$port/d" "$file_known_hosts"
+      fi
+    done <<< "$status"
+}
+
+func_sshtunnelstatus() {
+  local dir_config=$HOME/.ssh-tunnel
+  local file_known_hosts=$dir_config/known_hosts
+  local file_control_path=$dir_config/control_path
+  local host
+  local port
+  local count
+  if [ -f "$file_known_hosts" ]
+  then
+    while IFS='' read -r line || [[ -n "$line" ]]
+    do
+        host=${line%%,*}
+        line=${line#*,}
+        port=${line%% *}
+        echo $host $port
+    done < "$file_known_hosts"
+  fi
+}
+
+func_sshtunnelup() {
+  local key="$1"; shift
+  local dir_config=$HOME/.ssh-tunnel
+  local file_known_hosts=$dir_config/known_hosts
+  local file_control_path=$dir_config/control_path
+  local hosts=( "$@" )
+  local host
+  local port=1079
+  mkdir -p $dir_config
+  while true
+  do
+    if [ ${#hosts[@]} -eq 0 ]
+    then
+      break
+    fi
+    port=$(($port+1))
+
+    if [ -e "${file_control_path}_${port}" ]
+    then
+      for i in ${!hosts[@]}
+      do
+        host=${hosts[$i]}
+        if grep -q "$host $port" <<< "$(func_sshtunnelstatus)"
+        then
+          echo "Skipped existing SSH tunnel to $host on $port."
+          unset "hosts[$i]"
+          hosts=( "${hosts[@]}" )
+        fi
+      done
+      continue
+    fi
+
+    host=${hosts[0]}
+    if ! grep -q "$host" <<< "$(func_sshtunnelstatus)"
+    then
+      echo "$host,$port $key" >> "$file_known_hosts"
+    fi
+    if ssh -f -N -T -D $port ec2-user@$host -o "UserKnownHostsFile=$file_known_hosts" -o "ControlMaster=yes" -o "ControlPath=${file_control_path}_${port}"
+    then
+      echo "Created new SSH tunnel to $host on port $port."
+    fi
+    hosts=("${hosts[@]:1}")
+  done
+}
+
 func_sshunpin()
 {
   line="${1}"

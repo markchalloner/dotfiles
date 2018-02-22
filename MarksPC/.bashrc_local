@@ -3,5 +3,8 @@
 [ -f ~/.bash_envvars_local ]   && . ~/.bash_envvars_local
 [ -f ~/.bash_aliases_local ]   && . ~/.bash_aliases_local
 
+# Restart GPG-Agent
+cmd /c "gpg-connect-agent killagent /bye && gpg-connect-agent /bye" > /dev/null 2>&1
+
 # Start SSH-Agent.
-eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")
+eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME") > /dev/null 2>&1

@@ -1,2 +1,5 @@
 # Hub
 alias gitcm="func_gitcm '' y"
+
+# SSH
+alias sshtu="func_sshtunnelup \"$SSH_AWS_HOST_KEY\""

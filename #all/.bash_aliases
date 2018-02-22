@@ -105,7 +105,10 @@ alias vipr="vi ${HOME}/.personal/prs.txt"
 # SSH
 alias ssh="func_ssh"
 alias sshp="func_sshp"
-alias sshunpin="func_sshunpin"
+alias sshtd="func_sshtunneldown"
+alias sshts="func_sshtunnelstatus"
+alias sshtu="func_sshtunnelup"
+alias sshu="func_sshunpin"
 
 # Sudo
 alias sudom="sudo bash -c"
