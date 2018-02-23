@@ -7,17 +7,15 @@
 #### Linux
 
 ```
-sudo bash -c 'echo "<hostname>" > /etc/hostname'
+HOSTNAME=
+sudo bash -c "echo '$HOSTNAME' > /etc/hostname"
 ```
 
 #### OSX
 
 ```
-(
-HOSTNAME="<hostname>"
-sudo scutil --set HostName ${HOSTNAME}
-sudo scutil --set LocalHostName ${HOSTNAME}
-)
+HOSTNAME=
+sudo bash -c "scutil --set HostName '$HOSTNAME' ; scutil --set LocalHostName '$HOSTNAME'"
 ```
 
 ### Install dotfiles
