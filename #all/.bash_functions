@@ -306,7 +306,11 @@ func_gpgrestart() {
 
 func_gpgstart() {
   local gpgvars
-  gpgvars=$(gpg-agent --daemon)
+  if type gnupg-pkcs11-scd > /dev/null 2>&1
+  then
+    eval $(gnupg-pkcs11-scd --daemon > /dev/null 2>&1)
+  fi
+  gpgvars=$(gpg-agent --daemon > /dev/null 2>&1)
   local result=${?}
   if [ ${result} -eq 0 ]
   then
@@ -323,7 +327,8 @@ func_gpgstart() {
 }
 
 func_gpgstatus() {
-  local out=$(ps -A | grep "gpg-agent.\+--daemon" | grep -v "grep")
+  local cmd="${1:-gpg-agent}"
+  local out=$(ps -A | grep "${cmd}.\+--daemon" | grep -v "grep")
   if [ -n "${out}" ]
   then
     echo "${out}"
@@ -334,11 +339,14 @@ func_gpgstatus() {
 }
 
 func_gpgstop() {
-  local pid=$(gpgstatus | awk '{print $1}')
-  if [ -n "${pid}" ]
-  then
-    kill -9 "${pid}"
-  fi
+  for i in gnupg-pkcs11-scd gpg-agent
+  do
+    local pid=$(gpgstatus "$i" | awk '{print $1}')
+    if [ -n "${pid}" ]
+    then
+      kill -9 "${pid}"
+    fi
+  done
 }
 
 # Use hub rather than git if installed
