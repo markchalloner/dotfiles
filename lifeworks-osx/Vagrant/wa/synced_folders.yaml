@@ -19,8 +19,8 @@
 #  :guestpath: /srv/wa-backend
 #- :path: ./wa-bouncer
 #  :guestpath: /srv/wa-bouncer
-#- :path: ./wa-hippo
-#  :guestpath: /srv/wa-hippo
+- :path: ./wa-hippo
+  :guestpath: /srv/wa-hippo
 #- :path: ./wa-hermes
 #  :guestpath: /srv/wa-hermes
 #- :path: ./wa-minerva

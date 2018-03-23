@@ -22,19 +22,13 @@
       - hippo
       - apibackend
       - adminsftp
-      - minerva
       - thirdpartyintegrations
-  :synced_folders:
-    - :path: ./wa-api
-      :guestpath: /srv/wa-api
-    - :path: ./wa-automation-backend
-      :guestpath: /srv/wa-automation-backend
-    - :path: ./wa-automation
-      :guestpath: /srv/wa-automation
-    - :path: ./lw-admin-sftp
-      :guestpath: /srv/wa-admin-sftp
-#    - :path: ./wa-minerva
-#      :guestpath: /srv/wa-minerva
+  :aws_access_key: AKIAJQD3CYNYM5ZUXLXA
+  :aws_access_secret: LKt6p66z7/ZT52EkxxNugA2MQPDNqT3vk2v55dpG
+  # If you want to mount any folders into vagrant, for example your local
+  # development repositories, these should go in a file called synced_folders.yaml
+  # See vagrant-configs/synced_folders.yaml.dist
+  #:synced_folders:
   # We set these explicity to prevent vagrant user from using proxy settings in
   # /srv/environment during vagrant provision
   :puppet_envs:
@@ -58,8 +52,9 @@
   dev:
     :hostname:    dev
     :ip:          192.168.189.11
-    :box:         scalefactory/centos6
-    :box_version: '~>1.1'
+    :box:         lifeworks/centos6
+    :box_url:     https://s3-eu-west-1.amazonaws.com/lw-vagrant-boxes/lifeworks-centos6.json
+    :box_version: '~>1.0'
     :primary:     true
 
   dev-next:
