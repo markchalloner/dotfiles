@@ -328,7 +328,7 @@ func_gpgstart() {
 
 func_gpgstatus() {
   local cmd="${1:-gpg-agent}"
-  local out=$(ps -A | grep "${cmd}.\+--daemon" | grep -v "grep")
+  local out=$(ps -A | grep "${cmd}" | grep -v "grep")
   if [ -n "${out}" ]
   then
     echo "${out}"

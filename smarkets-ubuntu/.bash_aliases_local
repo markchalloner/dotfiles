@@ -1,0 +1,3 @@
+# CD
+alias cdsm="cd $SM_ROOT"
+

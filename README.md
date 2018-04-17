@@ -35,8 +35,13 @@ link-files -i -o
 gpgrestart
 ```
 
-### Convert dotfiles to ssh (for editing)
+### Set user details and origin to ssh (for editing)
 
 ```
-(.cd && git remote set-url origin git@github.com:markchalloner/dotfiles.git)
+(
+.cd
+git config user.name "Mark Challoner"
+git config user.email "mark.a.r.challoner@gmail.com"
+git remote set-url origin git@github.com:markchalloner/dotfiles.git
+)
 ```

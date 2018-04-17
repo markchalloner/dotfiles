@@ -1,0 +1,4 @@
+# OS specific
+
+# Smarkets specific
+export SM_ROOT="${HOME}/Development/smarkets"
