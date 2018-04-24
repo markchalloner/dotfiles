@@ -1,3 +1,33 @@
 # CD
+alias cddev="cd $DEV_ROOT"
+alias cdha="cd $HA_ROOT"
+alias cdsad="cdscs && cd admin"
+alias cdscs="cdssv && cd cscs"
+alias cdsev="cdssv && cd events"
+alias cdsmk="cdssv && cd marketing"
+alias cdsin="cdssv && cd infrastructure"
+alias cdspa="cdssv && cd pyapi"
 alias cdsm="cd $SM_ROOT"
+alias cdssv="cdsm && cd services"
 
+# Crane
+alias cr="$HA_ROOT/crane/crane"
+alias crd="cr dev:local"
+alias crh="$HA_ROOT/crane/crane help | less"
+
+# Kubernetes
+alias kudp="kubectl get pods --all-namespaces"
+alias kudg="kubectl get pods --all-namespaces"
+alias kul="kubectl logs"
+alias kux="kubectl exec -it"
+
+# Paver
+alias pavdel="paver delete"
+alias pavdev="pavdel && paver start_dev"
+alias pavrloc="pavdel && paver run_local"
+alias pavrreg="pavdel && paver run_registry"
+alias pavsh="pavdev && paver shell"
+
+# Smarkets
+alias smdel="(cdsm && tools/dev/delete_all.sh)"
+alias smrun="(cdsm && tools/dev/run_minimal.sh)"

@@ -4,12 +4,11 @@
 [ -f ~/.bash_aliases_local ]   && . ~/.bash_aliases_local
 
 # GPG settings
-#if [ -f "${HOME}/.gpg-agent-info" ]
-#then
-#	. "${HOME}/.gpg-agent-info"
-#	export GPG_AGENT_INFO
-#fi
-#
+if [ -f "${HOME}/.gpg-agent-info" ]
+then
+	. "${HOME}/.gpg-agent-info"
+	export GPG_AGENT_INFO
+fi
 
 # Development
-. $SM_ROOT/tools/dev/setup/activate.sh
+. $SM_ROOT/tools/dev/setup/activate.sh > /dev/null 2>&1

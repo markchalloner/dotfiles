@@ -1,3 +1,5 @@
 func_pathadd "${HOME}/bin:${HOME}/Software/Bin"
 
+export EDITOR='vi'
+export VISUAL='vi'
 export GPG_TTY=$(tty)

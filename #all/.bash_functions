@@ -445,13 +445,28 @@ func_pivrestart() {
 
 # 
 func_pivstart() {
-  eval $({ ssh-agent -P '/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null) > /dev/null 2>&1
+  local lib=
+  for i in /usr/lib/opensc-pkcs11.so /usr/lib/pkcs11/opensc-pkcs11.so /usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so /usr/local/lib/opensc-pkcs11.so /usr/local/lib/pkcs11/opensc-pkcs11.so
+  do
+    if [ -f "$i" ]
+    then
+      lib="$i"
+      break
+    fi
+  done
+
+  if [ -z "$lib" ]
+  then
+    echo "Error: no opensc-pkcs11.so library found."
+    return 1
+  fi
+
+  eval $({ ssh-agent -P '/usr/lib/*,/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null) > /dev/null 2>&1
   if [ $? -eq 0 ]
   then
     ssh-add -D > /dev/null 2>&1
-    ssh-add -e /usr/local/lib/pkcs11/opensc-pkcs11.so > /dev/null 2>&1
-    ssh-add -t 900 -s /usr/local/lib/pkcs11/opensc-pkcs11.so 2> /dev/null
-    #ssh-add -K > /dev/null 2>&1
+    ssh-add -e "$lib" > /dev/null 2>&1
+    ssh-add -t 900 -s "$lib" 2> /dev/null
   fi
 }
 

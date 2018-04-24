@@ -1,4 +1,6 @@
 # OS specific
 
 # Smarkets specific
-export SM_ROOT="${HOME}/Development/smarkets"
+export DEV_ROOT="${HOME}/Development"
+export HA_ROOT="${DEV_ROOT}/hanson"
+export SM_ROOT="${DEV_ROO}/smarkets"
