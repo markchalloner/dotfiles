@@ -8,15 +8,15 @@ keyboard_id="$(xinput --list | grep "Microsoft.*2\.4GHz Transceiver.*keyboard" |
 
 echo "========================================" >> $LOG
 date >> $LOG
-echo "Running $0." >> $LOG
-echo "YUbico USB status: $(/usr/bin/lsusb | grep 'Yubico')" >> $LOG
+echo "Running $0 $1." >> $LOG
+echo "Yubico USB status: $(/usr/bin/lsusb | grep 'Yubico')" >> $LOG
 echo "Xinput devices: " >> $LOG
 /usr/bin/xinput >> $LOG
 echo "Xinput state for device $keyboard_id: " >> $LOG
 echo $(/usr/bin/xinput --query-state "$keyboard_id") >> $LOG
 
 #If Yubikey is not still attached and CTRL is not pressed.
-if /usr/bin/lsusb | grep -q -v 'Yubico' && /usr/bin/xinput --query-state "$keyboard_id" | grep -q 'key\[37\]=up'
+if [ "$1" == "lock" ] && /usr/bin/lsusb | grep -q -v 'Yubico' && /usr/bin/xinput --query-state "$keyboard_id" | grep -q 'key\[37\]=up'
 then
   # Lock windows sessions.
   echo "Locking window sessions." >> $LOG
@@ -32,3 +32,9 @@ then
   done
 fi
 
+if [ "$1" == "wake" ]
+then
+  # Waking display.
+  echo "Waking display." >> $LOG
+  /usr/bin/xdotool click 1
+fi
