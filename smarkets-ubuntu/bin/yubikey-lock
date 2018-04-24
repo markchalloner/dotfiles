@@ -36,5 +36,5 @@ if [ "$1" == "wake" ]
 then
   # Waking display.
   echo "Waking display." >> $LOG
-  /usr/bin/xdotool click 1
+  /usr/bin/xdotool key "ctrl"
 fi
