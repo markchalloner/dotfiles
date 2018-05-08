@@ -50,6 +50,7 @@ alias gitmt="func_gitmt"
 alias gitpl="yubipiv && git pull"
 alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
 alias gitpu="yubipiv && git push origin \$(gitb)"
+alias gitre="yubigpg && git rebase -S -i"
 alias gitsa="git status"
 alias gitst="func_gitst"
 
@@ -61,6 +62,9 @@ alias gpgrestart="func_gpgrestart"
 alias gpgstart="func_gpgstart"
 alias gpgstatus="func_gpgstatus"
 alias gpgstop="func_gpgstop"
+
+# Group
+alias grpassign="func_grpassign"
 
 # Hosts
 alias vihosts="sudo vi /etc/hosts"
@@ -103,6 +107,9 @@ alias pivstop="func_pivstop"
 alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt"
 alias prca="func_prcache"
 alias vipr="vi ${HOME}/.personal/prs.txt"
+
+# SCP
+alias scp="yubipiv && scp"
 
 # SSH
 alias ssh="func_ssh"

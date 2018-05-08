@@ -1,3 +1,6 @@
+# Ansible
+alias ap="yubipiv && ansible-playbook -u \$SM_SSH_USER"
+
 # CD
 alias cddev="cd $DEV_ROOT"
 alias cdha="cd $HA_ROOT"
@@ -9,17 +12,26 @@ alias cdsin="cdssv && cd infrastructure"
 alias cdspa="cdssv && cd pyapi"
 alias cdsm="cd $SM_ROOT"
 alias cdssv="cdsm && cd services"
+alias cdst="cdsm && cd tools"
+alias cdsta="cdst && cd ansible"
 
 # Crane
 alias cr="$HA_ROOT/crane/crane"
 alias crd="cr dev:local"
 alias crh="$HA_ROOT/crane/crane help | less"
 
+# Environments
+alias envvev="[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate""
+alias envk8s="[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh" > /dev/null 2>&1"
+
+# Git
+alias gitca="yubigpg && git commit -S --amend --no-edit"
+
 # Kubernetes
 alias kudp="kubectl get pods --all-namespaces"
 alias kudg="kubectl get pods --all-namespaces"
-alias kul="kubectl logs"
-alias kux="kubectl exec -it"
+alias kulg="kubectl logs"
+alias kush="func_kubeshell"
 
 # Paver
 alias pavdel="paver delete"
@@ -31,3 +43,7 @@ alias pavsh="pavdev && paver shell"
 # Smarkets
 alias smdel="(cdsm && tools/dev/delete_all.sh)"
 alias smrun="(cdsm && tools/dev/run_minimal.sh)"
+
+# SSH
+alias sshdep="ssh -A \$SM_SSH_USER@\$SM_SSH_HOST_DEPLOY"
+alias sshsm="func_sshsmarkets"

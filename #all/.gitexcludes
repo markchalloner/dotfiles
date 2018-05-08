@@ -1,5 +1,8 @@
 .DS_Store
 .idea
-*.swp
+.*.sw[op]
 npm-debug.log
 venv
+
+# Smarkets
+services/frontend/mock-fe-api/app/src/data

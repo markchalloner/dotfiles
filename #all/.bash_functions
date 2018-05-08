@@ -310,11 +310,14 @@ func_gpgstart() {
   then
     eval $(gnupg-pkcs11-scd --daemon > /dev/null 2>&1)
   fi
-  gpgvars=$(gpg-agent --daemon > /dev/null 2>&1)
+  gpgvars=$(gpg-agent --daemon --write-env-file ~/.gpg-agent-info > /dev/null 2>&1)
   local result=${?}
   if [ ${result} -eq 0 ]
   then
     eval "${gpgvars}"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
     gpg --no-tty --card-status > /dev/null 2>&1
     result=${?}
     if [ ${result} -ne 0 ]
@@ -347,6 +350,17 @@ func_gpgstop() {
       kill -9 "${pid}"
     fi
   done
+}
+
+func_grpassign()
+{
+  local new="$1"; shift
+  if [ -z "$new" ]
+  then
+    echo "Error: must specify a group"
+  fi
+
+  exec sg "$new" newgrp $(id -gn)
 }
 
 # Use hub rather than git if installed
@@ -462,11 +476,13 @@ func_pivstart() {
   fi
 
   eval $({ ssh-agent -P '/usr/lib/*,/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null) > /dev/null 2>&1
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
   if [ $? -eq 0 ]
   then
     ssh-add -D > /dev/null 2>&1
     ssh-add -e "$lib" > /dev/null 2>&1
-    ssh-add -t 900 -s "$lib" 2> /dev/null
+    ssh-add -t 3600 -s "$lib" 2> /dev/null
   fi
 }
 
@@ -540,6 +556,7 @@ func_remind() {
 
 # SSH with network user
 func_ssh() {
+  func_yubipiv
   /usr/bin/ssh $@
   local result=${?}
   func_termcolor "default"

@@ -11,4 +11,4 @@ then
 fi
 
 # Development
-. $SM_ROOT/tools/dev/setup/activate.sh > /dev/null 2>&1
+[ -f "$HOME/.ansible_secret_environment" ] && source "$HOME/.ansible_secret_environment"
