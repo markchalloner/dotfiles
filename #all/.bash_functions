@@ -166,6 +166,26 @@ func_exec() {
   fi
 }
 
+# Show branches with description
+func_gitbr() {
+  if [ ${#} -gt 0 ]
+  then
+    git branch ${@}
+    return $?
+  fi
+  local branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for branch in $branches; do
+    desc=$(git config branch.$branch.description)
+    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]
+    then
+      branch="* \033[0;32m$branch\033[0m"
+    else
+       branch="  $branch"
+    fi
+    echo -e "$branch \033[0;36m$desc\033[0m"
+  done
+}
+
 # Commit optionaly adding the branch if it exactly matches ${1}
 func_gitcm() {
   local match="${1}"

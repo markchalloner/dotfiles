@@ -34,11 +34,13 @@ alias gitad="git add -A && git diff --cached"
 alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"mark.a.r.challoner@gmail.com\""
 alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
 alias gitb="git rev-parse --abbrev-ref HEAD"
+alias gitbd="git branch --edit-description"
+alias gitbr="func_gitbr"
 alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
 alias gitdf="git diff"
 alias gitll="git log -1 --oneline | cut -f 2- -d ' '"
 alias gitcl="gitclr && gitcll"
-alias gitcll="git branch --merged | grep -v \"develop\|master\|qa\|release\|staging\|test\|^\*\" | xargs -n 1 git branch -d"
+alias gitcll="git branch --merged master | grep -v \"develop\|master\|qa\|release\|staging\|test\|^\*\" | xargs -n 1 git branch -d"
 alias gitclr="yubipiv && git remote prune origin"
 alias gitco="git checkout"
 alias gitcm="func_gitcm '' 'y'"
@@ -129,7 +131,7 @@ alias tee="stripcolors | tee"
 alias stripcolors="sed 's/'$'\E''\[[0-9;]*[A-Za-z]//g'"
 
 # Tmux
-alias tmuxs="[ -z "\$TMUX" ] && tmux -V > /dev/null 2>&1 && { tmux has -t init > /dev/null 2>&1 && tmux attach -t init || tmux new -s init ; }"
+alias tmuxs="[ -z "\$TMUX" ] && [ -n "\$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "\$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "\$TMUX_TTY" || tmux new -s "\$TMUX_TTY" ; }"
 alias tmuxd="tmux detach"
 
 # Vagrant

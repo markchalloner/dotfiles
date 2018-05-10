@@ -21,7 +21,7 @@ alias crd="cr dev:local"
 alias crh="$HA_ROOT/crane/crane help | less"
 
 # Environments
-alias envvev="[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate""
+alias envans="[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate""
 alias envk8s="[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh" > /dev/null 2>&1"
 
 # Git
