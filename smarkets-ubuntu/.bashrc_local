@@ -3,12 +3,5 @@
 [ -f ~/.bash_envvars_local ]   && . ~/.bash_envvars_local
 [ -f ~/.bash_aliases_local ]   && . ~/.bash_aliases_local
 
-# GPG settings
-if [ -f "${HOME}/.gpg-agent-info" ]
-then
-	. "${HOME}/.gpg-agent-info"
-	export GPG_AGENT_INFO
-fi
-
 # Development
 [ -f "$HOME/.ansible_secret_environment" ] && source "$HOME/.ansible_secret_environment"

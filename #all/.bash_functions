@@ -479,6 +479,7 @@ func_pivrestart() {
 
 # 
 func_pivstart() {
+  local envfile=~/.ssh-agent-info
   local lib=
   for i in /usr/lib/opensc-pkcs11.so /usr/lib/pkcs11/opensc-pkcs11.so /usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so /usr/local/lib/opensc-pkcs11.so /usr/local/lib/pkcs11/opensc-pkcs11.so
   do
@@ -495,14 +496,13 @@ func_pivstart() {
     return 1
   fi
 
-  eval $({ ssh-agent -P '/usr/lib/*,/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null) > /dev/null 2>&1
-  export SSH_AUTH_SOCK
-  export SSH_AGENT_PID
+  { ssh-agent -P '/usr/lib/*,/usr/local/lib/*,/usr/local/Cellar/opensc/*' || ssh-agent; } 2> /dev/null > "$envfile"
+  source "$envfile" > /dev/null
   if [ $? -eq 0 ]
   then
     ssh-add -D > /dev/null 2>&1
     ssh-add -e "$lib" > /dev/null 2>&1
-    ssh-add -t 3600 -s "$lib" 2> /dev/null
+    ssh-add -s "$lib" 2> /dev/null
   fi
 }
 
@@ -576,7 +576,7 @@ func_remind() {
 
 # SSH with network user
 func_ssh() {
-  func_yubipiv
+  func_pivstatus > /dev/null || func_yubipiv
   /usr/bin/ssh $@
   local result=${?}
   func_termcolor "default"
@@ -584,7 +584,8 @@ func_ssh() {
 }
 
 func_sshp() {
-  func_yubipiv && func_ssh -o PreferredAuthentications=publickey $@
+  func_pivstatus > /dev/null || func_yubipiv
+  func_ssh -o PreferredAuthentications=publickey $@
 }
 
 func_sshtunneldown() {
