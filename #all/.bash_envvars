@@ -4,3 +4,4 @@ export EDITOR='vi'
 export VISUAL='vi'
 export GPG_TTY="$(tty)"
 export TMUX_TTY="tty$(tty | awk 'BEGIN {FS="/"} {print $4}')"
+export DEV_ROOT="$HOME/Development"

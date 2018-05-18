@@ -1,6 +1,14 @@
 # Alias management
 alias aliasr="func_aliasr "\${1}""
 
+# AWS
+alias awssub="aws ec2 describe-subnets"
+
+# Navigation
+alias cddown="cd $HOME/Downloads"
+alias cddev="cd $DEVROOT"
+alias cdtmp="cd $HOME/Temp"
+
 # Dotfile editing
 alias viag="vi ~/.bash_aliases && unalias -a && .reload"
 alias vial="vi ~/.bash_aliases_local && unalias -a && .reload"
@@ -15,6 +23,7 @@ alias vipl="vi ~/.bash_profile_local && .reload"
 alias virg="vi ~/.bashrc && .reload"
 alias virl="vi ~/.bashrc_local && .reload"
 alias virp="vi ~/.bashrc_private && .reload"
+alias vitg="vi ~/.tmux.conf"
 
 # Dotfile management
 alias .cd="func_dotcd"
@@ -49,10 +58,11 @@ alias gitdf="git diff"
 alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gitmg="func_gitmg"
 alias gitmt="func_gitmt"
-alias gitpl="yubipiv && git pull"
+alias gitpl="func_gitpl"
 alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
 alias gitpu="yubipiv && git push origin \$(gitb)"
 alias gitre="yubigpg && git rebase -S -i"
+alias gitrv="yubigpg && git revert -S"
 alias gitsa="git status"
 alias gitst="func_gitst"
 

@@ -2,14 +2,14 @@
 alias ap="yubipiv && ansible-playbook -u \$SM_SSH_USER"
 
 # CD
-alias cddev="cd $DEV_ROOT"
 alias cdha="cd $HA_ROOT"
 alias cdsad="cdscs && cd admin"
+alias cdsan="cdst && cd ansible"
 alias cdscs="cdssv && cd cscs"
 alias cdsev="cdssv && cd events"
 alias cdsmk="cdssv && cd marketing"
 alias cdsin="cdssv && cd infrastructure"
-alias cdspa="cdssv && cd pyapi"
+alias cdsp="cdsm && cd packages"
 alias cdsm="cd $SM_ROOT"
 alias cdssv="cdsm && cd services"
 alias cdst="cdsm && cd tools"
@@ -19,6 +19,9 @@ alias cdsta="cdst && cd ansible"
 alias cr="$HA_ROOT/crane/crane"
 alias crd="cr dev:local"
 alias crh="$HA_ROOT/crane/crane help | less"
+
+# Docker
+alias dockib="docker images | grep \"\$(gitb)\""
 
 # Environments
 alias envans="[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate""
