@@ -1,0 +1,53 @@
+<monitors version="1">
+  <configuration>
+      <clone>no</clone>
+      <output name="HDMI-1">
+          <vendor>DEL</vendor>
+          <product>0xd067</product>
+          <serial>0x30384253</serial>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>60</rate>
+          <x>2880</x>
+          <y>0</y>
+          <rotation>right</rotation>
+          <reflect_x>no</reflect_x>
+          <reflect_y>no</reflect_y>
+          <primary>yes</primary>
+      </output>
+      <output name="DP-1">
+          <vendor>DEL</vendor>
+          <product>0xd066</product>
+          <serial>0x30373253</serial>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>60</rate>
+          <x>0</x>
+          <y>0</y>
+          <rotation>left</rotation>
+          <reflect_x>no</reflect_x>
+          <reflect_y>no</reflect_y>
+          <primary>no</primary>
+      </output>
+      <output name="HDMI-2">
+      </output>
+      <output name="DP-2">
+          <vendor>DEL</vendor>
+          <product>0xd066</product>
+          <serial>0x30444a4c</serial>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>60</rate>
+          <x>1440</x>
+          <y>0</y>
+          <rotation>right</rotation>
+          <reflect_x>no</reflect_x>
+          <reflect_y>no</reflect_y>
+          <primary>no</primary>
+      </output>
+      <output name="HDMI-3">
+      </output>
+      <output name="DP-3">
+      </output>
+  </configuration>
+</monitors>
