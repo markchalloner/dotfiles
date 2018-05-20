@@ -1,0 +1,5 @@
+# OS specific
+
+# Smarkets specific
+export HA_ROOT="$DEV_ROOT/hanson"
+export SM_ROOT="$DEV_ROOT/smarkets"

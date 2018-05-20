@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+export XAUTHORITY="$XAUTHORITY"
+
+LOG=/tmp/yubikey.log
+
+keyboard_id="$(xinput --list | grep "Microsoft.*2\.4GHz Transceiver.*keyboard" | sed 's/.*id=\([0-9]\+\).*/\1/g')"
+
+echo "========================================" >> $LOG
+date >> $LOG
+echo "Running $0 $1." >> $LOG
+echo "Yubico USB status: $(/usr/bin/lsusb | grep 'Yubico')" >> $LOG
+echo "Xinput devices: " >> $LOG
+/usr/bin/xinput >> $LOG
+echo "Xinput state for device $keyboard_id: " >> $LOG
+echo $(/usr/bin/xinput --query-state "$keyboard_id") >> $LOG
+
+#If Yubikey is not still attached and CTRL is not pressed.
+if [ "$1" == "lock" ] && /usr/bin/lsusb | grep -q -v 'Yubico' && /usr/bin/xinput --query-state "$keyboard_id" | grep -q 'key\[37\]=up'
+then
+  # Lock windows sessions.
+  echo "Locking window sessions." >> $LOG
+  /bin/loginctl lock-sessions
+
+  # Kill non-X TTYs.
+  ttys="$(who | awk '{ print $2 }' | grep tty | grep -v tty7 | uniq)"
+  echo "Active TTYs:" $ttys >> $LOG
+  for tty in $ttys
+  do
+    echo "Killing non-X TTY $tty with: pkill -KILL -t $tty" >> $LOG
+    pkill -KILL -t "$tty"
+  done
+fi
+
+if [ "$1" == "wake" ]
+then
+  # Waking display.
+  echo "Waking display." >> $LOG
+  /usr/bin/xdotool key "ctrl"
+fi

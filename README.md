@@ -32,6 +32,8 @@ make install -f deps/link-files/Makefile
 link-files -i -o
 )
 . ~/.bash_profile
+gpg --search mark.a.r.challoner@gmail.com
+gpg --card-status
 gpgrestart
 ```
 
