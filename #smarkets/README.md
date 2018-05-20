@@ -28,7 +28,7 @@ sudo apt-get update
 ### Install
 
 ```
-sudo apt-get install -y alltray clipit curl google-chrome-stable libldap2-dev libsasl2-dev libssl-dev monkeysphere opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
+sudo apt-get install -y alltray clipit curl google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
 ```
 
 ## Terminal
