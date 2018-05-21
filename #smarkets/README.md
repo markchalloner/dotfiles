@@ -96,6 +96,14 @@ pip install awscli --upgrade --user
 sudo snap install slack --classic
 ```
 
+## Hardware
+
+Fix touchpad issues:
+
+```
+sudo tee -a /etc/modprobe.d/blacklist.conf <<< $'\n'"# Touchpad disconnection issues"$'\n'"blacklist i2c_hid"
+```
+
 ## System config
 
 Set `fs.inotify.max_user_watches` higher for IDEs.
