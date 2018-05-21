@@ -16,6 +16,7 @@ curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+sudo add-apt-repository ppa:nixnote/nixnote2-daily
 sudo apt-add-repository ppa:yubico/stable
 ```
 
@@ -28,7 +29,7 @@ sudo apt-get update
 ### Install
 
 ```
-sudo apt-get install -y alltray clipit curl gcolor2 google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
+sudo apt-get install -y alltray clipit curl gcolor2 google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere nixnote2 opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
 ```
 
 ## Terminal
