@@ -6,7 +6,7 @@ alias awssub="aws ec2 describe-subnets"
 
 # Navigation
 alias cddown="cd $HOME/Downloads"
-alias cddev="cd $DEVROOT"
+alias cddev="cd $DEV_ROOT"
 alias cdtmp="cd $HOME/Temp"
 
 # Dotfile editing
