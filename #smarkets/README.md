@@ -29,13 +29,7 @@ sudo apt-get update
 ### Install
 
 ```
-<<<<<<< Updated upstream
-sudo apt-get install -y alltray clipit curl gcolor2 google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere nixnote2 opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
-||||||| merged common ancestors
-sudo apt-get install -y alltray clipit curl google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
-=======
-sudo apt-get install -y alltray clipit compizconfig-settings-manager google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
->>>>>>> Stashed changes
+sudo apt-get install -y alltray clipit compizconfig-settings-manager gcolor2 google-chrome-stable libldap2-dev libpam-pkcs11 libsasl2-dev libssl-dev monkeysphere nixnote2 opensc-pkcs11 pinentry-tty python-dev python-pip scdaemon signal-desktop tmux vim virtualenv ykneomgr yubikey-personalization yubikey-personalization-gui yubico-piv-tool yubikey-manager yubioath-desktop
 ```
 
 ## Terminal
