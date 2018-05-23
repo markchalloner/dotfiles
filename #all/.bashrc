@@ -1,10 +1,19 @@
+# If not running interactively, don't do anything.
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Set language.
+LANG=en_GB.utf8
+
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
-# Append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it.
 shopt -s histappend
 
-# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1).
 HISTSIZE=1000
 HISTFILESIZE=2000
 
@@ -14,25 +23,38 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# Make less more friendly for non-text input files, see lesspipe(1)
+# Make less more friendly for non-text input files, see lesspipe(1).
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Show git state in the fancy prompt
-GIT_PS1_SHOWDIRTYSTATE=true
-
-# Bash completion
-if [ -f /usr/share/bash-completion/bash_completion ]
+# Enable color support of ls and also add handy aliases/
+if [ -x /usr/bin/dircolors ]
 then
-  . /usr/share/bash-completion/bash_completion
-elif [ -f /etc/bash_completion ]
-then
-  . /etc/bash_completion
-elif type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ] 
-then
-  . $(brew --prefix)/etc/bash_completion
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
-# Pre and post commands
+# Show git state in the fancy prompt.
+GIT_PS1_SHOWDIRTYSTATE=true
+
+# Enable programmable bash completion features.
+if ! shopt -oq posix
+then
+  if [ -f /usr/share/bash-completion/bash_completion ]
+  then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]
+  then
+    . /etc/bash_completion
+  elif type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ] 
+  then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+# Pre and post commands.
 FIRST_PROMPT=1
 func_bashpre() {
   [ -z "$AT_PROMPT" ] && return
@@ -53,23 +75,13 @@ func_bashpost() {
 trap "func_bashpre" DEBUG
 PROMPT_COMMAND="func_bashpost"
 
-# Import other global configs
+# Import other global configs.
 [ -f ~/.bash_prompt ]   && . ~/.bash_prompt
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 [ -f ~/.bash_envvars ]   && . ~/.bash_envvars
 [ -f ~/.bash_aliases ]   && . ~/.bash_aliases
 
-# Import other local bash startup files
+# Import other local bash startup files.
 [ -f ~/.bashrc_local ]   && . ~/.bashrc_local
 [ -f ~/.bashrc_private ] && . ~/.bashrc_private
 
-LANG=en_GB.utf8
-func_pathadd "${HOME}/.composer/vendor/bin"
-func_pathadd "/opt/scalefactory/embedded/bin"
-
-# Ignore the auto-added line if necessary
-[ ! -f /srv/environment ] && return
-# Added automatically by Vagrant
-source /srv/environment
-PATH=$PATH:$HOME/.composer/vendor/bin
-PATH=$PATH:/opt/scalefactory/embedded/bin

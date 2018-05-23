@@ -1,0 +1,56 @@
+# Kubernetes
+func_kubeshell() {
+  local pod="$1"; shift
+
+  if [ -z "$pod" ]
+  then
+    echo "Error: Pod must be supplied."
+    return 1
+  fi
+  local columns="$(tput cols)"
+  local lines="$(tput lines)"
+  local term="xterm"
+  kubectl exec -i -t $pod env COLUMNS="$columns" LINES="$lines" TERM="$lines" bash
+}
+
+# SSH
+func_sshsmarkets() {
+  local host="$1"; shift
+  local user="$SM_SSH_USER"
+  local admin=0
+
+  if [ -z "$host" ]
+  then
+    echo "Error: Host must be supplied."
+    return 1
+  fi
+
+  if [[ "$host" == admin@* ]]
+  then
+    admin=1
+    host="${host//admin@/}"
+  fi
+
+  # If the host does not have an . and does not looks like an IP, then add the domain.
+  if [ "${host/./}" == "$host" ] && [[ ! $host =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
+  then
+    host="$host.$SM_DOMAIN"
+  fi
+ 
+  if [ $admin -eq 1 ] || grep -q 'docker\|ldap' <<< "$host"
+  then
+    user="$SM_SSH_USER_ADMIN"
+  fi
+
+  ssh -A "$user"@"$host" $@ 
+}
+
+# Yubikey
+func_yubilock() {
+  if [ -z "$(lsusb | grep Yubico)" ]
+  then
+    logger "YubiKey Removed or Changed"
+    export XDG_SEAT_PATH="/org/freedesktop/DisplayManager/Seat0" 
+    /usr/bin/dm-tool lock
+  fi
+}
