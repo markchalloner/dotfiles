@@ -1,3 +1,21 @@
+# Helm
+func_helmdelete() {
+  local release="$1"; shift
+  helm delete --purge "$release"
+}
+
+func_helmreset() {
+  local release="$1"; shift
+  func_helmdelete "$release" &&
+    func_helmupgrade "$release"
+}
+
+func_helmupgrade() {
+  local release="$1"; shift
+  local chart="${1-$release}"; shift
+  helm upgrade --install --force --recreate-pods --reset-values --wait "$release" "$chart"
+}
+
 # Kubernetes
 func_kubeshell() {
   local pod="$1"; shift
@@ -10,7 +28,7 @@ func_kubeshell() {
   local columns="$(tput cols)"
   local lines="$(tput lines)"
   local term="xterm"
-  kubectl exec -i -t $pod env COLUMNS="$columns" LINES="$lines" TERM="$lines" bash
+  kubectl exec -i -t $pod env COLUMNS="$columns" LINES="$lines" TERM="$term" bash
 }
 
 # SSH

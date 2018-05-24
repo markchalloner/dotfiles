@@ -76,12 +76,12 @@ trap "func_bashpre" DEBUG
 PROMPT_COMMAND="func_bashpost"
 
 # Import other global configs.
-[ -f ~/.bash_prompt ]   && . ~/.bash_prompt
+[ -f ~/.bash_prompt ] && . ~/.bash_prompt
 [ -f ~/.bash_functions ] && . ~/.bash_functions
-[ -f ~/.bash_envvars ]   && . ~/.bash_envvars
-[ -f ~/.bash_aliases ]   && . ~/.bash_aliases
+[ -f ~/.bash_envvars ] && . ~/.bash_envvars
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # Import other local bash startup files.
-[ -f ~/.bashrc_local ]   && . ~/.bashrc_local
+[ -f ~/.bashrc_local ] && . ~/.bashrc_local
 [ -f ~/.bashrc_private ] && . ~/.bashrc_private
 
