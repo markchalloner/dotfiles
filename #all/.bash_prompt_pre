@@ -1,10 +1,11 @@
-# GPG settings
-if [ -f "${HOME}/.gpg-agent-info" ]
-then
-  source "${HOME}/.gpg-agent-info"
-  #export GPG_AGENT_INiFO
-fi
+# Order determines if GPG SSH overrides PIV SSH.
 
 # SSH settings
 [ -f "${HOME}/.ssh-agent-info" ] && source "${HOME}/.ssh-agent-info" > /dev/null
+
+# GNUPG-PKCS11-SCD settings
+[ -f "${HOME}/.gnupg-pkcs11-scd-info" ] && source "${HOME}/.gnupg-pkcs11-scd-info" > /dev/null
+
+# GPG settings
+[ -f "${HOME}/.gpg-agent-info" ] && source "${HOME}/.gpg-agent-info" > /dev/null
 

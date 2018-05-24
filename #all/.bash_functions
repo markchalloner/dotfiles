@@ -345,16 +345,26 @@ func_gpgrestart() {
 }
 
 func_gpgstart() {
+  local gpkvars
   local gpgvars
+  local result
   if type gnupg-pkcs11-scd > /dev/null 2>&1
   then
-    eval $(gnupg-pkcs11-scd --daemon > /dev/null 2>&1)
+    gpkvars="$(gnupg-pkcs11-scd --daemon 2> /dev/null)"
+    result=$?
+    if [ $result -eq 0 ]
+    then
+      eval "$gpkvars"
+      echo "$gpkvars" > $HOME/.gnupg-pkcs11-scd-info
+      export SCDAEMON_INFO
+    fi
   fi
-  gpgvars=$(gpg-agent --daemon --write-env-file ~/.gpg-agent-info > /dev/null 2>&1)
-  local result=${?}
-  if [ ${result} -eq 0 ]
+  gpgvars=$(gpg-agent --daemon 2> /dev/null)
+  local result=$?
+  if [ $result -eq 0 ]
   then
-    eval "${gpgvars}"
+    eval "$gpgvars"
+    echo "$gpgvars" > $HOME/.gpg-agent-info
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
     export SSH_AGENT_PID
@@ -371,7 +381,7 @@ func_gpgstart() {
 
 func_gpgstatus() {
   local cmd="${1:-gpg-agent}"
-  local out=$(ps -A | grep "${cmd}" | grep -v "grep")
+  local out=$(ps -A | grep "${cmd:0:15}" | grep -v "grep")
   if [ -n "${out}" ]
   then
     echo "${out}"
@@ -382,12 +392,18 @@ func_gpgstatus() {
 }
 
 func_gpgstop() {
-  for i in gnupg-pkcs11-scd gpg-agent
+  local pids
+  local pid
+  local cmd
+  for cmd in gnupg-pkcs11-scd gpg-agent
   do
-    local pid=$(gpgstatus "$i" | awk '{print $1}')
-    if [ -n "${pid}" ]
+    pids="$(gpgstatus "$cmd" | awk '{print $1}')"
+    if [ -n "${pids}" ]
     then
-      kill -9 "${pid}"
+      for pid in $pids
+      do
+        kill -9 "${pid}"
+      done
     fi
   done
 }
@@ -497,7 +513,6 @@ func_pivrestart() {
   func_pivstop && func_pivstart
 }
 
-# 
 func_pivstart() {
   local envfile=~/.ssh-agent-info
   local lib=

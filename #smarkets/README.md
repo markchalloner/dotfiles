@@ -73,6 +73,24 @@ pip install awscli --upgrade --user
 sudo snap install slack --classic
 ```
 
+## Build gnupg-pkcs11-scd from source
+
+```
+git clone https://github.com/alonbl/gnupg-pkcs11-scd.git
+cd gnupg-pkcs11-scd
+git checkout gnupg-pkcs11-scd-0.7.4
+git clean -fd
+sudo apt-get install -y autoconf automake cdbs debhelper libpkcs11-helper1-dev libgpg-error-dev libassuan-dev libgcrypt11-dev
+autoreconf --install
+autoconf
+automake
+rm -rf gnupg-pkcs11-scd
+ln -s distro/debian
+dpkg-buildpackage -rfakeroot
+cd ../
+sudo dpkg -i gnupg-pkcs11-scd_*.deb
+```
+
 ## Terminal
 
 Set the terminal settings:
