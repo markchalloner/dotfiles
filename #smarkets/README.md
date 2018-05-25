@@ -134,6 +134,7 @@ dconf write /org/mate/terminal/profiles/$PROFILE/use-custom-command true
 dconf write /org/mate/terminal/profiles/$PROFILE/exit-action "'close'"
 dconf write /org/mate/terminal/profiles/$PROFILE/falsecopy-selection false
 )
+
 ```
 
 ## Editor
