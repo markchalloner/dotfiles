@@ -1,169 +1,169 @@
-# Alias management
-alias aliasr="func_aliasr "\${1}""
+# Alias
+func_alias aliasr='func_aliasread' 'alias'
 
 # AWS
-alias awssub="aws ec2 describe-subnets"
+func_alias awssub='aws ec2 describe-subnets'
 
 # Navigation
-alias cddown="cd $HOME/Downloads"
-alias cddev="cd $DEV_ROOT"
-alias cdtmp="cd $HOME/Temp"
+func_alias cddown='cd $HOME/Downloads'
+func_alias cddev='cd $DEV_ROOT'
+func_alias cdtmp='cd $HOME/Temp'
 
 # Dotfile editing
-alias viag="vi ~/.bash_aliases && unalias -a && .reload"
-alias vial="vi ~/.bash_aliases_local && unalias -a && .reload"
-alias vieg="vi ~/.bash_envvars && .reload"
-alias viel="vi ~/.bash_envvars_local && .reload"
-alias vifg="vi ~/.bash_functions && .reload"
-alias vifl="vi ~/.bash_functions_local && .reload"
-alias viig="vi ~/.inputrc && .reload"
-alias viog="vi ~/.bash_prompt && .reload"
-alias vipg="vi ~/.bash_profile && .reload"
-alias vipl="vi ~/.bash_profile_local && .reload"
-alias virg="vi ~/.bashrc && .reload"
-alias virl="vi ~/.bashrc_local && .reload"
-alias virp="vi ~/.bashrc_private && .reload"
-alias vitg="vi ~/.tmux.conf"
+func_alias viag='vi ~/.bash_aliases && unalias -a && .reload'
+func_alias vial='vi ~/.bash_aliases_local && unalias -a && .reload'
+func_alias vieg='vi ~/.bash_envvars && .reload'
+func_alias viel='vi ~/.bash_envvars_local && .reload'
+func_alias vifg='vi ~/.bash_functions && .reload'
+func_alias vifl='vi ~/.bash_functions_local && .reload'
+func_alias viig='vi ~/.inputrc && .reload'
+func_alias viog='vi ~/.bash_prompt && .reload'
+func_alias vipg='vi ~/.bash_profile && .reload'
+func_alias vipl='vi ~/.bash_profile_local && .reload'
+func_alias virg='vi ~/.bashrc && .reload'
+func_alias virl='vi ~/.bashrc_local && .reload'
+func_alias virp='vi ~/.bashrc_private && .reload'
+func_alias vitg='vi ~/.tmux.conf'
+
+# Docker
+func_alias docknuke='docker rmi $(docker images --all -q)'
 
 # Dotfile management
-alias .cd="func_dotcd"
-alias .diff="func_dotdiff"
-alias .hub="(.cd && hub browse)"
-alias .pull="func_dotpull; .reload"
-alias .push="func_dotpush"
-alias .readme="func_dotreadme"
-alias .reload="func_dotreload"
-alias .var="func_dotvar"
+func_alias .cd='func_dotcd'
+func_alias .diff='func_dotdiff'
+func_alias .hub='(.cd && hub browse)'
+func_alias .pull='func_dotpull; .reload'
+func_alias .push='func_dotpush'
+func_alias .readme='func_dotreadme'
+func_alias .reload='func_dotreload'
+func_alias .var='func_dotvar'
 
 # Execution
-alias _="func_exec"
+func_alias _='func_exec'
 
 # Git
-alias gitad="git add -A && git diff --cached"
-alias gitah="git config user.name \"Mark Challoner\" && git config user.email \"mark.a.r.challoner@gmail.com\""
-alias gitaw="git config user.name \"Mark Challoner\" && git config user.email \"mark.challoner@lifeworks.com\""
-alias gitb="git rev-parse --abbrev-ref HEAD"
-alias gitbd="git branch --edit-description"
-alias gitbr="func_gitbr"
-alias gitbs="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo -n "\$i": && gitb); fi; done"
-alias gitdf="git diff"
-alias gitll="git log -1 --oneline | cut -f 2- -d ' '"
-alias gitcl="gitclr && gitcll"
-alias gitcll="git branch --merged master | grep -v \"develop\|master\|qa\|release\|staging\|test\|^\*\" | xargs -n 1 git branch -d"
-alias gitclr="yubipiv && git remote prune origin"
-alias gitco="git checkout"
-alias gitcm="func_gitcm '' 'y'"
-alias gitcn="func_gitcm '' 'n'"
-alias gitdf="git diff"
-alias gitgr="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-alias gitmg="func_gitmg"
-alias gitmt="func_gitmt"
-alias gitpl="func_gitpl"
-alias gitps="for i in *; do if [ -d "\$i" ] && [ -d "\$i/.git" ]; then (builtin cd "\$i" && echo "\$i:" && git pull); fi; done"
-alias gitpu="yubipiv && git push origin \$(gitb)"
-alias gitre="yubigpg && git rebase -S -i"
-alias gitrv="yubigpg && git revert -S"
-alias gitsa="git status"
-alias gitst="func_gitst"
+func_alias gitad='git add -A && git diff --cached'
+func_alias gitah='git config user.name "Mark Challoner && git config user.email "mark.a.r.challoner@gmail.com"'
+func_alias gitb='git rev-parse --abbrev-ref HEAD'
+func_alias gitbd='git branch --edit-description' 'git branch'
+func_alias gitbr='func_gitbr' 'git branch'
+func_alias gitbs='for i in *; do if [ -d "$i" ] && [ -d "$i/.git" ]; then (builtin cd "$i" && echo -n "$i": && gitb); fi; done'
+func_alias gitdf='git diff'
+func_alias gitll='git log -1 --oneline | cut -f 2- -d ' ''
+func_alias gitcl='gitclr && gitcll'
+func_alias gitcll='git branch --merged master | grep -v "develop\|master\|qa\|release\|staging\|test\|^\*" | xargs -n 1 git branch -d'
+func_alias gitclr='yubipiv && git remote prune origin'
+func_alias gitco='git checkout' 'git checkout'
+func_alias gitcm='func_gitcm "" "y"'
+func_alias gitcn='func_gitcm "" "n"'
+func_alias gitdf='git diff'
+func_alias gitgr='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+func_alias gitmg='func_gitmg' 'git merge'
+func_alias gitmt='func_gitmt'
+func_alias gitpl='func_gitpl' 'git pull'
+func_alias gitps='for i in *; do if [ -d "$i" ] && [ -d "$i/.git" ]; then (builtin cd "$i" && echo "$i:" && git pull); fi; done'
+func_alias gitpu='yubipiv && git push origin $(gitb)' 'git push'
+func_alias gitre='yubigpg && git rebase -S -i' 'git rebase'
+func_alias gitrv='yubigpg && git revert -S' 'git revert'
+func_alias gitsa='git status' 'git status'
+func_alias gitst='func_gitst' 'git stash'
 
 # Github
-alias ghauth="func_ghauth"
+func_alias ghauth='func_ghauth'
 
 # GPG
-alias gpgrestart="func_gpgrestart"
-alias gpgstart="func_gpgstart"
-alias gpgstatus="func_gpgstatus"
-alias gpgstop="func_gpgstop"
+func_alias gpgrestart='func_gpgrestart'
+func_alias gpgstart='func_gpgstart'
+func_alias gpgstatus='func_gpgstatus'
+func_alias gpgstop='func_gpgstop'
 
 # Group
-alias grpassign="func_grpassign"
+func_alias grpassign='func_grpassign'
 
 # Hosts
-alias vihosts="sudo vi /etc/hosts"
+func_alias vihosts='sudo vi /etc/hosts'
 
 # Hub
-alias git="func_hub"
-alias gitpr="func_gitpr """
+func_alias git='func_hub'
+func_alias gitpr='func_gitpr ""'
+
 
 # Less
-alias less="less -R"
+func_alias less='less -R'
 
 # Navigation
-#alias cd="func_cd"
-#alias cd_="builtin cd"
-#alias cd~="builtin cd ${HOME}/"
-#alias cd..="builtin cd ../"
-alias cdtmp="mkdir -p ${HOME}/Temp && builtin cd ${HOME}/Temp"
-alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -alF'
-#alias ls="func_ls"
-alias nv="func_nv"
+func_alias cdtmp='mkdir -p ${HOME}/Temp && builtin cd ${HOME}/Temp'
+func_alias l='ls -CF'
+func_alias la='ls -A'
+func_alias ll='ls -alF'
 
 # Network
-alias nsports="sudo netstat -plnt"
+func_alias nsports='sudo netstat -plnt'
 
 # NFS
-alias nfsr="ls -alR > /dev/null"
+func_alias nfsr='ls -alR > /dev/null'
 
 # Permissions
-alias chx="chmod +x"
+func_alias chx='chmod +x'
 
 # PIV
-alias pivrestart="func_pivrestart"
-alias pivstart="func_pivstart"
-alias pivstatus="func_pivstatus"
-alias pivstop="func_pivstop" 
+func_alias pivrestart='func_pivrestart'
+func_alias pivstart='func_pivstart'
+func_alias pivstatus='func_pivstatus'
+func_alias pivstop='func_pivstop'
 
 # PR cache
-alias prls="[ -f \"${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt"
-alias prca="func_prcache"
-alias vipr="vi ${HOME}/.personal/prs.txt"
+func_alias prls='[ -f "${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt'
+func_alias prca='func_prcache'
+func_alias vipr='vi ${HOME}/.personal/prs.txt'
 
 # SCP
-alias scp="yubipiv && scp"
+func_alias scp='yubipiv && scp'
 
 # SSH
-alias ssh="func_ssh"
-alias sshp="func_sshp"
-alias sshtd="func_sshtunneldown"
-alias sshts="func_sshtunnelstatus"
-alias sshtu="func_sshtunnelup"
-alias sshu="func_sshunpin"
+func_alias ssh='func_ssh'
+func_alias sshp='func_sshp'
+func_alias sshtd='func_sshtunneldown'
+func_alias sshts='func_sshtunnelstatus'
+func_alias sshtu='func_sshtunnelup'
+func_alias sshu='func_sshunpin'
 
 # Sudo
-alias sudom="sudo bash -c"
+func_alias sudom='sudo bash -c'
 
 # Tee
-alias tee="stripcolors | tee"
+func_alias tee='stripcolors | tee'
 
 # Terminal
-alias stripcolors="sed 's/'$'\E''\[[0-9;]*[A-Za-z]//g'"
+func_alias stripcolors='sed "s/"$'\E'"\[[0-9;]*[A-Za-z]//g"'
 
 # Tmux
-alias tmuxs="[ -z "\$TMUX" ] && [ -n "\$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "\$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "\$TMUX_TTY" || tmux new -s "\$TMUX_TTY" ; }"
-alias tmuxd="tmux detach"
+func_alias tmuxs='[ -z "$TMUX" ] && [ -n "$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "$TMUX_TTY" || tmux new -s "$TMUX_TTY" ; }'
+func_alias tmuxd='tmux detach'
 
 # Vagrant
-alias vdot="func_vdot"
-alias vhalt="vagrant halt"
-alias vpro="vagrant reload --provision"
-alias vre="vagrant reload"
-alias vreset="vagrant destroy -f && vagrant box update && vagrant up"
-alias vssh="func_vssh"
-alias vup="vagrant up"
+func_alias vdot='func_vdot'
+func_alias vhalt='vagrant halt'
+func_alias vpro='vagrant reload --provision'
+func_alias vre='vagrant reload'
+func_alias vreset='vagrant destroy -f && vagrant box update && vagrant up'
+func_alias vssh='func_vssh'
+func_alias vup='vagrant up'
 
 # Watch
-alias watchmem="func_watchmem"
+func_alias watchmem='func_watchmem'
+
+# X
+func_alias xkeys='xev'
 
 # Xdebug
-alias xdb="func_xdb PHPSTORM"
+func_alias xdb='func_xdb PHPSTORM'
 
 # YAML
-alias yamlp="func_yamlparse"
+func_alias yamlp='func_yamlparse'
 
 # Yubikey
-alias yubigpg="func_yubigpg"
-alias yubinul="func_yubinul"
-alias yubipiv="func_yubipiv"
-alias yubitotp="func_yubitotp"
+func_alias yubigpg='func_yubigpg'
+func_alias yubinul='func_yubinul'
+func_alias yubipiv='func_yubipiv'
+func_alias yubitotp='func_yubitotp'

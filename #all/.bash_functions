@@ -1,12 +1,72 @@
-# Read an alias
-func_aliasr()
-{
-  local cmd="$(type "${1}" | grep "is aliased" | sed 's/.* is aliased to [`]\(.*\)'"'"'/\1/g')"
-  if type pbcopy > /dev/null 2>&1
+func_alias() {
+  local alias="$1"; shift
+  local completion="$1"; shift
+
+  local name="${alias%%=*}"
+  local completion_name="${name//./_}"
+
+  # Register or deregister the completion.
+  [ -n "$completion" ] && func_mapset "ALIAS" "$completion_name" "$completion" || func_mapdel "ALIAS" "$completion_name"
+
+  # Create the alias.
+  alias "$alias"
+
+  # Set the completion function.
+  complete -F func_aliascomplete "$name"
+}
+
+func_aliascomplete() {
+  type _complete_alias 2>&1 > /dev/null || return
+
+  local name="$1"; shift
+
+  local completion_name="${name//./_}"
+  local completion="$(func_mapget "ALIAS" "$completion_name")"
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local cmd=
+
+  if [ -n "$completion" ]
   then
-    echo "${cmd}"| pbcopy
+    COMP_WORDS=($completion "$cur")
+    COMP_LINE="$completion $cur"
+    COMP_CWORD=$((${#COMP_WORDS[@]}-1))
+    COMP_POINT=${#COMP_LINE}
+
+    cmd="${COMP_WORDS[0]}"
+
+    case "$cmd" in
+      kubectl)
+        source <(kubectl completion bash)
+        ;;
+      *)
+        _set_default_completion "${COMP_WORDS[0]}"
+        ;;
+    esac
+
+    _command_offset 0
+    return
   fi
-  echo "${cmd}"
+
+  _complete_alias "$name"
+}
+
+func_aliasread() {
+  local name="$1"; shift
+  local type
+  local return
+  local cmd
+
+  type="$(type "$name" 2> /dev/null)"
+  [ $? -ne 0 ] && return
+
+  if [ "$name" != "func_aliasr" ] && grep -q "is aliased to" <<< "$type"
+  then
+    cmd="$(sed 's/.* is aliased to [`]\(.*\)'"'"'/\1/g' <<< "$type")"
+    echo "$type"
+    func_aliasr "$cmd"
+  else
+    echo "$type"
+  fi
 }
 
 # Remind user to use pushd/popd
@@ -459,10 +519,33 @@ func_native() {
   fi
 }
 
-# Navigate (cd) to a shortcut
-func_nv() {
-  # TODO
-  :
+# Map (associative arrays)
+func_mapdel() {
+  local map="$1"; shift
+  local name="$1"; shift
+  local var="MAP_${map}_KEY_${name}"
+
+  unset ${var}
+}
+
+func_mapget() {
+  local map="$1"; shift
+  local name="$1"; shift
+
+  local var="MAP_${map}_KEY_${name}"
+
+  if [ -n "${!var}" ]
+  then
+    echo ${!var}
+  fi
+}
+
+func_mapset() {
+  local map="$1"; shift
+  local name="$1"; shift
+  local value="$1"; shift
+
+  read "MAP_${map}_KEY_${name}" <<< "$value"
 }
 
 # PATH

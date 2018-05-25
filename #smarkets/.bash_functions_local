@@ -6,8 +6,8 @@ func_helmdelete() {
 
 func_helmreset() {
   local release="$1"; shift
-  func_helmdelete "$release" &&
-    func_helmupgrade "$release"
+  func_helmdelete "$release"
+  func_helmupgrade "$release"
 }
 
 func_helmupgrade() {

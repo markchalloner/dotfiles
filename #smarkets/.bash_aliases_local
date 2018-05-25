@@ -1,57 +1,57 @@
 # Ansible
-alias ap="yubipiv && ansible-playbook -u \$SM_SSH_USER"
+func_alias ap='yubipiv && ansible-playbook -u \$SM_SSH_USER' 'ansible-playbook'
 
 # CD
-alias cdha="cd $HA_ROOT"
-alias cdsad="cdscs && cd admin"
-alias cdsan="cdst && cd ansible"
-alias cdscs="cdssv && cd cscs"
-alias cdsev="cdssv && cd events"
-alias cdsmk="cdssv && cd marketing"
-alias cdsin="cdssv && cd infrastructure"
-alias cdsp="cdsm && cd packages"
-alias cdsm="cd $SM_ROOT"
-alias cdssv="cdsm && cd services"
-alias cdst="cdsm && cd tools"
-alias cdsta="cdst && cd ansible"
+func_alias cdha='cd $HA_ROOT'
+func_alias cdsad='cdscs && cd admin'
+func_alias cdsan='cdst && cd ansible'
+func_alias cdscs='cdssv && cd cscs'
+func_alias cdsev='cdssv && cd events'
+func_alias cdsmk='cdssv && cd marketing'
+func_alias cdsin='cdssv && cd infrastructure'
+func_alias cdsp='cdsm && cd packages'
+func_alias cdsm='cd $SM_ROOT'
+func_alias cdssv='cdsm && cd services'
+func_alias cdst='cdsm && cd tools'
+func_alias cdsta='cdst && cd ansible'
 
 # Crane
-alias cr="$HA_ROOT/crane/crane"
-alias crd="cr dev:local"
-alias crh="$HA_ROOT/crane/crane help | less"
+func_alias cr='$HA_ROOT/crane/crane'
+func_alias crd='cr dev:local'
+func_alias crh='$HA_ROOT/crane/crane help | less'
 
 # Docker
-alias dockim="docker images"
-alias dockimb="dockim | awk 'NR==1 || /'\$(gitb)'/ { print $1 }'"
+func_alias dockim='docker images'
+func_alias dockimb='dockim | awk "NR==1 || /$(gitb)/ { print $1 }"'
 
 # Environments
-alias envans="[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate""
-alias envk8s="[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh" > /dev/null 2>&1"
+func_alias envans='[ -f '$SM_ROOT/tools/ansible/.ve/bin/activate' ] && source '$SM_ROOT/tools/ansible/.ve/bin/activate''
+func_alias envk8s='[ -f '$SM_ROOT/tools/dev/setup/activate.sh' ] && source '$SM_ROOT/tools/dev/setup/activate.sh' > /dev/null 2>&1'
 
 # Git
-alias gitca="yubigpg && git commit -S --amend --no-edit"
+func_alias gitca='yubigpg && git commit -S --amend --no-edit'
 
 # Helm
-alias helmdel="func_helmdelete"
-alias helmrun="func_helmupgrade"
-alias helmrst="func_helmreset"
+func_alias helmdel='func_helmdelete'
+func_alias helmrun='func_helmupgrade'
+func_alias helmrst='func_helmreset'
 
 # Kubernetes
-alias kubepod="kubectl get pods --all-namespaces"
-alias kubelog="kubectl logs"
-alias kubesh="func_kubeshell"
+func_alias kubepod='kubectl get pods --all-namespaces'
+func_alias kubelog='kubectl logs'
+func_alias kubesh='func_kubeshell' 'kubectl exec'
 
 # Paver
-alias pavdel="paver delete"
-alias pavdev="pavdel && paver start_dev"
-alias pavloc="pavdel && paver run_local"
-alias pavreg="pavdel && paver run_registry"
-alias pavsh="paver shell"
+func_alias pavdel='paver delete'
+func_alias pavdev='pavdel && paver start_dev'
+func_alias pavloc='pavdel && paver run_local'
+func_alias pavreg='pavdel && paver run_registry'
+func_alias pavsh='paver shell'
 
 # Smarkets
-alias smdel="(cdsm && tools/dev/delete_all.sh)"
-alias smrun="(cdsm && tools/dev/run_minimal.sh)"
+func_alias smdel='(cdsm && tools/dev/delete_all.sh)'
+func_alias smrun='(cdsm && tools/dev/run_minimal.sh)'
 
 # SSH
-alias sshdep="sshsm deployment"
-alias sshsm="func_sshsmarkets"
+func_alias sshdep='sshsm deployment'
+func_alias sshsm='func_sshsmarkets' 'ssh'
