@@ -32,11 +32,12 @@ func_alias envk8s='[ -f '$SM_ROOT/tools/dev/setup/activate.sh' ] && source '$SM_
 func_alias gitca='yubigpg && git commit -S --amend --no-edit'
 
 # Helm
-func_alias helmdel='func_helmdelete'
-func_alias helmrun='func_helmupgrade'
-func_alias helmrst='func_helmreset'
+func_alias helmdel='func_helmdelete' 'kubectl exec'
+func_alias helmrun='func_helmupgrade' 'kubectl exec'
+func_alias helmrst='func_helmreset' 'kubectl exec'
 
 # Kubernetes
+func_alias kubedsc='kubectl describe pod'
 func_alias kubepod='kubectl get pods --all-namespaces'
 func_alias kubelog='kubectl logs'
 func_alias kubesh='func_kubeshell' 'kubectl exec'

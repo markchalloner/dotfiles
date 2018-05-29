@@ -59,11 +59,11 @@ func_aliasread() {
   type="$(type "$name" 2> /dev/null)"
   [ $? -ne 0 ] && return
 
-  if [ "$name" != "func_aliasr" ] && grep -q "is aliased to" <<< "$type"
+  if [ "$name" != "func_aliasread" ] && grep -q "is aliased to" <<< "$type"
   then
     cmd="$(sed 's/.* is aliased to [`]\(.*\)'"'"'/\1/g' <<< "$type")"
     echo "$type"
-    func_aliasr "$cmd"
+    func_aliasread "$cmd"
   else
     echo "$type"
   fi
