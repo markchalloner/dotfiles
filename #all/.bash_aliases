@@ -157,7 +157,9 @@ func_alias vup='vagrant up'
 func_alias watchmem='func_watchmem'
 
 # X
+func_alias xclip='xclip -selection clipboard'
 func_alias xkeys='xev'
+
 
 # Xdebug
 func_alias xdb='func_xdb PHPSTORM'
