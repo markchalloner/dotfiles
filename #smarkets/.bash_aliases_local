@@ -20,6 +20,9 @@ func_alias cr='$HA_ROOT/crane/crane'
 func_alias crd='cr dev:local'
 func_alias crh='$HA_ROOT/crane/crane help | less'
 
+# Dig
+func_alias digsm='func_digsm'
+
 # Docker
 func_alias dockim='docker images'
 func_alias dockimb='dockim | awk "NR==1 || /$(gitb)/ { print $1 }"'

@@ -13,8 +13,10 @@ sudo apt-get install curl
 
 ```
 curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+curl -s https://keybase.io/docs/server_security/code_signing_key.asc | sudo apt-key add -
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+echo 'deb [arch=amd64] http://prerelease.keybase.io/deb stable main' | sudo tee /etc/apt/sources.list.d/keybase.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
 sudo add-apt-repository ppa:nixnote/nixnote2-daily
 sudo add-apt-repository ppa:sebastian-stenzel/cryptomator
@@ -37,6 +39,7 @@ compizconfig-settings-manager \
 cryptomator \
 gcolor2 \
 google-chrome-stable \
+keybase \
 libldap2-dev \
 libpam-pkcs11 \
 libsasl2-dev \
@@ -53,10 +56,11 @@ tmux \
 vim \
 virtualenv \
 ykneomgr \
-yubikey-personalization \
-yubikey-personalization-gui \
 yubico-piv-tool \
 yubikey-manager \
+yubikey-personalization \
+yubikey-personalization-gui \
+yubikey-piv-manager \
 yubioath-desktop \
 
 ```
@@ -89,6 +93,12 @@ ln -s distro/debian
 dpkg-buildpackage -rfakeroot
 cd ../
 sudo dpkg -i gnupg-pkcs11-scd_*.deb
+```
+
+## Run keybase
+
+```
+run_keybase
 ```
 
 ## Terminal
@@ -145,10 +155,11 @@ sudo update-alternatives --config editor
 
 ## Hardware
 
-Fix touchpad issues:
+Disable Upower battery polling for Apple Trackpad issues:
 
 ```
-sudo tee -a /etc/modprobe.d/blacklist.conf <<< $'\n'"# Touchpad disconnection issues"$'\n'"blacklist i2c_hid"
+sudo sed -i 's/NoPollBatteries=false/NoPollBatteries=true/g' /etc/UPower/UPower.conf
+sudo service upower restart
 ```
 
 ## System config

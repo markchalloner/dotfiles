@@ -48,7 +48,7 @@ func_alias gitb='git rev-parse --abbrev-ref HEAD'
 func_alias gitbd='git branch --edit-description' 'git branch'
 func_alias gitbr='func_gitbr' 'git branch'
 func_alias gitbs='for i in *; do if [ -d "$i" ] && [ -d "$i/.git" ]; then (builtin cd "$i" && echo -n "$i": && gitb); fi; done'
-func_alias gitdf='git diff'
+func_alias gitdf='git diff --cached'
 func_alias gitll='git log -1 --oneline | cut -f 2- -d ' ''
 func_alias gitcl='gitclr && gitcll'
 func_alias gitcll='git branch --merged master | grep -v "develop\|master\|qa\|release\|staging\|test\|^\*" | xargs -n 1 git branch -d'
@@ -140,6 +140,9 @@ func_alias stripcolors='sed "s/"$'\E'"\[[0-9;]*[A-Za-z]//g"'
 # Tmux
 func_alias tmuxs='[ -z "$TMUX" ] && [ -n "$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "$TMUX_TTY" || tmux new -s "$TMUX_TTY" ; }'
 func_alias tmuxd='tmux detach'
+
+# Upower
+func_alias battt='upower -i "$(upower -e | grep mouse_hid)" | awk "/percentage/{print \$2}"'
 
 # Vagrant
 func_alias vdot='func_vdot'

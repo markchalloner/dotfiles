@@ -1,3 +1,4 @@
+# Alias
 func_alias() {
   local alias="$1"; shift
   local completion="$1"; shift

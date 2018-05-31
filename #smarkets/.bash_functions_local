@@ -1,3 +1,20 @@
+# Dig
+
+func_digsm() {
+  local host="$1"; shift
+  local long="$1"; shift
+
+  local cmd='cat'
+  local short=''
+  if [ -n $long  ] && grep -viq '\(y\(es\)\?\)\|\(l\(ong\)\?\)' <<< "$long"
+  then
+    cmd='sort -V'
+    short='+short'
+  fi
+
+  dig $short "$host.$SM_DOMAIN" | $cmd
+}
+
 # Helm
 func_helmdelete() {
   local release="$1"; shift
