@@ -247,6 +247,34 @@ func_gitbr() {
   done
 }
 
+# Push branches to backup remote.
+func_gitbu() {
+  if ! git rev-parse --git-dir > /dev/null 2>&1
+  then
+    echo "Error: not a git repository."
+    return 1
+  fi
+
+  if ! git remote get-url backup > /dev/null 2>&1
+  then
+    echo "Error: no backup remote set. Try running git remote add backup <remote>."
+    return 1
+  fi
+
+  if ! git ls-remote "$(git remote get-url backup)" > /dev/null 2>&1
+  then
+    echo "Error: remote is invalid."
+    return 1
+  fi
+
+  for i in $(git for-each-ref refs/heads/ --format '%(refname:strip=2)')
+  do
+    echo "Backing up branch $i."
+    git push backup $i
+  done
+}
+
+
 # Commit optionaly adding the branch if it exactly matches ${1}
 func_gitcm() {
   local match="${1}"

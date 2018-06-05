@@ -5,3 +5,5 @@
 
 # Development
 [ -f "$HOME/.ansible_secret_environment" ] && source "$HOME/.ansible_secret_environment"
+
+complete -C '/home/mark/.local/bin/aws_completer' aws

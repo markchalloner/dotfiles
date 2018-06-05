@@ -1,1 +1,4 @@
-
+# Save history after every command.
+history -a
+history -c
+history -r

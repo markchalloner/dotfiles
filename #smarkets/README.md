@@ -18,8 +18,8 @@ curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 echo 'deb [arch=amd64] http://prerelease.keybase.io/deb stable main' | sudo tee /etc/apt/sources.list.d/keybase.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
-sudo add-apt-repository ppa:nixnote/nixnote2-daily
-sudo add-apt-repository ppa:sebastian-stenzel/cryptomator
+sudo apt-add-repository ppa:nixnote/nixnote2-daily
+sudo apt-add-repository ppa:sebastian-stenzel/cryptomator
 sudo apt-add-repository ppa:yubico/stable
 ```
 
@@ -37,6 +37,7 @@ alltray \
 clipit \
 compizconfig-settings-manager \
 cryptomator \
+devscripts \
 gcolor2 \
 google-chrome-stable \
 keybase \
@@ -51,6 +52,7 @@ pinentry-tty \
 python-dev \
 python-pip \
 scdaemon \
+shellcheck \
 signal-desktop \
 tmux \
 vim \
@@ -155,11 +157,30 @@ sudo update-alternatives --config editor
 
 ## Hardware
 
-Disable Upower battery polling for Apple Trackpad issues:
+Disable Upower battery polling (for Apple Trackpad issues):
 
 ```
 sudo sed -i 's/NoPollBatteries=false/NoPollBatteries=true/g' /etc/UPower/UPower.conf
 sudo service upower restart
+```
+
+Disable bluetooth idle timeout (for Apple Trackpad issues):
+
+```
+sudo sed -i.bak 's/^#IdleTimeout=30/IdleTimeout=0/g' /etc/bluetooth/input.conf
+sudo service bluetooth restart
+```
+
+Disable autosuspend for device on startup (for Apple Trackpad issues):
+
+```
+sudo sed -i 's#exit 0#'$HOME'/bin/apple-trackpad-autosuspend-disable\n\n&#' /etc/rc.local
+```
+
+Set screen rotation at boot:
+
+```
+sudo sed -i 's/GRUB_CMDLINE_LINUX="([^"])"/GRUB_CMDLINE_LINUX="\1 video=efifb fbcon=rotate_all:1"/g' /etc/default/grub
 ```
 
 ## System config
@@ -193,10 +214,3 @@ Cmnd_Alias SERVICE_BLUETOOTH = /usr/sbin/service bluetooth restart
 EOF'
 ```
 
-## Bluetooth
-
-Set idle timeout to 60 minutes:
-```
-sudo sed -i.bak 's/^#IdleTimeout=30/IdleTimeout=3600/g' /etc/bluetooth/input.conf 
-sudo service bluetooth restart
-```
