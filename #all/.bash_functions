@@ -660,7 +660,7 @@ func_pivstatus() {
     return 1
   fi
   # Test SSH keys are loaded.
-  if ! ssh-add -l | grep -q "$lib"
+  if ! ssh-add -l 2> /dev/null | grep -q "$lib"
   then
     return 1
   fi
@@ -906,11 +906,11 @@ EOF
 # Start vagrant box if not running and attempt to run tmux when connecting
 func_vssh() {
   local dir="${1}"
-  if [ -n "${TMUX}" ]
-  then
-    echo "Running in a tmux session; run \"tmux detach\" first."
-    return 1
-  fi
+  #if [ -n "${TMUX}" ]
+  #then
+  #  echo "Running in a tmux session; run \"tmux detach\" first."
+  #  return 1
+  #fi
   (
     if [ -n "${dir}" ]
     then

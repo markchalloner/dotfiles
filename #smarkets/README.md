@@ -46,6 +46,7 @@ libpam-pkcs11 \
 libsasl2-dev \
 libssl-dev \
 monkeysphere \
+nfs-kernel-server \
 nixnote2 \
 opensc-pkcs11 \
 pinentry-tty \
@@ -55,6 +56,7 @@ scdaemon \
 shellcheck \
 signal-desktop \
 tmux \
+vagrant \
 vim \
 virtualenv \
 ykneomgr \
@@ -177,13 +179,28 @@ Disable autosuspend for device on startup (for Apple Trackpad issues):
 sudo sed -i 's#exit 0#'$HOME'/bin/apple-trackpad-autosuspend-disable\n\n&#' /etc/rc.local
 ```
 
-Set screen rotation at boot:
+## Screen rotation
 
+Set console rotation:
+
+````
+sudo sed -i 's/GRUB_CMDLINE_LINUX="([^"])"/GRUB_CMDLINE_LINUX="\1 fbcon=rotate:1"/g' /etc/default/grub
+update-grub
 ```
-sudo sed -i 's/GRUB_CMDLINE_LINUX="([^"])"/GRUB_CMDLINE_LINUX="\1 video=efifb fbcon=rotate_all:1"/g' /etc/default/grub
+
+Set lightdm rotation:
 ```
+sudo tee /etc/lightdm/lightdm.conf.d/80-display-setup.conf <<< '[SeatDefaults]'$'\n''display-setup-script=xrandr -o right'
+```
+
 
 ## System config
+
+Enable rc.local
+
+```
+sudo systemctl enable rc-local.service
+```
 
 Set `fs.inotify.max_user_watches` higher for IDEs.
 
