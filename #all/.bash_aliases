@@ -43,7 +43,7 @@ func_alias _='func_exec'
 
 # Git
 func_alias gitad='git add -A && git diff --cached'
-func_alias gitah='git config user.name "Mark Challoner && git config user.email "mark.a.r.challoner@gmail.com"'
+func_alias gitah='git config user.name "Mark Challoner" && git config user.email "mark.a.r.challoner@gmail.com"'
 func_alias gitb='git rev-parse --abbrev-ref HEAD'
 func_alias gitbd='git branch --edit-description' 'git branch'
 func_alias gitbr='func_gitbr' 'git branch'

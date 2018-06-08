@@ -18,6 +18,7 @@ curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 echo 'deb [arch=amd64] http://prerelease.keybase.io/deb stable main' | sudo tee /etc/apt/sources.list.d/keybase.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+sudo add-apt-repository ppa:musicbrainz-developers/stable
 sudo apt-add-repository ppa:nixnote/nixnote2-daily
 sudo apt-add-repository ppa:sebastian-stenzel/cryptomator
 sudo apt-add-repository ppa:yubico/stable
@@ -39,6 +40,7 @@ compizconfig-settings-manager \
 cryptomator \
 devscripts \
 gcolor2 \
+gimp \
 google-chrome-stable \
 keybase \
 libldap2-dev \
@@ -49,6 +51,7 @@ monkeysphere \
 nfs-kernel-server \
 nixnote2 \
 opensc-pkcs11 \
+picard \
 pinentry-tty \
 python-dev \
 python-pip \
