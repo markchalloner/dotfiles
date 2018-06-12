@@ -42,21 +42,6 @@ fi
 # Show git state in the fancy prompt.
 GIT_PS1_SHOWDIRTYSTATE=true
 
-# Enable programmable bash completion features.
-if ! shopt -oq posix
-then
-  if [ -f /usr/share/bash-completion/bash_completion ]
-  then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]
-  then
-    . /etc/bash_completion
-  elif type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ] 
-  then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
 # Pre and post commands.
 FIRST_PROMPT=1
 func_bashpre() {
@@ -83,6 +68,21 @@ PROMPT_COMMAND="func_bashpost"
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 [ -f ~/.bash_envvars ] && . ~/.bash_envvars
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# Enable programmable bash completion features.
+if ! shopt -oq posix
+then
+  if [ -f /etc/bash_completion ]
+  then
+    . /etc/bash_completion
+  elif [ -f /usr/share/bash-completion/bash_completion ]
+  then
+    . /usr/share/bash-completion/bash_completion
+  elif type brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]
+  then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
 
 # Import other local bash startup files.
 [ -f ~/.bashrc_local ] && . ~/.bashrc_local

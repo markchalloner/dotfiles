@@ -1,1 +1,8 @@
-../deps/complete-alias/completions/bash_completion.sh
+# Load complete-alias.
+complete_alias="$(dirname "$(python -c "import os; print(os.path.realpath('$BASH_SOURCE'))")")/../deps/complete-alias/completions/bash_completion.sh"
+[ -r "$complete_alias" ] && . "$complete_alias"
+unset -v complete_alias
+
+# Completions.
+complete -C "$HOME/.local/bin/aws_completer" aws
+_completion_loader git

@@ -1,9 +1,9 @@
 # Import other local configs
+[ -f ~/.bash_completion_local ] && . ~/.bash_completion_local
 [ -f ~/.bash_functions_local ] && . ~/.bash_functions_local
-[ -f ~/.bash_envvars_local ]   && . ~/.bash_envvars_local
-[ -f ~/.bash_aliases_local ]   && . ~/.bash_aliases_local
+[ -f ~/.bash_envvars_local ] && . ~/.bash_envvars_local
+[ -f ~/.bash_aliases_local ] && . ~/.bash_aliases_local
 
 # Development
 [ -f "$HOME/.ansible_secret_environment" ] && source "$HOME/.ansible_secret_environment"
 
-complete -C '/home/mark/.local/bin/aws_completer' aws

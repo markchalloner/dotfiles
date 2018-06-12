@@ -17,7 +17,7 @@ func_alias() {
 }
 
 func_aliascomplete() {
-  type _complete_alias 2>&1 > /dev/null || return
+  type _complete_alias > /dev/null 2>&1 || return
 
   local name="$1"; shift
 
@@ -518,6 +518,20 @@ func_hub() {
   fi
 }
 
+# LastPass
+func_lpassf() {
+  local search="$1"; shift
+  local index="$1"; shift
+  if [ -n "$index" ]
+  then
+    cmd="awk NR==$index"
+  else
+    cmd="cat"
+  fi
+
+  lpass show -G -x --json "$search" | jq -r '.[] | (.fullname + "'$'\t''" +.password )' | $cmd | column -t -s $'\t'
+}
+
 # Remind user to use -l argument
 func_ls() {
   local ok=
@@ -718,6 +732,11 @@ func_promptyubistatus() {
   else
     echo -n "nothing"
   fi
+}
+
+# Get realpath
+func_realpath() {
+  python -c "import os; print(os.path.realpath('$1'))"
 }
 
 # Print a reminder

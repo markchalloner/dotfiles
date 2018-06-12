@@ -12,6 +12,8 @@ func_alias cdtmp='cd $HOME/Temp'
 # Dotfile editing
 func_alias viag='vi ~/.bash_aliases && unalias -a && .reload'
 func_alias vial='vi ~/.bash_aliases_local && unalias -a && .reload'
+func_alias vicg='vi ~/.bash_completion && .reload'
+func_alias vicl='vi ~/.bash_completion_local && .reload'
 func_alias vieg='vi ~/.bash_envvars && .reload'
 func_alias viel='vi ~/.bash_envvars_local && .reload'
 func_alias vifg='vi ~/.bash_functions && .reload'
@@ -88,6 +90,8 @@ func_alias vihosts='sudo vi /etc/hosts'
 func_alias git='func_hub'
 func_alias gitpr='func_gitpr ""'
 
+# LastPass
+func_alias lpassf='func_lpassf'
 
 # Less
 func_alias less='less -R'
@@ -117,6 +121,9 @@ func_alias pivstop='func_pivstop'
 func_alias prls='[ -f "${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/prs.txt'
 func_alias prca='func_prcache'
 func_alias vipr='vi ${HOME}/.personal/prs.txt'
+
+# Realpath
+func_alias rp="func_realpath"
 
 # SCP
 func_alias scp='yubipiv && scp'
@@ -160,7 +167,6 @@ func_alias watchmem='func_watchmem'
 # X
 func_alias xclip='xclip -selection clipboard'
 func_alias xkeys='xev'
-
 
 # Xdebug
 func_alias xdb='func_xdb PHPSTORM'

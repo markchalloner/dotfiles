@@ -35,6 +35,8 @@ sudo apt-get update
 ```
 sudo apt-get install -y \
 alltray \
+asciidoc \
+cmake \
 clipit \
 compizconfig-settings-manager \
 cryptomator \
@@ -43,16 +45,22 @@ gcolor2 \
 gimp \
 google-chrome-stable \
 keybase \
+libcurl4-openssl-dev \
 libldap2-dev \
 libpam-pkcs11 \
 libsasl2-dev \
 libssl-dev \
+libxml2 \
+libxml2-dev \
 monkeysphere \
 nfs-kernel-server \
 nixnote2 \
 opensc-pkcs11 \
+openssl \
 picard \
+pinentry-curses \
 pinentry-tty \
+pkg-config \
 python-dev \
 python-pip \
 scdaemon \
@@ -69,6 +77,8 @@ yubikey-personalization \
 yubikey-personalization-gui \
 yubikey-piv-manager \
 yubioath-desktop \
+xclip \
+xsltproc \
 
 ```
 
@@ -100,6 +110,28 @@ ln -s distro/debian
 dpkg-buildpackage -rfakeroot
 cd ../
 sudo dpkg -i gnupg-pkcs11-scd_*.deb
+```
+
+## Build lastpass-cli from source
+
+```
+git clone https://github.com/lastpass/lastpass-cli
+cd lastpass-cli
+make
+sudo make install
+sudo make install-doc
+```
+
+## Build yubikey-luks from source
+
+```
+git clone https://github.com/cornelinux/yubikey-luks.git
+cd yubikey-luks
+make builddeb NO_SIGN=1
+sudo dpkg -i DEBUILD/yubikey-luks_*.deb
+sudo sed -i -e 's/CONCATENATE=.*/CONCATENATE=1/g; s/HASH=.*/HASH=1/g' /etc/ykluks.cfg
+sudo update-initramfs -u
+sudo yubikey-luks-enroll
 ```
 
 ## Run keybase
