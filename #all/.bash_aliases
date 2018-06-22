@@ -162,6 +162,7 @@ func_alias vssh='func_vssh'
 func_alias vup='vagrant up'
 
 # Watch
+func_alias watch='watch '
 func_alias watchmem='func_watchmem'
 
 # X

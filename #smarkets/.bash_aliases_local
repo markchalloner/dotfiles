@@ -40,6 +40,7 @@ func_alias helmrun='func_helmupgrade'
 func_alias helmrst='func_helmreset'
 
 # Kubernetes
+func_alias kubedsc='kubectl delete pod'
 func_alias kubedsc='kubectl describe pod'
 func_alias kubepod='kubectl get pods --all-namespaces'
 func_alias kubelog='kubectl logs'
@@ -59,3 +60,6 @@ func_alias smrun='(cdsm && tools/dev/run_minimal.sh)'
 # SSH
 func_alias sshdep='sshsm deployment'
 func_alias sshsm='func_sshsmarkets' 'ssh'
+
+# Temporary
+func_alias apple-trackpad-autosuspend-status='cat /sys/bus/usb/devices/1-9/power/autosuspend_delay_ms'

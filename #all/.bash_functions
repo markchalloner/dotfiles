@@ -566,7 +566,7 @@ func_native() {
 func_mapdel() {
   local map="$1"; shift
   local name="$1"; shift
-  local var="MAP_${map}_KEY_${name}"
+  local var="MAP_${map}_KEY_${name//-/_}"
 
   unset ${var}
 }
@@ -575,7 +575,7 @@ func_mapget() {
   local map="$1"; shift
   local name="$1"; shift
 
-  local var="MAP_${map}_KEY_${name}"
+  local var="MAP_${map}_KEY_${name//-/_}"
 
   if [ -n "${!var}" ]
   then
@@ -588,7 +588,7 @@ func_mapset() {
   local name="$1"; shift
   local value="$1"; shift
 
-  read "MAP_${map}_KEY_${name}" <<< "$value"
+  read "MAP_${map}_KEY_${name//-/_}" <<< "$value"
 }
 
 # PATH

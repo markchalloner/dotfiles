@@ -1,11 +1,9 @@
+# SSH/GPG
 # Order determines if GPG SSH overrides PIV SSH.
-
 # SSH settings
 [ -f "${HOME}/.ssh-agent-info" ] && source "${HOME}/.ssh-agent-info" > /dev/null
-
 # GNUPG-PKCS11-SCD settings
 [ -f "${HOME}/.gnupg-pkcs11-scd-info" ] && source "${HOME}/.gnupg-pkcs11-scd-info" > /dev/null
-
 # GPG settings
 [ -f "${HOME}/.gpg-agent-info" ] && source "${HOME}/.gpg-agent-info" > /dev/null
 
