@@ -28,7 +28,7 @@ func_alias virp='vi ~/.bashrc_private && .reload'
 func_alias vitg='vi ~/.tmux.conf'
 
 # Docker
-func_alias docknuke='docker rmi $(docker images --all -q)'
+func_alias docknuke='docker rmi -f $(docker images --all -q)'
 
 # Dotfile management
 func_alias .cd='func_dotcd'
