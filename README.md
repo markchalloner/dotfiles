@@ -20,7 +20,14 @@ sudo bash -c "scutil --set HostName '$HOSTNAME' ; scutil --set LocalHostName '$H
 
 ### Install dotfiles
 
-Ensure that git is installed.
+Ensure that dependencies are installed:
+
+```
+sudo apt-get install -y \
+git-core \
+gpg \
+python \
+```
 
 ```
 (
