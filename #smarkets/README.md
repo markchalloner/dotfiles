@@ -39,7 +39,6 @@ asciidoc \
 cmake \
 clipit \
 compizconfig-settings-manager \
-cryptomator \
 devscripts \
 gcolor2 \
 gimp \
@@ -63,6 +62,7 @@ pinentry-tty \
 pkg-config \
 python-dev \
 python-pip \
+renmmina \
 scdaemon \
 shellcheck \
 signal-desktop \
@@ -190,6 +190,19 @@ dconf write /org/mate/terminal/profiles/$PROFILE/falsecopy-selection false
 
 ```
 sudo update-alternatives --config editor
+```
+
+## Disable gnome-keyring and ssh-agent
+
+```
+gsettings set org.mate.session gnome-compat-startup "['smproxy']"
+sudo sed -i 's/use-ssh-agent/#\0/' /etc/X11/Xsession.options
+```
+
+Untick Secret Storage Service
+
+```
+mate-session-properties
 ```
 
 ## Hardware

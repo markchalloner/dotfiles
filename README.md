@@ -20,6 +20,8 @@ sudo bash -c "scutil --set HostName '$HOSTNAME' ; scutil --set LocalHostName '$H
 
 ### Install dotfiles
 
+Ensure that git is installed.
+
 ```
 (
 INSTALLER_DIR="${HOME}/dotfiles"
@@ -28,7 +30,8 @@ cd "${INSTALLER_DIR}"
 git clone https://github.com/markchalloner/dotfiles.git .
 ln -s "${INSTALLER_DIR}" "${HOME}/.link-files"
 ./deps-download.sh
-make install -f deps/link-files/Makefile
+cd deps/link-files
+make install
 link-files -i -o
 )
 . ~/.bash_profile

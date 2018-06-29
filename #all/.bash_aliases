@@ -3,11 +3,15 @@ func_alias aliasr='func_aliasread' 'alias'
 
 # AWS
 func_alias awssub='aws ec2 describe-subnets'
+func_alias awsips='aws ec2 describe-instances --page-size 5 --filter "Name=instance-state-name,Values=running" --query '"'"'Reservations[].Instances[?PrivateIpAddress!=null][].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | @[].[ip, name]'"'"' --output text' 'aws ec2 describe-instances'
 
 # Navigation
 func_alias cddown='cd $HOME/Downloads'
 func_alias cddev='cd $DEV_ROOT'
 func_alias cdtmp='cd $HOME/Temp'
+
+# Cert
+func_alias crtr="func_certremote"
 
 # Dotfile editing
 func_alias viag='vi ~/.bash_aliases && unalias -a && .reload'
@@ -140,7 +144,7 @@ func_alias sshu='func_sshunpin'
 func_alias sudom='sudo bash -c'
 
 # Tee
-func_alias tee='stripcolors | tee'
+#func_alias tee='stripcolors | tee'
 
 # Terminal
 func_alias stripcolors='sed "s/"$'\E'"\[[0-9;]*[A-Za-z]//g"'

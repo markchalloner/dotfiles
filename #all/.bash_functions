@@ -82,6 +82,17 @@ func_cd() {
   dirs
 }
 
+func_certremote() {
+  local host="$1"; shift
+  local port="${1:-443}"; shift
+  if [ -z "$host" ]
+  then
+    echo "Error: host must be specified."
+    exit
+  fi
+  openssl s_client -showcerts -servername "$host" -connect "$host":"$port" <<< "" 2>/dev/null | openssl x509 -inform pem -noout -text
+}
+
 # Convert dev names to github usernames
 # Requires DEV variable e.g.:
 #   DEV="dev1nick1,dev1nick2,...:dev1gh;dev2nick1,...:dev2gh"
@@ -668,11 +679,13 @@ func_pivstart() {
 }
 
 func_pivstatus() {
+  local envfile=~/.ssh-agent-info
   local out=$(ps -A | grep "ssh-agent" | grep -v "grep")
   if [ -z "${out}" ]
   then
     return 1
   fi
+  source "$envfile" > /dev/null
   # Test SSH keys are loaded.
   if ! ssh-add -l 2> /dev/null | grep -q "$lib"
   then
