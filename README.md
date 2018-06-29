@@ -31,7 +31,7 @@ git clone https://github.com/markchalloner/dotfiles.git .
 ln -s "${INSTALLER_DIR}" "${HOME}/.link-files"
 ./deps-download.sh
 cd deps/link-files
-make install
+sudo make install
 link-files -i -o
 )
 . ~/.bash_profile
