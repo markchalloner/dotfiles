@@ -37,4 +37,4 @@
 	prompt = false
 	keepBackup = false
 [gpg]
-	program = gpg2
+	program = gpg
