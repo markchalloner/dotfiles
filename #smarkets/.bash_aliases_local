@@ -1,5 +1,5 @@
 # Ansible
-func_alias ap='yubipiv && ansible-playbook -u $SM_SSH_USER' 'ansible-playbook'
+func_alias ap='yubipiv && ansible-playbook' 'ansible-playbook'
 
 # CD
 func_alias cdha='cd $HA_ROOT'
