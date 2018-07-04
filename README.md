@@ -26,6 +26,7 @@ Ensure that dependencies are installed:
 sudo apt-get install -y \
 git-core \
 gpg \
+make \
 python \
 ```
 
@@ -42,9 +43,9 @@ sudo make install
 link-files -i -o
 )
 . ~/.bash_profile
-gpg --search mark.a.r.challoner@gmail.com
+gpg --fetch-keys https://keybase.io/markchalloner/key.asc
 gpg --card-status
-gpgrestart
+yubigpg
 ```
 
 ### Set user details and origin to ssh (for editing)
