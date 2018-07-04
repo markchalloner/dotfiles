@@ -31,6 +31,10 @@ func_alias virl='vi ~/.bashrc_local && .reload'
 func_alias virp='vi ~/.bashrc_private && .reload'
 func_alias vitg='vi ~/.tmux.conf'
 
+# Dconf
+func_alias dconfb='func_dconfbackup' 'dconf read'
+func_alias dconfr='func_dconfrestore'
+
 # Docker
 func_alias docknuke='docker rmi -f $(docker images --all -q)'
 

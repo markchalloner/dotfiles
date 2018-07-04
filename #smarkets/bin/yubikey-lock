@@ -11,6 +11,8 @@ echo "========================================" >> $LOG
 date >> $LOG
 echo "Running $0 $1." >> $LOG
 echo "Yubico USB status: $(/usr/bin/lsusb | grep 'Yubico')" >> $LOG
+echo "Display: $DISPLAY" >> "$LOG"
+echo "Xauthority: $XAUTHORITY" >> "$LOG"
 echo "Xinput devices: " >> $LOG
 /usr/bin/xinput >> $LOG
 echo "Keyboard ids: " >> $LOG
@@ -28,16 +30,19 @@ then
   do
     if /usr/bin/xinput --query-state "$keyboard_id" | grep -q 'key\[37\]=down'
     then
+      echo "CTRL key pressed on keyboard $keyboard_id. Exiting."
       exit
     fi 
   done
-  
+
   # Lock windows sessions.
   echo "Locking window sessions." >> $LOG
   /bin/loginctl lock-sessions
 
   # Kill non-X TTYs.
-  ttys="$(who | awk '{ print $2 }' | grep tty | grep -v tty7 | uniq)"
+  echo "Who:" >> "$LOG"
+  echo "$(who)" >> "$LOG"
+  ttys="$(who | awk '{ print $2 }' | grep tty | grep -v ':[0-9]\+' | uniq)"
   echo "Active TTYs:" $ttys >> $LOG
   for tty in $ttys
   do
@@ -50,6 +55,6 @@ if [ "$1" == "wake" ]
 then
   # Waking display.
   echo "Waking display." >> $LOG
-  #/usr/bin/xdotool key Pause
+  /usr/bin/xdotool key Pause
   #/bin/loginctl activate $(/bin/loginctl list-sessions --no-legend | awk '{print $1}')
 fi

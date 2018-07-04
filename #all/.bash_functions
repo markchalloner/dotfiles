@@ -88,10 +88,50 @@ func_certremote() {
   if [ -z "$host" ]
   then
     echo "Error: host must be specified."
-    exit
+    return 1
   fi
   openssl s_client -showcerts -servername "$host" -connect "$host":"$port" <<< "" 2>/dev/null | openssl x509 -inform pem -noout -text
 }
+
+func_dconfbackup() {
+  local dir="$1"; shift
+  local dir_backup="${HOME}/dotfiles/$(hostname)/.dconf"
+  local file
+  if [ -z "$dir" ]
+  then
+    echo "Error: dir must be specified."
+    return 1
+  fi
+  dir="${dir%/}/"
+  file="$dir"
+  file="${file#/}"
+  file="${file%/}"
+  file="$dir_backup/${file//\//_}.sh"
+  mkdir -p "$dir_backup"
+  echo "dconf load $dir << 'EOF'" > "${file}"
+  dconf dump "$dir" >> "$file"
+  echo 'EOF' >> "$file"
+  chmod +x "$file"
+  echo "Wrote dconf restore file to $file."
+}
+
+func_dconfrestore() {
+  local dir_backup="${HOME}/dotfiles/$(hostname)/.dconf"
+  if [ -z "${dir_backup}//\/}" ]
+  then
+    echo "Error: unsafe backup dir specified: $dir_backup."
+    return 1
+  fi
+  (
+    shopt -s nullglob
+    for i in $dir_backup/*
+    do
+      bash $i
+    done
+  )
+  echo "Restored dconf config from $dir_backup."
+}
+
 
 # Convert dev names to github usernames
 # Requires DEV variable e.g.:
