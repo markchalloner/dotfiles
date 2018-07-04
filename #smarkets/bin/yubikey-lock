@@ -24,7 +24,7 @@ do
 done
 
 # If Yubikey is not still attached and CTRL is not pressed.
-if [ "$1" == "lock" ] && /usr/bin/lsusb | ! grep -q 'Yubico'
+if [ "$1" == "lock" ] && ! /usr/bin/lsusb | grep -q 'Yubico'
 then
   for keyboard_id in $keyboard_ids
   do

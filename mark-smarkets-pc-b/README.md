@@ -41,6 +41,7 @@ font-manager \
 gimp \
 gnome-tweaks \
 google-chrome-stable \
+jq \
 keybase \
 libcurl4-openssl-dev \
 libldap2-dev \
@@ -63,6 +64,7 @@ python-pip \
 scdaemon \
 shellcheck \
 signal-desktop \
+texinfo \
 tmux \
 vagrant \
 vim \
