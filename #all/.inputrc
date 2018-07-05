@@ -5,8 +5,8 @@ set editing-mode vi
 "\e[C": forward-char
 "\e[1;5D": backward-word
 "\e[1;5C": forward-word
-"\e[1;3D": beginning-of-line
-"\e[1;3c": end-of-line
+#"\e[1;3D": beginning-of-line
+#"\e[1;3c": end-of-line
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
