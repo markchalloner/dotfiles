@@ -28,8 +28,8 @@ func_alias dockim='docker images'
 func_alias dockimb='dockim | awk "NR==1 || /$(gitb)/ { print $1 }"'
 
 # Environments
-func_alias envans='[ -f '$SM_ROOT/tools/ansible/.ve/bin/activate' ] && source '$SM_ROOT/tools/ansible/.ve/bin/activate''
-func_alias envk8s='[ -f '$SM_ROOT/tools/dev/setup/activate.sh' ] && source '$SM_ROOT/tools/dev/setup/activate.sh' > /dev/null 2>&1'
+func_alias envans='[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate"'
+func_alias envk8s='[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh"'
 
 # Git
 func_alias gitca='yubigpg && git commit -S --amend --no-edit'
