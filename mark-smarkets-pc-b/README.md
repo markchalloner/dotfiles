@@ -84,6 +84,7 @@ xsltproc
 
 ```
 pip install awscli --upgrade --user
+pip install pipenv --upgrade --user
 ```
 
 ## Install via snap
