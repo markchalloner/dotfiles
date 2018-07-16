@@ -50,40 +50,46 @@ func_kubeshell() {
 
 # SSH
 func_sshsmarkets () {
-    local index="$1";
-    shift;
-    local host="$1";
-    shift;
-    local user="$SM_SSH_USER";
-    local admin=0;
-    local hosts;
-    if [ -z "$index" ]; then
-        echo "Error: Host must be supplied.";
-        return 1;
-    fi;
-    if [ -z "$host" ]; then
-        host="$index";
-        index=1;
-    fi;
-    index=$((index-1));
-    if [[ "$host" == admin@* ]]; then
-        admin=1;
-        host="${host//admin@/}";
-    fi;
-    if [[ ! $host =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-        if [ "${host/./}" == "$host" ]; then
-            host="$host.$SM_DOMAIN";
-        fi;
-        hosts=($(dig +short "$host" | sort -V | tr $'\n' ' '));
-        if [ "${#hosts[@]}" -gt "1" ]; then
-            echo "Warning: found more that one host at $host (${hosts[@]}). Using host ${hosts[$index]}.";
-        fi;
-        host=${hosts[$index]};
-    fi;
-    if [ $admin -eq 1 ] || grep --color=auto -q 'docker\|ldap' <<< "$host"; then
-        user="$SM_SSH_USER_ADMIN";
-    fi;
-    func_ssh -A "$user"@"$host" $@
+  local host="$1"; shift
+  local index
+  if [[ "$1" =~ "^[0-9]\+$" ]]
+  then
+    index="$1"; shift
+  else
+    index=1
+  fi
+  local user="$SM_SSH_USER"
+  local admin=0
+  local hosts
+  if [ -z "$host" ]
+  then
+    echo "Error: Host must be supplied."
+    return 1
+  fi
+  index=$((index-1))
+  if [[ "$host" == admin@* ]]
+  then
+    admin=1
+    host="${host//admin@/}"
+  fi
+  if [[ ! $host =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
+  then
+    if [ "${host/./}" == "$host" ]
+    then
+      host="$host.$SM_DOMAIN"
+    fi
+    hosts=($(dig +short "$host" | sort -V | tr $'\n' ' '))
+    if [ "${#hosts[@]}" -gt "1" ]
+    then
+      echo "Warning: found more that one host at $host (${hosts[@]}). Using host ${hosts[$index]}."
+    fi
+    host=${hosts[$index]}
+  fi;
+  if [ $admin -eq 1 ] || grep --color=auto -q 'docker\|ldap' <<< "$host"
+  then
+    user="$SM_SSH_USER_ADMIN"
+  fi
+  func_ssh -A "$user"@"$host" $@
 }
 
 # Yubikey
