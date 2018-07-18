@@ -131,6 +131,12 @@ func_alias prls='[ -f "${HOME}/.personal/prs.txt\" ] && cat ${HOME}/.personal/pr
 func_alias prca='func_prcache'
 func_alias vipr='vi ${HOME}/.personal/prs.txt'
 
+# Python
+func_alias pycd='cddev && cd python'
+func_alias pyenv='pycd && pipenv install --dev && pipenv shell'
+func_alias pyvi='pycd && pipenv --three && vi Pipfile && pyenv'
+func_alias pypy='pycd && pipenv install --dev && pipenv run python'
+
 # Realpath
 func_alias rp="func_realpath"
 
@@ -153,6 +159,9 @@ func_alias sudom='sudo bash -c'
 
 # Terminal
 func_alias stripcolors='sed "s/"$'\E'"\[[0-9;]*[A-Za-z]//g"'
+
+# Time
+func_alias timeadd='func_timeadd'
 
 # Tmux
 func_alias tmuxs='[ -z "$TMUX" ] && [ -n "$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "$TMUX_TTY" || tmux new -s "$TMUX_TTY" ; }'

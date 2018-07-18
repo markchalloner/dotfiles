@@ -953,6 +953,20 @@ func_termcolor() {
   printf '\e[38;2;'${color}'m'
 }
 
+# Time
+func_timeadd() {
+  local total=0
+  local min=0
+  local sec=0
+  for i in $@
+  do
+    min=$((10#${i%:*}))
+    sec=$((10#${i##*:}))
+    total=$((total+(min*60)+sec))
+  done
+  printf "%d:%.2d\n" "$((total/60))" "$((total%60))"
+}
+
 # TOTP
 func_totpvalid() {
   local token="${1}"
