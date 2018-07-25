@@ -14,6 +14,7 @@ func_alias cdsm='cd $SM_ROOT'
 func_alias cdssv='cdsm && cd services'
 func_alias cdst='cdsm && cd tools'
 func_alias cdsta='cdst && cd ansible'
+func_alias cdstc='cdst && cd cloud'
 
 # Crane
 func_alias cr='$HA_ROOT/crane/crane'
