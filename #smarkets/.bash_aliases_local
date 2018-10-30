@@ -32,9 +32,6 @@ func_alias dockimb='dockim | awk "NR==1 || /$(gitb)/ { print $1 }"'
 func_alias envans='[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate"'
 func_alias envk8s='[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh"'
 
-# Git
-func_alias gitca='yubigpg && git commit -S --amend --no-edit'
-
 # Helm
 func_alias helmdel='func_helmdelete'
 func_alias helmrun='func_helmupgrade'

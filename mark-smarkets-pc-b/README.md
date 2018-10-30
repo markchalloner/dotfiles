@@ -51,6 +51,8 @@ libssl-dev \
 libxml2 \
 libxml2-dev \
 monkeysphere \
+network-manager-openvpn \
+network-manager-openvpn-gnome \
 nfs-kernel-server \
 nixnote2 \
 opensc-pkcs11 \
@@ -151,7 +153,6 @@ Set lightdm rotation:
 ```
 sudo tee /etc/lightdm/lightdm.conf.d/80-display-setup.conf <<< '[SeatDefaults]'$'\n''display-setup-script=xrandr -o right'
 ```
-
 
 ## System config
 

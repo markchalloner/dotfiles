@@ -325,6 +325,18 @@ func_gitbu() {
   done
 }
 
+# Commit amending the previous commit
+func_gitca() {
+  local message="$1"
+  local args
+  if [ -n "$message" ]
+  then
+    args='-m "$message"'
+  else
+    args='--no-edit'
+  fi
+  yubigpg && git commit -S --amend $args
+}
 
 # Commit optionaly adding the branch if it exactly matches ${1}
 func_gitcm() {
@@ -956,12 +968,15 @@ func_termcolor() {
 # Time
 func_timeadd() {
   local total=0
+  local i
+  local time
   local min=0
   local sec=0
   for i in $@
   do
-    min=$((10#${i%:*}))
-    sec=$((10#${i##*:}))
+    time=${i//./:}
+    min=$((10#${time%:*}))
+    sec=$((10#${time##*:}))
     total=$((total+(min*60)+sec))
   done
   printf "%d:%.2d\n" "$((total/60))" "$((total%60))"
