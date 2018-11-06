@@ -327,15 +327,19 @@ func_gitbu() {
 
 # Commit amending the previous commit
 func_gitca() {
-  local message="$1"
+  local message="$(echo -e -n "${1}")"
+  if [ "${message}" == "-m" ]
+  then
+    message="$(echo -e -n "${2}")"
+  fi
   local args
   if [ -n "$message" ]
   then
-    args='-m "$message"'
+    args="-m"
   else
     args='--no-edit'
   fi
-  yubigpg && git commit -S --amend $args
+  func_yubigpg && git commit -S --amend $args "$message"
 }
 
 # Commit optionaly adding the branch if it exactly matches ${1}
