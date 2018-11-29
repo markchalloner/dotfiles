@@ -132,6 +132,43 @@ func_dconfrestore() {
   echo "Restored dconf config from $dir_backup."
 }
 
+# Debounce
+func_debounce() {
+  local func_name="$1"; shift
+  local cache_secs="${1:-1}"; shift
+  func_debouncewrite "${func_name}" "${cache_secs}"
+  func_debounceread
+}
+
+func_debouncewrite() {
+  local func_name="$1"; shift
+  local cache_secs="${1:-10}"; shift
+  local cache_dir="$HOME/.debounce"
+  local cache_file="${cache_dir}/${func_name}"
+  local time_now="$(date '+%s')"
+  if type "$func_name" > /dev/null 2>&1; then
+    if [ ! -d "${cache_dir}" ]
+    then
+      mkdir -p "${cache_dir}"
+    fi
+    time_cache="$(stat -c '%Y' ${cache_file} 2> /dev/null || echo 0)"
+    if [ $((${time_now}-${time_cache})) -gt ${cache_secs} ]; then
+      touch "${cache_file}"
+      { result="$($func_name $@ 2> /dev/null)"; echo "$result" > "${cache_file}"; } & > /dev/null 2>&1
+      disown > /dev/null 2>&1
+    fi
+  fi
+}
+
+func_debounceread() {
+  local func_name="$1"; shift
+  local cache_dir="$HOME/.debounce"
+  local cache_file="${cache_dir}/${func_name}"
+  if type "$func_name" > /dev/null 2>&1; then
+    cat "${cache_file}" 2> /dev/null
+  fi
+
+}
 
 # Convert dev names to github usernames
 # Requires DEV variable e.g.:
@@ -332,14 +369,12 @@ func_gitca() {
   then
     message="$(echo -e -n "${2}")"
   fi
-  local args
   if [ -n "$message" ]
   then
-    args="-m"
+    func_yubigpg && git commit -S --amend -m "$message"
   else
-    args='--no-edit'
+    func_yubigpg && git commit -S --amend --no-edit
   fi
-  func_yubigpg && git commit -S --amend $args "$message"
 }
 
 # Commit optionaly adding the branch if it exactly matches ${1}

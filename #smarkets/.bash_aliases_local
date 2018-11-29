@@ -29,8 +29,13 @@ func_alias dockim='docker images'
 func_alias dockimb='dockim | awk "NR==1 || /$(gitb)/ { print $1 }"'
 
 # Environments
-func_alias envans='[ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate"'
-func_alias envk8s='[ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh"'
+func_alias envans='deactivate > /dev/null 2>&1 ; [ -f "$SM_ROOT/tools/ansible/.ve/bin/activate" ] && source "$SM_ROOT/tools/ansible/.ve/bin/activate"'
+func_alias envcld='deactivate > /dev/null 2>&1 ; [ -f "$SM_ROOT/tools/cloud/.ve/bin/activate" ] && source "$SM_ROOT/tools/cloud/.ve/bin/activate"'
+func_alias envk8s='deactivate > /dev/null 2>&1 ; [ -f "$SM_ROOT/tools/dev/setup/activate.sh" ] && source "$SM_ROOT/tools/dev/setup/activate.sh"'
+
+# Gitlab
+func_alias glmr='func_glmr'
+func_alias glmrc='func_glmrcount'
 
 # Helm
 func_alias helmdel='func_helmdelete'

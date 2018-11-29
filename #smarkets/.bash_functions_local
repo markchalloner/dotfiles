@@ -15,6 +15,33 @@ func_digsm() {
   dig $short "$host.$SM_DOMAIN" | $cmd
 }
 
+# Gitlab
+FVAR_GITLAB_LABELS="infra Infra Security Tooling"
+
+func_glmr() {
+  local labels="${1:-${FVAR_GITLAB_LABELS}}"
+  for label in ${labels}; do
+    gitlab -o json merge-request list --state=opened --group-id=0 --scope=all --labels=${label}
+  done |
+    jq -rs 'flatten(2) | unique | sort_by(.created_at) | reverse | .[] | [.author.name, .title, .web_url] | @tsv' |
+    column -s $'\t' -t
+}
+
+func_glmrcount() {
+  local labels="${1:-${FVAR_GITLAB_LABELS}}"
+  local text="MR"
+  local count=$(
+    for label in ${labels}; do
+      gitlab -o json merge-request list --state=opened --group-id=0 --scope=all --labels=${label}
+    done |
+      jq -rs 'flatten(2) | unique | map(select(.author.username != "mark.challoner")) | length'
+  )
+  if [ $count -ne 1 ]; then
+    text="${text}s"
+  fi
+  echo "${count}${text}"
+}
+
 # Helm
 func_helmdelete() {
   local release="$1"; shift

@@ -42,27 +42,6 @@ fi
 # Show git state in the fancy prompt.
 GIT_PS1_SHOWDIRTYSTATE=true
 
-# Pre and post commands.
-FIRST_PROMPT=1
-func_bashpre() {
-  [ -z "$AT_PROMPT" ] && return
-  unset AT_PROMPT
-  [ -f ~/.bash_prompt_pre ] && . ~/.bash_prompt_pre
-}
-
-func_bashpost() {
-  AT_PROMPT=1
-  if [ -n "$FIRST_PROMPT" ]
-  then
-    unset FIRST_PROMPT
-    return
-  fi
-  [ -f ~/.bash_prompt_post ] && . ~/.bash_prompt_post
-}
-
-trap "func_bashpre" DEBUG
-PROMPT_COMMAND="func_bashpost"
-
 # Import other global configs.
 [ -f ~/.bash_prompt ] && . ~/.bash_prompt
 [ -f ~/.bash_functions ] && . ~/.bash_functions
@@ -87,4 +66,25 @@ fi
 # Import other local bash startup files.
 [ -f ~/.bashrc_local ] && . ~/.bashrc_local
 [ -f ~/.bashrc_private ] && . ~/.bashrc_private
+
+# Pre and post commands.
+FIRST_PROMPT=1
+func_bashpre() {
+  [ -z "$AT_PROMPT" ] && return
+  unset AT_PROMPT
+  [ -f ~/.bash_prompt_pre ] && . ~/.bash_prompt_pre
+}
+
+func_bashpost() {
+  AT_PROMPT=1
+  if [ -n "$FIRST_PROMPT" ]
+  then
+    unset FIRST_PROMPT
+    return
+  fi
+  [ -f ~/.bash_prompt_post ] && . ~/.bash_prompt_post
+}
+
+trap "func_bashpre" DEBUG
+PROMPT_COMMAND="func_bashpost"
 

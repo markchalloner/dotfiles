@@ -1,15 +1,31 @@
 # If interactive shell.
 if [[ $- == *i* ]]
 then
-  PROMPT_USER_COLOR="$(tput bold)$(tput setaf 5)"
+  ESC=$(printf "\e")
+  NORMAL="$ESC[0m"
+  RED="$ESC[38;5;160m"
+  ORANGE="$ESC[38;5;208m"
+  YELLOW="$ESC[38;5;178m"
+  GREEN="$ESC[38;5;40m"
+  CYAN="$ESC[38;5;44m"
+  BLUE="$ESC[38;5;26m"
+  PURPLE="$ESC[38;5;57m"
+  PINK="$ESC[38;5;201m"
+  BROWN="$ESC[38;5;52m"
+  WHITE="$ESC[38;5;250m"
+  GREY="$ESC[38;5;240m"
+  BLACK="$ESC[38;5;232m"
+
+  PROMPT_USER_COLOR="$(tput bold)$PINK"
   PROMPT_PREPOSITION_COLOR="$(tput bold)"
-  PROMPT_DEVICE_COLOR="$(tput bold)$(tput setaf 1)"
-  PROMPT_HSM_COLOR="$(tput bold)$(tput setaf 3)"
-  PROMPT_DATE_COLOR="$(tput bold)$(tput setaf 2)"
-  PROMPT_DIR_COLOR="$(tput bold)$(tput setaf 6)"
-  PROMPT_GIT_STATUS_COLOR="$(tput bold)$(tput setaf 4)"
-  PROMPT_GIT_PROGRESS_COLOR="$(tput bold)$(tput setaf 4)"
+  PROMPT_DEVICE_COLOR="$(tput bold)$RED"
+  PROMPT_HSM_COLOR="$(tput bold)$ORANGE"
+  PROMPT_DATE_COLOR="$(tput bold)$YELLOW"
+  PROMPT_DIR_COLOR="$(tput bold)$GREEN"
+  PROMPT_GIT_STATUS_COLOR="$(tput bold)$CYAN"
+  PROMPT_GIT_PROGRESS_COLOR="$(tput bold)$CYAN"
   PROMPT_SYMBOL_COLOR="$(tput bold)"
+  PROMPT_MR_COLOR="$(tput bold)$BLUE"
 
   PROMPT_SYNCED_SYMBOL="["$'\xe2\x9c\x93'"]"
   PROMPT_DIRTY_SYNCED_SYMBOL="["$'\xe2\x9c\x97'"]"
@@ -36,16 +52,18 @@ PS1="\[$sexy_bash_prompt_user_color\]\u\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]on\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_device_color\]\h\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]with\[$sexy_bash_prompt_reset\] \
-\[$PROMPT_HSM_COLOR\]\$(func_promptyubistatus)\[$sexy_bash_prompt_reset\] \
+\[$PROMPT_HSM_COLOR\]\$(func_debounceread func_promptyubistatus)\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]at\[$sexy_bash_prompt_reset\] \
 \[$PROMPT_DATE_COLOR\]\D{%F %T}\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]in\[$sexy_bash_prompt_reset\] \
-\[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\]\
-\$( sexy_bash_prompt_is_on_git && \
-  echo -n \" \[$sexy_bash_prompt_preposition_color\]using\[$sexy_bash_prompt_reset\] \" && \
-  echo -n \"\[$sexy_bash_prompt_git_status_color\]\$(sexy_bash_prompt_get_git_info)\" && \
-  echo -n \"\[$sexy_bash_prompt_git_progress_color\]\$(sexy_bash_prompt_get_git_progress)\" && \
-  echo -n \"\[$sexy_bash_prompt_preposition_color\]\")\n\[$sexy_bash_prompt_reset\]\
+\[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\] \
+\$(sexy_bash_prompt_is_on_git && \
+  echo -n \"\[$sexy_bash_prompt_preposition_color\]using\[$sexy_bash_prompt_reset\] \" && \
+  echo -n \"\[$sexy_bash_prompt_git_status_color\]\$(func_debounceread sexy_bash_prompt_get_git_info)\" && \
+  echo -n \"\[$sexy_bash_prompt_git_progress_color\]\$(func_debounceread sexy_bash_prompt_get_git_progress)\" && \
+  echo -n \"\[$sexy_bash_prompt_preposition_color\] \")\[$sexy_bash_prompt_reset\]\
+\[$sexy_bash_prompt_preposition_color\]assigned\[$sexy_bash_prompt_reset\] \
+\[$PROMPT_MR_COLOR\]\$(func_debounceread func_glmrcount)\[$sexy_bash_prompt_reset\] \
+\n\[$sexy_bash_prompt_reset\]\
 \[$sexy_bash_prompt_symbol_color\]$sexy_bash_prompt_symbol \[$sexy_bash_prompt_reset\]"
-
 fi
