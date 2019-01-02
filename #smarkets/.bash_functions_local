@@ -29,7 +29,7 @@ func_glmr() {
 
 func_glmrcount() {
   local labels="${1:-${FVAR_GITLAB_LABELS}}"
-  local text="MR"
+  local text=" MR"
   local count=$(
     for label in ${labels}; do
       gitlab -o json merge-request list --state=opened --group-id=0 --scope=all --labels=${label}

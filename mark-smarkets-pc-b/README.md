@@ -33,6 +33,7 @@ sudo apt-get update
 ```
 sudo apt-get install -y \
 asciidoc \
+blueman \ # Apple trackpad fix
 chrome-gnome-shell \
 cmake \
 clipit \
@@ -191,3 +192,7 @@ Cmnd_Alias SERVICE_BLUETOOTH = /usr/sbin/service bluetooth restart
 %adm ALL=(root) NOPASSWD: SERVICE_BLUETOOTH
 EOF'
 ```
+
+## Shortcuts
+
+* Maximise to monitors, Ctrl+Super+Home, /home/mark/bin/gnome-resize-to-monitors.sh

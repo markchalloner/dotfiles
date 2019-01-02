@@ -26,6 +26,7 @@ func_alias vieg='vi ~/.bash_envvars && .reload'
 func_alias viel='vi ~/.bash_envvars_local && .reload'
 func_alias vifg='vi ~/.bash_functions && .reload'
 func_alias vifl='vi ~/.bash_functions_local && .reload'
+func_alias vihi="vi ~/.bash_history"
 func_alias viig='vi ~/.inputrc && .reload'
 func_alias viog='vi ~/.bash_prompt && .reload'
 func_alias vipg='vi ~/.bash_profile && .reload'

@@ -79,6 +79,7 @@ yubikey-piv-manager \
 yubioath-desktop \
 xclip \
 xsltproc \
+wmctrl \
 
 ```
 
