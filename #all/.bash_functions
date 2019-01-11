@@ -722,7 +722,7 @@ func_pwgen() {
         ;;
     esac
   done
-  len="${len:-32}"
+  len="${len:-16}"
   tr -cd "$chars" < /dev/urandom | dd bs=1 count="$len" status=none
   echo
 }
