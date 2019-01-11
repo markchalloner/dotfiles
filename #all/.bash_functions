@@ -724,7 +724,12 @@ func_pwgen() {
   done
   len="${len:-16}"
   tr -cd "$chars" < /dev/urandom | dd bs=1 count="$len" status=none
-  echo
+  # Output a newline unless STDOUT is a pipe.
+  exec 9>&1
+  case `readlink /dev/fd/9` in
+    pipe:\[*\]) ;;
+    *) echo ;;
+  esac
 }
 
 # PATH
