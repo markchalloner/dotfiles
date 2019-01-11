@@ -702,6 +702,31 @@ func_oathstop() {
   fi
 }
 
+# Password
+func_pwgen() {
+  local chars="[:graph:]"
+  local len=
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      *[!0-9]*)
+        chars="$1"
+        shift
+        ;;
+      *)
+        if [ -n "$len" ]; then
+          chars="$1"
+        else
+          len="$1"
+        fi
+        shift
+        ;;
+    esac
+  done
+  len="${len:-32}"
+  tr -cd "$chars" < /dev/urandom | dd bs=1 count="$len" status=none
+  echo
+}
+
 # PATH
 func_pathadd() {
   local position="${1}"; shift

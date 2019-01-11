@@ -33,7 +33,6 @@ sudo apt-get update
 ```
 sudo apt-get install -y \
 asciidoc \
-blueman \ # Apple trackpad fix
 chrome-gnome-shell \
 cmake \
 clipit \
@@ -95,6 +94,13 @@ pip3 install pipenv --upgrade --user
 
 ```
 sudo snap install slack --classic
+```
+
+## Install nodejs
+
+```
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
 
 ## Build lastpass-cli from source

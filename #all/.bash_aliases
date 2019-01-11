@@ -124,6 +124,10 @@ func_alias nsports='sudo netstat -plnt'
 # NFS
 func_alias nfsr='ls -alR > /dev/null'
 
+# Passwords
+func_alias pwgen='func_pwgen'
+func_alias pwgenhex='func_pwgen "a-f0-9"'
+
 # Permissions
 func_alias chx='chmod +x'
 
