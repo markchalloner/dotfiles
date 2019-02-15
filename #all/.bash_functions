@@ -897,7 +897,9 @@ func_ssh() {
   func_yubipiv
   /usr/bin/ssh $@
   local result=${?}
-  func_termcolor "default"
+  if [ -t 1 ]; then
+    func_termcolor "default"
+  fi
   return ${result}
 }
 

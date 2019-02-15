@@ -1,0 +1,1 @@
+../../#smarkets/bin/touchpad-rotate.sh

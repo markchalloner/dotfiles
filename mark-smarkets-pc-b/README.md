@@ -68,6 +68,7 @@ shellcheck \
 signal-desktop \
 texinfo \
 tmux \
+tshark \
 vagrant \
 vim \
 virtualenv \
@@ -137,6 +138,14 @@ sudo yubikey-luks-enroll
 run_keybase
 ```
 
+## Configure tshark
+
+```
+sudo dpkg-reconfigure wireshark-common
+sudo adduser $USER wireshark
+grpassign wireshark
+```
+
 ## Install gnome extensions
 
 * [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
@@ -160,6 +169,14 @@ update-grub
 Set lightdm rotation:
 ```
 sudo tee /etc/lightdm/lightdm.conf.d/80-display-setup.conf <<< '[SeatDefaults]'$'\n''display-setup-script=xrandr -o right'
+```
+
+## Fix touchpad
+
+```
+sudo tee /sys/module/bluetooth/parameters/disable_esco <<< "1"
+sudo /etc/init.d/bluetooth restart
+sudo tee /etc/modprobe.d/bluetooth-tweaks.conf <<< "options bluetooth disable_esco=1"
 ```
 
 ## System config
@@ -202,3 +219,4 @@ EOF'
 ## Shortcuts
 
 * Maximise to monitors, Ctrl+Super+Home, /home/mark/bin/gnome-resize-to-monitors.sh
+* Reset touchpad, Pause, /home/mark/bin/touchpad-reset.sh
