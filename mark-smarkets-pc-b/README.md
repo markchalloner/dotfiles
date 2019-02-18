@@ -177,6 +177,8 @@ sudo tee /etc/lightdm/lightdm.conf.d/80-display-setup.conf <<< '[SeatDefaults]'$
 sudo tee /sys/module/bluetooth/parameters/disable_esco <<< "1"
 sudo /etc/init.d/bluetooth restart
 sudo tee /etc/modprobe.d/bluetooth-tweaks.conf <<< "options bluetooth disable_esco=1"
+# Disable SNIFF mode
+sudo hcitool lp 84:FC:FE:DD:49:A4 RSWITCH
 ```
 
 ## System config
