@@ -1,1 +1,0 @@
-../../#smarkets/bin/touchpad-reset.sh

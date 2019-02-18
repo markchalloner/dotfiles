@@ -104,6 +104,11 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
+## Install gnome extensions
+
+* [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
+
+
 ## Build lastpass-cli from source
 
 ```
@@ -132,6 +137,41 @@ sudo update-initramfs -u
 sudo yubikey-luks-enroll
 ```
 
+## Set /bin/sh to /bin/bash
+
+Required for `bash` support in `/usr/bin/at`.
+
+```
+sudo ln -f -s /bin/bash /bin/sh
+```
+
+## Install yubikey-lock udev rules
+
+```
+# Install rules.
+sudo tee /etc/udev/rules.d/85-yubikey.rules <<EOF
+ACTION=="remove", ENV{ID_VENDOR_ID}=="1050", ENV{ID_MODEL_ID}=="0116", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/user/1000/gdm/Xauthority", RUN+="/home/mark/bin/yubikey-lock lock"
+ACTION=="add", ENV{ID_VENDOR_ID}=="1050", ENV{ID_MODEL_ID}=="0116", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/user/1000/gdm/Xauthority", RUN+="/home/mark/bin/yubikey-lock wake"
+EOF
+# Reload rules.
+sudo udevadm control --reload-rules
+```
+
+## Install trackpad udev rules
+
+```
+# Get input details.
+udevadm info -a -p $(udevadm info -q path -n /dev/input/mouse3)
+# Install rules.
+sudo tee /etc/udev/rules.d/86-apple-trackpad.rules <<EOF
+ACTION=="add", KERNEL=="input[0-9]*", SUBSYSTEM=="input", ATTRS{uniq}=="84:fc:fe:dd:49:a4", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/user/1000/gdm/Xauthority", RUN+="/usr/bin/at -M -f /home/mark/bin/apple-trackpad-rotate.sh now"
+EOF
+# Test rules.
+udevadm test $(udevadm info -q path -n /dev/input/mouse3)
+# Reload rules.
+sudo udevadm control --reload-rules
+```
+
 ## Run keybase
 
 ```
@@ -145,11 +185,6 @@ sudo dpkg-reconfigure wireshark-common
 sudo adduser $USER wireshark
 grpassign wireshark
 ```
-
-## Install gnome extensions
-
-* [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
-
 
 ## Editor
 
@@ -167,11 +202,12 @@ update-grub
 ```
 
 Set lightdm rotation:
+
 ```
 sudo tee /etc/lightdm/lightdm.conf.d/80-display-setup.conf <<< '[SeatDefaults]'$'\n''display-setup-script=xrandr -o right'
 ```
 
-## Fix touchpad
+## Fix trackpad
 
 ```
 sudo tee /sys/module/bluetooth/parameters/disable_esco <<< "1"
@@ -221,4 +257,3 @@ EOF'
 ## Shortcuts
 
 * Maximise to monitors, Ctrl+Super+Home, /home/mark/bin/gnome-resize-to-monitors.sh
-* Reset touchpad, Pause, /home/mark/bin/touchpad-reset.sh

@@ -1,0 +1,1 @@
+../../#smarkets/bin/apple-trackpad-rotate.sh
