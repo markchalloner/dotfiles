@@ -93,6 +93,27 @@ func_certremote() {
   openssl s_client -showcerts -servername "$host" -connect "$host":"$port" <<< "" 2>/dev/null | openssl x509 -inform pem -noout -text
 }
 
+func_copytoclip() {
+  local command_clip
+  for command in "pbcopy -Prefer txt" "xclip -selection c" "clip"
+  do
+    type "${command%% *}" &> /dev/null &&
+      command_clip="${command}" &&
+      break
+  done
+  if [ -n "${command_clip}" ]
+  then
+    for content in "${@}"
+    do
+      echo -n "${content}" | ${command_clip}
+      # Sleep to allow content to register in the clipboard.
+      sleep 1
+    done
+  else
+    echo "Error: pbcopy, xclip or clip must be present on the path."
+  fi
+}
+
 func_dconfbackup() {
   local dir="$1"; shift
   local dir_backup="${HOME}/dotfiles/$(hostname)/.dconf"
@@ -1191,20 +1212,32 @@ func_yubistatus() {
 
 # Yubikey TOTP
 func_yubitotp() {
-  local query="${1}"; shift
   local code_only="${1}"; shift
-
-  if ! type yubioath > /dev/null 2>&1
-  then
-    echo "Error: yubioath must be present on the path."
+  local query="${1}"; shift
+  local index="${1}"; shift
+  local command
+  local output
+  local code
+  if [ "${code_only}" != "-c" ] && [ "${code_only}" != "--code" ]; then
+    index="${query}"
+    query="${code_only}"
+  fi
+  if type ykman > /dev/null 2>&1; then
+    command="ykman oath code"
+  elif type yubioath > /dev/null 2>&1; then
+    command="yubioath"
+  else
+    echo "Error: ykman or yubioath must be present on the path."
     return 1
   fi
-
   if [ "${code_only}" == "-c" ] || [ "${code_only}" == "--code" ]
   then
-    yubioath "${query}" 2> /dev/null | sed 's/.*  *//g'
-    return ${PIPESTATUS[0]}
+    output="$($command "${query}" | sed 's/.*  *//g')"
+    status=return ${PIPESTATUS[0]}
   else
-    yubioath "${query}" 2> /dev/null
+    output="$($command "${query}")"
   fi
+  echo "$output"
+  code="$(sed 's/.*  *//g' <<< "$output" | head -n 1 | tr -d '\n')"
+  func_copytoclip "${code}"
 }

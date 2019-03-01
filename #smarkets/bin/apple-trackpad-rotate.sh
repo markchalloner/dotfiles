@@ -6,7 +6,7 @@ export DISPLAY=${DISPLAY:-:0}
 
 LOG="/tmp/apple-trackpad.log"
 
-trackpad_names=("MarksTrackpad1")
+trackpad_names=("MarksTrackpad1" "MarksTrackpad2")
 
 touch $LOG
 echo "========================================" >> $LOG

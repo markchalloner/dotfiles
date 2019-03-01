@@ -179,7 +179,7 @@ func_alias tmuxs='[ -z "$TMUX" ] && [ -n "$TMUX_TTY" ] && tmux -V > /dev/null 2>
 func_alias tmuxd='tmux detach'
 
 # Upower
-func_alias battt='upower -i "$(upower -e | grep mouse_hid)" | awk "/percentage/{print \$2}"'
+func_alias battt='for i in $(upower -e | grep mouse_hid); do upower -i "$i" | awk "/model/{printf \$2\": \"}/percentage/{print \$2}"; done'
 
 # Vagrant
 func_alias vdot='func_vdot'
