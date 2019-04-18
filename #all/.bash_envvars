@@ -1,4 +1,4 @@
-func_pathadd "${HOME}/bin:${HOME}/Software/Bin"
+func_pathadd "${HOME}/bin:${HOME}/Software/Bin:${HOME}/go/bin"
 
 export EDITOR='vi'
 export VISUAL='vi'

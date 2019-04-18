@@ -19,6 +19,7 @@ echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sud
 echo 'deb [arch=amd64] http://prerelease.keybase.io/deb stable main' | sudo tee /etc/apt/sources.list.d/keybase.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
 sudo apt-add-repository -y ppa:nixnote/nixnote2-daily
+sudo add-apt-repository -y ppa:phoerious/keepassxc
 sudo apt-add-repository -y ppa:yubico/stable
 ```
 
@@ -43,6 +44,7 @@ gnome-tweaks \
 google-chrome-stable \
 jq \
 keybase \
+keypassxc \
 libcurl4-openssl-dev \
 libldap2-dev \
 libpam-pkcs11 \

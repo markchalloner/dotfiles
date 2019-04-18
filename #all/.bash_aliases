@@ -203,6 +203,7 @@ func_alias xdb='func_xdb PHPSTORM'
 
 # YAML
 func_alias yamlp='func_yamlparse'
+func_alias yq='yq.v2'
 
 # Yubikey
 func_alias yubigpg='func_yubigpg'

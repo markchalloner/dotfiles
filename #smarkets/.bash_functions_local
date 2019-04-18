@@ -13,6 +13,7 @@ func_digsm() {
   fi
 
   dig $short "$host.$SM_DOMAIN" | $cmd
+  dig $short "$host.ec2.$SM_DOMAIN" | $cmd
 }
 
 # Gitlab
@@ -103,12 +104,12 @@ func_sshsmarkets () {
   then
     if [ "${host/./}" == "$host" ]
     then
-      host="$host.$SM_DOMAIN"
+      host="$host.ec2.$SM_DOMAIN"
     fi
     hosts=($(dig +short "$host" | sort -V | tr $'\n' ' '))
     if [ "${#hosts[@]}" -gt "1" ]
     then
-      echo "Warning: found more that one host at $host (${hosts[@]}). Using host ${hosts[$index]}."
+      echo "Warning: found more that one host at $host (${hosts[@]}). Using host ${hosts[$index]}." >&2
     fi
     host=${hosts[$index]}
   fi;
