@@ -1,0 +1,1 @@
+/keybase/private/markchalloner/dotfiles/#all/bin/ij-reset.sh
