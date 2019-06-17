@@ -1,1 +1,0 @@
-/keybase/private/markchalloner/dotfiles/#smarkets/bin/ij-reset.sh

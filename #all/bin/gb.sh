@@ -1,0 +1,1 @@
+/keybase/private/markchalloner/dotfiles/#all/bin/gb.sh
