@@ -34,6 +34,7 @@ sudo apt-get update
 ```
 sudo apt-get install -y \
 asciidoc \
+cifs-utils \
 chrome-gnome-shell \
 cmake \
 clipit \

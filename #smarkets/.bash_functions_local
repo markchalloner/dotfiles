@@ -102,11 +102,11 @@ func_sshsmarkets () {
   fi
   if [[ ! $host =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
   then
-    if [ "${host/./}" == "$host" ]
-    then
-      host="$host.ec2.$SM_DOMAIN"
-    fi
-    hosts=($(dig +short "$host" | sort -V | tr $'\n' ' '))
+  #  if [ "${host/./}" == "$host" ]
+  #  then
+  #    host="$host.ec2.$SM_DOMAIN"
+  #  fi
+    hosts=($(aws ec2 describe-instances --filters "Name=tag:Name,Values=$host" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].{IP: PrivateIpAddress}" --out text | sort -V | tr $'\n' ' '))
     if [ "${#hosts[@]}" -gt "1" ]
     then
       echo "Warning: found more that one host at $host (${hosts[@]}). Using host ${hosts[$index]}." >&2
