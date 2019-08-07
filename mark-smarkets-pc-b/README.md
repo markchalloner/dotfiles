@@ -63,12 +63,12 @@ openssl \
 picard \
 pinentry-curses \
 pinentry-tty \
+postgres-client \
 pkg-config \
 python-dev \
 python-pip \
 scdaemon \
 shellcheck \
-signal-desktop \
 texinfo \
 tmux \
 tshark \

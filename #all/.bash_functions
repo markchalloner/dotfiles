@@ -889,7 +889,7 @@ func_promptyubistatus() {
       command="${i}" &&
       break
   done
-  if [ -n "${command}" ] && ${command} | grep -q "Yubikey"
+  if [ -n "${command}" ] && ${command} | grep -q "ID 1050:"
   then
     echo -n "yubikey"
     func_yubistatus > /dev/null 2>&1

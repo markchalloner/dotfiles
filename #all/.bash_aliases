@@ -155,7 +155,7 @@ func_alias rp="func_realpath"
 func_alias scp='yubipiv && scp'
 
 # SMB
-func_alias smbhome='sudo bash -c "mkdir -p /mnt/${HM_CIFS_SHARE}; mount -t cifs -v //${HM_IP}/${HM_CIFS_SHARE} /mnt/${HM_CIFS_SHARE} -o username=${HM_CIFS_USER},password=${HM_CIFS_PASSWORD}"'
+func_alias smbhome='mkdir -p ~/Home/${HM_CIFS_SHARE}; sudo umount ~/Home/${HM_CIFS_SHARE} 2> /dev/null; sleep 1; sudo mount.cifs //${HM_IP}/${HM_CIFS_SHARE} ~/Home/${HM_CIFS_SHARE} -o username=${HM_CIFS_USER},password=${HM_CIFS_PASSWORD},uid=$(id -u),gid=$(id -g),forceuid,forcegid'
 
 # SSH
 func_alias ssh='func_ssh'
