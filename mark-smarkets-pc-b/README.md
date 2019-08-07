@@ -67,6 +67,7 @@ postgres-client \
 pkg-config \
 python-dev \
 python-pip \
+python3-yubikey-manager \
 scdaemon \
 shellcheck \
 texinfo \
@@ -77,7 +78,7 @@ vim \
 virtualenv \
 ykneomgr \
 yubico-piv-tool \
-yubikey-manager \
+yubikey-manager-qt \
 yubikey-personalization \
 yubikey-personalization-gui \
 yubikey-piv-manager \

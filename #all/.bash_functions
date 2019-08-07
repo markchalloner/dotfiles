@@ -1217,6 +1217,7 @@ func_yubitotp() {
   local index="${1}"; shift
   local command
   local output
+  local status
   local code
   if [ "${code_only}" != "-c" ] && [ "${code_only}" != "--code" ]; then
     index="${query}"
@@ -1233,11 +1234,13 @@ func_yubitotp() {
   if [ "${code_only}" == "-c" ] || [ "${code_only}" == "--code" ]
   then
     output="$($command "${query}" | sed 's/.*  *//g')"
-    status=return ${PIPESTATUS[0]}
+    status=${PIPESTATUS[0]}
   else
     output="$($command "${query}")"
+    status=${PIPESTATUS[0]}
   fi
   echo "$output"
   code="$(sed 's/.*  *//g' <<< "$output" | head -n 1 | tr -d '\n')"
   func_copytoclip "${code}"
+  return $status
 }
