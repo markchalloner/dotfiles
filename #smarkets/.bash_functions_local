@@ -12,8 +12,10 @@ func_digsm() {
     short='+short'
   fi
 
-  dig $short "$host.$SM_DOMAIN" | $cmd
-  dig $short "$host.ec2.$SM_DOMAIN" | $cmd
+  {
+    dig $short "$host.$SM_DOMAIN" | $cmd
+    dig $short "$host.ec2.$SM_DOMAIN" | $cmd
+  } | uniq
 }
 
 # Gitlab

@@ -29,6 +29,13 @@ sudo apt-add-repository -y ppa:yubico/stable
 sudo apt-get update
 ```
 
+### Remove snap packages
+
+```
+sudo snap remove \
+gnome-calculator
+```
+
 ### Install
 
 ```
@@ -41,6 +48,7 @@ clipit \
 devscripts \
 font-manager \
 gimp \
+gnome-calculator \
 gnome-tweaks \
 google-chrome-stable \
 jq \
