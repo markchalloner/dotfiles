@@ -249,10 +249,14 @@ func_dotpush() {
   local path="${1:-${HOME}/dotfiles}"
   local hostname="${2:-$(hostname)}"
   # Test GPG will start
-  func_pivstop && \
-  func_gpgrestart && \
+  #func_pivstop && \
+  #func_gpgrestart && \
+  #func_yubipiv && \
+  #(func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
+  # When using gnupg-pkcs11-scd GPG and PIV can work in parallel.
+  func_yubigpg && \
   func_yubipiv && \
-  (func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && func_yubipiv && git push origin master)
+  (func_dotcd "${path}" && func_dotpull "${path}" "no-auth" && git add -A && func_yubigpg && git commit -S -m "Autocommit on ${hostname}" && git push origin master)
 }
 
 func_dotreadme() {
@@ -1184,6 +1188,7 @@ func_yamlparse() {
 # Yubikey switch to GPG mode
 func_yubigpg() {
   #func_pivstop && func_gpgrestart
+  # When using gnupg-pkcs11-scd GPG and PIV can work in parallel.
   func_gpgrestart
 }
 
@@ -1196,6 +1201,7 @@ func_yubinul() {
 # Yubikey switch to PIV mode
 func_yubipiv() {
   #func_gpgstop && func_oathstop && { func_pivstatus > /dev/null || func_pivrestart ; }
+  # When using gnupg-pkcs11-scd GPG and PIV can work in parallel.
   func_oathstop && { func_pivstatus > /dev/null || func_pivrestart ; }
 }
 
