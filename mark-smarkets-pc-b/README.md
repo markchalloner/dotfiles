@@ -15,12 +15,20 @@ vim
 curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 curl -s https://keybase.io/docs/server_security/code_signing_key.asc | sudo apt-key add -
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 echo 'deb [arch=amd64] http://prerelease.keybase.io/deb stable main' | sudo tee /etc/apt/sources.list.d/keybase.list
 echo 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+echo 'deb https://dl.winehq.org/wine-builds/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/wine.list
 sudo apt-add-repository -y ppa:nixnote/nixnote2-daily
 sudo add-apt-repository -y ppa:phoerious/keepassxc
 sudo apt-add-repository -y ppa:yubico/stable
+```
+
+### Enable 32 bit
+
+```
+sudo dpkg --add-architecture i386
 ```
 
 ### Update
@@ -80,10 +88,12 @@ scdaemon \
 shellcheck \
 texinfo \
 tmux \
+tlp \
 tshark \
 vagrant \
 vim \
 virtualenv \
+winehq-stable \
 ykneomgr \
 yubico-piv-tool \
 yubikey-manager-qt \
@@ -226,7 +236,10 @@ sudo tee /sys/module/bluetooth/parameters/disable_esco <<< "1"
 sudo /etc/init.d/bluetooth restart
 sudo tee /etc/modprobe.d/bluetooth-tweaks.conf <<< "options bluetooth disable_esco=1"
 # Disable SNIFF mode
-sudo hcitool lp 84:FC:FE:DD:49:A4 RSWITCH
+#sudo hcitool lp 84:FC:FE:DD:49:A4 RSWITCH
+#sudo hcitool lp 84:38:35:3A:E6:D3 RSWITCH
+# Disable Bluetooh USB autosuspend
+sudo sed -i /etc/default/tlp -e 's/^USB_BLACKLIST_BTUSB=.*/USB_BLACKLIST_BTUSB=1/g'
 ```
 
 ## System config

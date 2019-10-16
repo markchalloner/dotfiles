@@ -896,6 +896,7 @@ func_promptyubistatus() {
     case $? in
       1) echo -n "[gpg]" ;;
       2) echo -n "[piv]" ;; 
+      3) echo -n "[gpg|piv]" ;;
     esac
   else
     echo -n "nothing"
@@ -1182,7 +1183,8 @@ func_yamlparse() {
 
 # Yubikey switch to GPG mode
 func_yubigpg() {
-  func_pivstop && func_gpgrestart
+  #func_pivstop && func_gpgrestart
+  func_gpgrestart
 }
 
 # Yubikey switch to no mode
@@ -1193,21 +1195,23 @@ func_yubinul() {
 
 # Yubikey switch to PIV mode
 func_yubipiv() {
-  func_gpgstop && func_oathstop && { func_pivstatus > /dev/null || func_pivrestart ; }
+  #func_gpgstop && func_oathstop && { func_pivstatus > /dev/null || func_pivrestart ; }
+  func_oathstop && { func_pivstatus > /dev/null || func_pivrestart ; }
 }
 
 func_yubistatus() {
+  status=0
   if func_gpgstatus > /dev/null 2>&1
   then
     echo "gpg-mode"
-    return 1
+    status=$((status|1))
   fi
   if func_pivstatus > /dev/null 2>&1
   then
     echo "piv-mode"
-    return 2
+    status=$((status|2))
   fi
-  return 3
+  return $status
 }
 
 # Yubikey TOTP
