@@ -42,6 +42,13 @@ fi
 # Show git state in the fancy prompt.
 GIT_PS1_SHOWDIRTYSTATE=true
 
+# Save terminal if in TMUX.
+if [ -n "$TMUX" ] && [ -z "$SCRIPT_FILE" ]; then
+  export SCRIPT_FILE=~/.script/tmux-${TMUX_PANE/\%/}.log
+  mkdir -p ~/.script
+  exec script -aefq "$SCRIPT_FILE"
+fi
+
 # Import other global configs.
 [ -f ~/.bash_prompt ] && . ~/.bash_prompt
 [ -f ~/.bash_functions ] && . ~/.bash_functions

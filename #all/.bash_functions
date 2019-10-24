@@ -1046,6 +1046,16 @@ func_stdin() {
   RETVAL="${stdin}"
 }
 
+func_term() {
+  if [ -z "$SCRIPT_DIR" ]; then
+    local script_dir
+    script_dir="~/.script"
+    mkdir -p "$script_dir"
+    export SCRIPT_FILE=$script_dir/$([ -n "$TMUX" ] && echo "tmux-$TMUX_TTY")
+    script -aef $SCRIPT_FILE
+  fi
+}
+
 # Term color
 func_termcolor() {
   color="${1}"

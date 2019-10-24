@@ -180,6 +180,7 @@ func_alias timeadd='func_timeadd'
 # Tmux
 func_alias tmuxs='[ -z "$TMUX" ] && [ -n "$TMUX_TTY" ] && tmux -V > /dev/null 2>&1 && { tmux has -t "$TMUX_TTY" > /dev/null 2>&1 && tmux attach -t "$TMUX_TTY" || tmux new -s "$TMUX_TTY" ; }'
 func_alias tmuxd='tmux detach'
+func_alias tmuxh='[ -n "$SCRIPT_FILE" ] && less $SCRIPT_FILE || echo "Error: No script file. Are you in a tmux session?"'
 
 # Upower
 func_alias battt='for i in $(upower -e | grep mouse_hid); do upower -i "$i" | awk "/model/{printf \$2\": \"}/percentage/{print \$2}"; done'
