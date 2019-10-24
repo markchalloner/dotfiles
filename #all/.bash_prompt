@@ -48,6 +48,8 @@ then
     source "$(dirname ${FILE_SELF})/../deps/sexy-bash-prompt/.bash_prompt"
   fi
 
+  sexy_bash_prompt_reset="$NORMAL" 
+
   # Custom prompt
 PS1="\[$sexy_bash_prompt_preposition_color\]User\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_user_color\]\u\[$sexy_bash_prompt_reset\] \
