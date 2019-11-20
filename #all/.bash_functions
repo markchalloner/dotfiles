@@ -88,6 +88,10 @@ func_awsassumerole() {
   return $result
 }
 
+func_awsid() {
+  aws sts get-caller-identity --query "[UserId, Account, Arn]" --output text
+}
+
 func_awsshell() {
  func_awsassumerole "$1" "${2:-$USER}" "$3" "$4" || return 1
  echo "Starting new shell $SHELL as AWS role $1..."

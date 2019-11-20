@@ -2,6 +2,7 @@
 func_alias aliasr='func_aliasread' 'alias'
 
 # AWS
+func_alias awsid='func_awsid'
 func_alias awssh='func_awsshell'
 func_alias awssub='aws ec2 describe-subnets'
 func_alias awsips='aws ec2 describe-instances --page-size 5 --filter "Name=instance-state-name,Values=running" --query '"'"'Reservations[].Instances[?PrivateIpAddress!=null][].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | @[].[ip, name]'"'"' --output text' 'aws ec2 describe-instances'
