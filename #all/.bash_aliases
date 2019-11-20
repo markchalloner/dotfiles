@@ -2,6 +2,7 @@
 func_alias aliasr='func_aliasread' 'alias'
 
 # AWS
+func_alias awssh='func_awsshell'
 func_alias awssub='aws ec2 describe-subnets'
 func_alias awsips='aws ec2 describe-instances --page-size 5 --filter "Name=instance-state-name,Values=running" --query '"'"'Reservations[].Instances[?PrivateIpAddress!=null][].{ip:PrivateIpAddress, name:Tags[?Key==`Name`].Value[] | [0]} | @[].[ip, name]'"'"' --output text' 'aws ec2 describe-instances'
 
@@ -10,6 +11,13 @@ func_alias keybash='bind -p | less'
 func_alias keytmux='tmux list-keys | less'
 
 # Navigation
+func_alias cd1='cd ../'
+func_alias cd2='cd ../../'
+func_alias cd3='cd ../../../'
+func_alias cd4='cd ../../../../'
+func_alias cd5='cd ../../../../../'
+func_alias cdh='cd'
+func_alias cdp='cd -'
 func_alias cddown='cd $HOME/Downloads'
 func_alias cddev='cd $DEV_ROOT'
 func_alias cdtmp='cd $HOME/Temp'
@@ -68,6 +76,7 @@ func_alias gitbu='func_gitbu'
 func_alias gitdf='git diff --cached'
 func_alias gitfe='yubipiv && git fetch'
 func_alias gitll='git log -1 --oneline | cut -f 2- -d " "'
+func_alias gitlf='git log -n 1 --format=%B'
 func_alias gitca='func_gitca'
 func_alias gitcl='gitclr && gitcll'
 func_alias gitcll='git branch --merged master | grep -v "develop\|master\|qa\|release\|staging\|test\|^\*" | xargs -n 1 git branch -d'

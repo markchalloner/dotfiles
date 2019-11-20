@@ -70,6 +70,33 @@ func_aliasread() {
   fi
 }
 
+func_awsassumerole() {
+  local role mfa token mfa_args output result
+  role=$1; shift
+  session_name=$1; shift
+  mfa=$1; shift
+  token=$1; shift
+  mfa_args=
+  if [ -n "$mfa" ] && [ -n "$token" ]; then
+    mfa_args=--serial-number "$mfa" --token-code "$token"
+  fi
+  output="$(aws sts assume-role --role-arn "$role" --role-session-name "$session_name" --query "Credentials.[AccessKeyId, SecretAccessKey, SessionToken]" --output text $mfa_args)"
+  result=$?
+  AWS_ACCESS_KEY_ID="$(echo "${output}" | cut -f 1)"
+  AWS_SECRET_ACCESS_KEY="$(echo "${output}" | cut -f 2)"
+  AWS_SESSION_TOKEN="$(echo "${output}" | cut -f 3)"
+  return $result
+}
+
+func_awsshell() {
+ func_awsassumerole "$1" "${2:-$USER}" "$3" "$4" || return 1
+ echo "Starting new shell $SHELL as AWS role $1..."
+ AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+ AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+ AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN \
+ $SHELL
+}
+
 # Remind user to use pushd/popd
 func_cd() {
   local pwd=$(pwd)
