@@ -93,12 +93,19 @@ func_awsid() {
 }
 
 func_awsshell() {
- func_awsassumerole "$1" "${2:-$USER}" "$3" "$4" || return 1
- echo "Starting new shell $SHELL as AWS role $1..."
- AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
- AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
- AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN \
- $SHELL
+  (
+    local role
+    role=$1
+    if grep -v -q ":" <<< "$role"; then
+      role="arn:aws:iam::$(func_awsid | cut -f 2):role/$role"
+    fi
+    func_awsassumerole "$role" "${2:-$USER}" "$3" "$4" || return 1
+    echo "Starting new shell $SHELL as AWS role $role..."
+    AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+    AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+    AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN \
+    $SHELL
+  )
 }
 
 # Remind user to use pushd/popd

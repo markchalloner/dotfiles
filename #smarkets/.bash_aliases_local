@@ -46,11 +46,11 @@ func_alias helmrun='func_helmupgrade'
 func_alias helmrst='func_helmreset'
 
 # Kubernetes
-func_alias kubedsc='kubectl delete pod'
-func_alias kubedsc='kubectl describe pod'
-func_alias kubepod='kubectl get pods --all-namespaces'
-func_alias kubelog='kubectl logs'
-func_alias kubesh='func_kubeshell' 'kubectl exec'
+func_alias k8sdsc='kubectl describe pod'
+func_alias k8spod='kubectl get pods --all-namespaces'
+func_alias k8slog='kubectl logs'
+func_alias k8ssh='func_kubeshell' 'kubectl exec'
+func_alias k8sall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -A'
 
 # Paver
 func_alias pavdel='paver delete'
