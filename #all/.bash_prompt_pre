@@ -6,4 +6,7 @@
 [ -f "${HOME}/.gnupg-pkcs11-scd-info" ] && source "${HOME}/.gnupg-pkcs11-scd-info" > /dev/null
 # GPG settings
 [ -f "${HOME}/.gpg-agent-info" ] && source "${HOME}/.gpg-agent-info" > /dev/null
-
+# Append history before every command.
+history -a
+history -c
+history -r
