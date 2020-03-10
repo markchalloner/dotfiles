@@ -73,7 +73,6 @@ monkeysphere \
 network-manager-openvpn \
 network-manager-openvpn-gnome \
 nfs-kernel-server \
-nixnote2 \
 opensc-pkcs11 \
 openssl \
 picard \
@@ -116,7 +115,9 @@ pip3 install pipenv --upgrade --user
 ## Install via snap
 
 ```
-sudo snap install slack --classic
+sudo snap install \
+slack --classic \
+tusk
 ```
 
 ## Install nodejs

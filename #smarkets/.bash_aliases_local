@@ -66,3 +66,7 @@ func_alias smrun='(cdsm && tools/dev/run_minimal.sh)'
 # SSH
 func_alias sshdep='sshsm deployment'
 func_alias sshsm='func_sshsmarkets' 'ssh'
+
+# Terraform
+func_alias tf='terraform'
+func_alias tfd='TF_LOG=DEBUG terraform' 'terraform'

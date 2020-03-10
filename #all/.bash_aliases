@@ -109,6 +109,9 @@ func_alias gpgstop='func_gpgstop'
 # Group
 func_alias grpassign='func_grpassign'
 
+# History
+func_alias scriptfile='echo "Run in a non-tmux shell (copied to clipboard):"; echo "less $SCRIPT_FILE" | tee /dev/stderr | xclip'
+
 # Hosts
 func_alias vihosts='sudo vi /etc/hosts'
 

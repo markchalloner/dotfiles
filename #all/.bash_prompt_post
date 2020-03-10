@@ -1,4 +1,10 @@
+# Append history before every command.
+history -a
+history -c
+history -r
+# Update prompt
 func_debouncewrite func_promptyubistatus
 func_debouncewrite sexy_bash_prompt_get_git_info
 func_debouncewrite sexy_bash_prompt_get_git_progress
 func_debouncewrite func_glmrcount 60
+
