@@ -49,12 +49,6 @@ if [ -n "$TMUX" ] && [ -z "$SCRIPT_FILE" ]; then
   exec script -aefq "$SCRIPT_FILE"
 fi
 
-# Import other global configs.
-[ -f ~/.bash_prompt ] && . ~/.bash_prompt
-[ -f ~/.bash_functions ] && . ~/.bash_functions
-[ -f ~/.bash_envvars ] && . ~/.bash_envvars
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
 # Enable programmable bash completion features.
 if ! shopt -oq posix
 then
@@ -69,6 +63,13 @@ then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
+
+# Import other global configs.
+[ -f ~/.bash_prompt ] && . ~/.bash_prompt
+[ -f ~/.bash_functions ] && . ~/.bash_functions
+[ -f ~/.bash_envvars ] && . ~/.bash_envvars
+[ -f ~/.bash_completion ] && . ~/.bash_completion
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # Import other local bash startup files.
 [ -f ~/.bashrc_local ] && . ~/.bashrc_local
