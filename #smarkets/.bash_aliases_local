@@ -21,7 +21,6 @@ func_alias cdstc='cdst && cd cloud'
 func_alias cr='$HA_ROOT/crane/crane'
 func_alias crd='cr dev:local'
 func_alias crh='$HA_ROOT/crane/crane help | less'
-func_alias crane-flake8=':() { crd tests.flake8_files:"$1"; }; :' 'ls'
 
 # Dig
 func_alias digsm='func_digsm'
@@ -40,6 +39,11 @@ func_alias envhst='deactivate > /dev/null 2>&1 ; [ -f "$SM_ROOT/tools/host/.ve/b
 # Gitlab
 func_alias glmr='func_glmr'
 func_alias glmrc='func_glmrcount'
+
+# Hanson
+func_alias ha-crane='$HA_ROOT/crane/crane'
+func_alias ha-flake8='__() { hanson-crane dev:local tests.flake8_files:"$1"; }; __' 'ls'
+func_alias ha-fmt='docker run --rm -it --name ha-fmt --mount type=bind,source="$HA_ROOT,target=/var/lib/hanson" $HA_REGISTRY/hanson:latest bin/fmt' 'ls'
 
 # Helm
 func_alias helmdel='func_helmdelete'
