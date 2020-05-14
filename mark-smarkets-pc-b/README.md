@@ -49,6 +49,7 @@ gnome-calculator
 ```
 sudo apt-get install -y \
 asciidoc \
+caffeine \
 cifs-utils \
 chrome-gnome-shell \
 cmake \

@@ -21,6 +21,7 @@ func_alias cdstc='cdst && cd cloud'
 func_alias cr='$HA_ROOT/crane/crane'
 func_alias crd='cr dev:local'
 func_alias crh='$HA_ROOT/crane/crane help | less'
+func_alias crane-flake8=':() { crd tests.flake8_files:"$1"; }; :' 'ls'
 
 # Dig
 func_alias digsm='func_digsm'
@@ -51,6 +52,8 @@ func_alias k8spod='kubectl get pods --all-namespaces'
 func_alias k8slog='kubectl logs'
 func_alias k8ssh='func_kubeshell' 'kubectl exec'
 func_alias k8sall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -A'
+func_alias kubehp='echo "----- /!\ PRODUCTION -----" >&2 ; sleep 3; KUBECONFIG=~/.kube/hanson-production kubectl'
+func_alias kubehs='echo "----- (i) STAGING -----" >&2 ; KUBECONFIG=~/.kube/hanson-staging kubectl'
 
 # Paver
 func_alias pavdel='paver delete'

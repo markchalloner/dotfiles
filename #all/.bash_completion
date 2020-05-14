@@ -1,5 +1,5 @@
 # Load complete-alias.
-complete_alias="$(dirname "$(python -c "import os; print(os.path.realpath('$BASH_SOURCE'))")")/../deps/complete-alias/completions/bash_completion.sh"
+complete_alias="$(dirname "$(python -c "import os; print(os.path.realpath('$BASH_SOURCE'))")")/../deps/complete-alias/complete_alias"
 [ -r "$complete_alias" ] && . "$complete_alias"
 unset -v complete_alias
 
