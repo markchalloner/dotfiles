@@ -14,6 +14,13 @@ func_alias() {
 
   # Set the completion function.
   complete -F func_aliascomplete "$name"
+  
+  # Print a warning if unable to find alias.
+  if ! type _complete_alias > /dev/null 2>&1 && [ -z "$(func_mapget "COMPLETION" "warned")" ]; then
+    func_mapset "COMPLETION" "warned" "true"
+    echo "Unable to find _complete_alias function. Is complete-alias installed correctly?"
+  fi
+
 }
 
 func_aliascomplete() {
