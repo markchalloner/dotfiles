@@ -20,7 +20,6 @@ func_alias() {
     func_mapset "COMPLETION" "warned" "true"
     echo "Unable to find _complete_alias function. Is complete-alias installed correctly?"
   fi
-
 }
 
 func_aliascomplete() {
